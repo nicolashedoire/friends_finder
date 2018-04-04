@@ -1,4 +1,10 @@
-import { ElementRef, NgZone, OnInit, ViewChild, Component } from '@angular/core';
+import {
+  ElementRef,
+  NgZone,
+  OnInit,
+  ViewChild,
+  Component
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {} from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
@@ -27,21 +33,22 @@ export class EventsComponent implements OnInit {
     // create search FormControl
     this.searchControl = new FormControl();
 
-    // set current position
-    this.setCurrentPosition();
-
     // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(
+      // set current position
+      this.setCurrentPosition();
+
+      const autocomplete = new google.maps.places.Autocomplete(
         this.searchElementRef.nativeElement,
-        {
-          types: ['address']
-        }
+        // Ajouter d'autres types si vous voulez autre chose que les adresses
+        // {
+        //   types: ['address']
+        // }
       );
       autocomplete.addListener('place_changed', () => {
         this.ngZone.run(() => {
           // get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+          const place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
           // verify result
           if (place.geometry === undefined || place.geometry === null) {

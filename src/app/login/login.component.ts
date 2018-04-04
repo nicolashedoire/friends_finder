@@ -53,7 +53,7 @@ export class LoginComponent {
       console.log(socialPlatform + ' sign in data : ', userData);
       this.http.post('http://localhost:4000/login', userData).subscribe(response => {
         console.log(response);
-        if (response['status'] === '200') {
+        if (response['status'] === '200' || response['status'] === 'ALREADY_EXISTS' ) {
           this.modalReference.close();
         }
       });

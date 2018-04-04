@@ -1,0 +1,17 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Connexion</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <img src="/assets/img/icons/close-black.png" alt="Close">
+    </button>
+  </div>
+  <div class="modal-body">
+    <button (click)="socialSignIn('facebook')">Sign in with Facebook</button>
+    <button (click)="socialSignIn('google')">Signin in with Google</button>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="c('Close click')">Valider</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-outline-primary" (click)="open(content, null)">Connexion</button>

@@ -1,0 +1,17 @@
+.facebook-button{
+  background-color: #4267b2;
+}
+
+.google-button{
+  background-color: #dd4b39
+}
+
+.social-button{
+  color: rgb(250,250,250);
+  padding: 10px 15px;
+  border: none;
+  outline: 0;
+  border-radius: 3px;
+  margin: 10px;
+  width: 200px;
+}

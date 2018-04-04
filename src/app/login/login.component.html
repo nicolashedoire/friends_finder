@@ -5,9 +5,19 @@
       <img src="/assets/img/icons/close-black.png" alt="Close">
     </button>
   </div>
-  <div class="modal-body">
-    <button (click)="socialSignIn('facebook')">Sign in with Facebook</button>
-    <button (click)="socialSignIn('google')">Signin in with Google</button>
+  <div class="modal-body m-auto">
+    <div class="row">
+      <button (click)="socialSignIn('facebook')" class="facebook-button social-button">
+        <i class="fab fa-facebook-f"></i>
+        <span>Sign in with Facebook</span>
+      </button>
+    </div>
+    <div class="row">
+      <button (click)="socialSignIn('google')" class="google-button social-button">
+        <i class="fab fa-google-plus-g"></i>
+        <span>Sign in with Google</span>
+      </button>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-primary" (click)="c('Close click')">Valider</button>

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import {
   SocialLoginModule,
@@ -44,6 +45,7 @@ export function getAuthServiceConfigs() {
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     NgbModule.forRoot(),
     SocialLoginModule,
     AgmCoreModule.forRoot({

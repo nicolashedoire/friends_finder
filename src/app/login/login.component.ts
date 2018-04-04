@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from '@angular/common/http';
 import {
   AuthService,
   FacebookLoginProvider,
@@ -12,24 +13,23 @@ import {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  
+  modalReference: NgbModalRef;
   closeResult: string;
 
   constructor(
     private modalService: NgbModal,
-    private socialAuthService: AuthService
-  ) {}
+    private socialAuthService: AuthService,
+    private http: HttpClient
+  ) { }
 
   open(content: any, options: any) {
-    // TODO send all transactions seleted
-
-    this.modalService.open(content, { size: 'lg' }).result.then(
-      result => {
-        this.closeResult = `Closed with: ${result}`;
-      },
-      reason => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      }
-    );
+    this.modalReference = this.modalService.open(content);
+    this.modalReference.result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
   private getDismissReason(reason: any): string {
@@ -51,7 +51,12 @@ export class LoginComponent {
     }
     this.socialAuthService.signIn(socialPlatformProvider).then(userData => {
       console.log(socialPlatform + ' sign in data : ', userData);
-      // Now sign-in with userData
+      this.http.post('http://localhost:4000/login', userData).subscribe(response => {
+        console.log(response);
+        if (response['status'] === '200') {
+          this.modalReference.close();
+        }
+      });
     });
   }
 }

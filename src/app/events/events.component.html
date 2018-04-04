@@ -1,7 +1,11 @@
-<h2>Recherche par lieu</h2>
-
-<div class="row">
-    <div class="col-lg-12">
-        <input type="text" class="form-control" placeholder="Recherchez un lieu pour faire des rencontres...">
+  <div class="container">
+    <h2 class="text-center">Recherche par lieu</h2>
+    <div class="form-group">
+      <input placeholder="Recherchez un lieu sympa" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
+        #search [formControl]="searchControl">
     </div>
-</div>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+  </div>
+

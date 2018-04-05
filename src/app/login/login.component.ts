@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   isLogged: boolean;
+  userData: any;
   modalReference: NgbModalRef;
   closeResult: string;
 
@@ -27,6 +28,10 @@ export class LoginComponent implements OnInit {
     this.authService.getLoggedState.subscribe(state => {
       console.log(state);
       this.isLogged = state;
+    });
+    this.authService.getUserData.subscribe(userData => {
+      console.log(userData);
+      this.userData = userData;
     });
   }
 

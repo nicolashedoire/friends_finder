@@ -16,8 +16,10 @@ import {
 export class AuthentificationService {
 
   @Output() getLoggedState: EventEmitter<any> = new EventEmitter();
+  @Output() getUserData: EventEmitter<any> = new EventEmitter();
 
   public loggedIn = false;
+  public userData: any;
 
   constructor(
     private router: Router,
@@ -36,19 +38,19 @@ export class AuthentificationService {
     return this.socialAuthService
       .signIn(socialPlatformProvider)
       .then(userData => {
-        console.log(socialPlatform + ' sign in data : ', userData);
+        // console.log(socialPlatform + ' sign in data : ', userData);
+        this.userData = userData;
         return this.http.post('http://localhost:4000/login', userData);
       });
   }
 
   isAuthenticated() {
-
     const isLogged = this.localstorageService.getItem('logged');
-
     if (isLogged === null) {
       return false;
     } else {
       this.getLoggedState.emit(true);
+      this.getUserData.emit(this.userData);
       return true;
     }
   }
@@ -60,6 +62,7 @@ export class AuthentificationService {
 
   disconnect(): void {
     this.getLoggedState.emit(undefined);
+    this.getUserData.emit(undefined);
     this.localstorageService.clear();
     this.router.navigate(['/']);
   }

@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
   login(provider: string) {
     this.authService.socialSignIn(provider).then(res => {
       res.subscribe(data => {
+        console.log(data);
         this.modalReference.close();
         this.authService.changeLoggedState(true);
         this.router.navigate(['/dashboard']);

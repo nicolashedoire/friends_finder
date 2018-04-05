@@ -16,6 +16,12 @@ import { EventsComponent } from './events/events.component';
 import { MembersComponent } from './members/members.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+// providers
+import { AuthGuard } from './shared/security/auth.guard';
+import { AuthService } from './shared/security/auth.service';
+import { LocalstorageService } from './shared/storage/localstorage.service';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -39,7 +45,8 @@ export function getAuthServiceConfigs() {
     AppComponent,
     EventsComponent,
     MembersComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +64,10 @@ export function getAuthServiceConfigs() {
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
-    }
+    },
+    LocalstorageService,
+    AuthGuard,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

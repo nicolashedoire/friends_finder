@@ -20,10 +20,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 // providers
 import { AuthGuard } from './shared/security/auth.guard';
-import { AuthService } from './shared/security/auth.service';
+import { AuthentificationService } from './shared/security/auth.service';
 import { LocalstorageService } from './shared/storage/localstorage.service';
 
-// Configs
+// routing
+import { AppRoutingModule} from './app-routing.module';
+
+// Configs Auth
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig([
     {
@@ -53,6 +56,7 @@ export function getAuthServiceConfigs() {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AppRoutingModule,
     NgbModule.forRoot(),
     SocialLoginModule,
     AgmCoreModule.forRoot({
@@ -67,7 +71,7 @@ export function getAuthServiceConfigs() {
     },
     LocalstorageService,
     AuthGuard,
-    AuthService
+    AuthentificationService
   ],
   bootstrap: [AppComponent]
 })

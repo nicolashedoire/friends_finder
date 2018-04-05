@@ -20,11 +20,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 // providers
 import { AuthGuard } from './shared/security/auth.guard';
+import { AuthLogin } from './shared/security/auth.login';
 import { AuthentificationService } from './shared/security/auth.service';
 import { LocalstorageService } from './shared/storage/localstorage.service';
 
 // routing
 import { AppRoutingModule} from './app-routing.module';
+import { MainComponent } from './main/main.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -49,7 +51,8 @@ export function getAuthServiceConfigs() {
     EventsComponent,
     MembersComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ export function getAuthServiceConfigs() {
     },
     LocalstorageService,
     AuthGuard,
+    AuthLogin,
     AuthentificationService
   ],
   bootstrap: [AppComponent]

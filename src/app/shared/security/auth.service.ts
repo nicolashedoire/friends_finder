@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { LocalstorageService } from '../storage/localstorage.service';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
@@ -14,11 +14,15 @@ import {
 
 @Injectable()
 export class AuthentificationService {
-  public loggedIn = new BehaviorSubject<boolean>(false);
+
+  @Output() getLoggedState: EventEmitter<any> = new EventEmitter();
+
+  public loggedIn = false;
 
   constructor(
     private router: Router,
     private socialAuthService: AuthService,
+    private localstorageService: LocalstorageService,
     private http: HttpClient
   ) {}
 
@@ -29,28 +33,34 @@ export class AuthentificationService {
     } else if (socialPlatform === 'google') {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
-    this.socialAuthService.signIn(socialPlatformProvider).then(userData => {
-      console.log(socialPlatform + ' sign in data : ', userData);
-      this.http
-        .post('http://localhost:4000/login', userData)
-        .subscribe(response => {
-          console.log(response);
-          if (
-            response['status'] === '200' ||
-            response['status'] === 'ALREADY_EXISTS'
-          ) {
-            this.loggedIn.next(true);
-            return true;
-          }
-        });
-    });
+    return this.socialAuthService
+      .signIn(socialPlatformProvider)
+      .then(userData => {
+        console.log(socialPlatform + ' sign in data : ', userData);
+        return this.http.post('http://localhost:4000/login', userData);
+      });
   }
 
-  isAuthenticated(): void {}
+  isAuthenticated() {
 
-  connect(): void {}
+    const isLogged = this.localstorageService.getItem('logged');
+
+    if (isLogged === null) {
+      return false;
+    } else {
+      this.getLoggedState.emit(true);
+      return true;
+    }
+  }
+
+  changeLoggedState(value: boolean) {
+    this.localstorageService.setItem('logged', value);
+    this.loggedIn = value;
+  }
 
   disconnect(): void {
+    this.getLoggedState.emit(undefined);
+    this.localstorageService.clear();
     this.router.navigate(['/']);
   }
 }

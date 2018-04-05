@@ -1,24 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   NgbModal,
   ModalDismissReasons,
   NgbModalRef
 } from '@ng-bootstrap/ng-bootstrap';
 import { AuthentificationService } from '../shared/security/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  isLogged: boolean;
   modalReference: NgbModalRef;
   closeResult: string;
 
   constructor(
     private modalService: NgbModal,
-    private authService: AuthentificationService
+    private authService: AuthentificationService,
+    private router: Router
   ) {}
+
+  ngOnInit() {
+    this.authService.getLoggedState.subscribe(state => {
+      console.log(state);
+      this.isLogged = state;
+    });
+  }
 
   open(content: any, options: any) {
     this.modalReference = this.modalService.open(content);
@@ -43,10 +53,16 @@ export class LoginComponent {
   }
 
   login(provider: string) {
-    const isLogged = this.authService.socialSignIn(provider);
+    this.authService.socialSignIn(provider).then(res => {
+      res.subscribe(data => {
+        this.modalReference.close();
+        this.authService.changeLoggedState(true);
+        this.router.navigate(['/dashboard']);
+      });
+    });
+  }
 
-    if (isLogged) {
-      this.modalReference.close();
-    }
+  logout() {
+    this.authService.disconnect();
   }
 }

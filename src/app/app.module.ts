@@ -27,6 +27,7 @@ import { LocalstorageService } from './shared/storage/localstorage.service';
 // routing
 import { AppRoutingModule} from './app-routing.module';
 import { MainComponent } from './main/main.component';
+import { ActivityComponent } from './components/activity/activity.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -52,7 +53,8 @@ export function getAuthServiceConfigs() {
     MembersComponent,
     LoginComponent,
     DashboardComponent,
-    MainComponent
+    MainComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,

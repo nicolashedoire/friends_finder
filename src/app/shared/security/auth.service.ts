@@ -25,7 +25,7 @@ export class AuthentificationService {
     private http: HttpClient
   ) {}
 
-  public socialSignIn(socialPlatform: string) {
+  socialSignIn(socialPlatform: string) {
     let socialPlatformProvider;
     if (socialPlatform === 'facebook') {
       socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;

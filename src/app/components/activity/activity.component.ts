@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityComponent implements OnInit {
 
+  time = {hour: 13, minute: 30};
+
   constructor() { }
 
   ngOnInit() {

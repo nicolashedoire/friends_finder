@@ -18,9 +18,6 @@ export class AuthentificationService {
   @Output() getLoggedState: EventEmitter<any> = new EventEmitter();
   @Output() getUserData: EventEmitter<any> = new EventEmitter();
 
-  public loggedIn = false;
-  public userData: any;
-
   constructor(
     private router: Router,
     private socialAuthService: AuthService,
@@ -38,26 +35,25 @@ export class AuthentificationService {
     return this.socialAuthService
       .signIn(socialPlatformProvider)
       .then(userData => {
-        // console.log(socialPlatform + ' sign in data : ', userData);
-        this.userData = userData;
+        this.localstorageService.setItem('userData', JSON.stringify(userData));
         return this.http.post('http://localhost:4000/login', userData);
       });
   }
 
   isAuthenticated() {
     const isLogged = this.localstorageService.getItem('logged');
+    const userData = this.localstorageService.getItem('userData');
     if (isLogged === null) {
       return false;
     } else {
       this.getLoggedState.emit(true);
-      this.getUserData.emit(this.userData);
+      this.getUserData.emit(JSON.parse(userData));
       return true;
     }
   }
 
   changeLoggedState(value: boolean) {
     this.localstorageService.setItem('logged', value);
-    this.loggedIn = value;
   }
 
   disconnect(): void {

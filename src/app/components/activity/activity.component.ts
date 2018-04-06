@@ -13,6 +13,8 @@ export class ActivityComponent implements OnInit {
   activity: string;
   city: string;
 
+  activities = [];
+
   constructor(private activityService: ActivityService, private localStorageService: LocalstorageService) {}
 
   ngOnInit() {}
@@ -55,7 +57,7 @@ export class ActivityComponent implements OnInit {
       city: this.city,
       time: this.activityTime
     }).subscribe(data => {
-      console.log(data);
+      this.activities = data.activities;
       this.time = { hour: 12, minute: 30 };
       this.activityTime = '';
       this.activity = '';

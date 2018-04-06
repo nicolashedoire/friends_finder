@@ -1,36 +1,51 @@
-<div class="activity-form col-lg-4">
-  <h3>Quel sera votre activité du jour ?</h3>
-  <hr>
-  <div class="form-row">
-    <div class="col-lg-4">
-      <div class="form-group">
-        <label for="inputState">Activité</label>
-        <select id="inputState" class="form-control" [(ngModel)]="activity" (change)="activityOnChange($event.target.value)">
-          <option value="Aller boire un verre">Aller boire un verre</option>
-          <option value="Aller boire plusieurs verres">Aller boire plusieurs verres</option>
-          <option value="Sortir toute la nuit">Sortir toute la nuit</option>
-          <option value="Apéro à la maison">Apéro à la maison</option>
-        </select>
+<div class="row">
+  <div class="activity-form col-lg-6">
+    <h3>Quel sera votre activité du jour ?</h3>
+    <hr>
+    <div class="form-row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="inputState">Activité</label>
+          <select id="inputState" class="form-control" [(ngModel)]="activity" (change)="activityOnChange($event.target.value)">
+            <option value="Aller boire un verre">Aller boire un verre</option>
+            <option value="Aller boire plusieurs verres">Aller boire plusieurs verres</option>
+            <option value="Sortir toute la nuit">Sortir toute la nuit</option>
+            <option value="Apéro à la maison">Apéro à la maison</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="form-group">
-        <label for="inputState">Ville</label>
-        <select id="inputState" class="form-control" [(ngModel)]="city" (change)="cityOnChange($event.target.value)">
-          <option value="Lille">Lille</option>
-          <option value="Douai">Douai</option>
-        </select>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label for="inputState">Ville</label>
+          <select id="inputState" class="form-control" [(ngModel)]="city" (change)="cityOnChange($event.target.value)">
+            <option value="Lille">Lille</option>
+            <option value="Douai">Douai</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="form-group">
+      <div class="col-lg-4">
+        <div class="form-group">
           <ngb-timepicker [(ngModel)]="time" (ngModelChange)="onTimeChange($event)" style="position:relative; top: -6px;"></ngb-timepicker>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="button" class="btn btn-primary" (click)="sendActivity()">Valider</button>
       </div>
     </div>
   </div>
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <button type="button" class="btn btn-primary" (click)="sendActivity()">Valider</button>
+  <div class="activity-form col-lg-6">
+    <h3>Historique</h3>
+    <hr>
+    <div *ngIf="!activities.length" class="alert alert-primary" role="alert">
+      Vous n'avez pas encore prévu de faire des rencontres !
     </div>
+
+    <ul *ngIf="activities.length">
+      <li *ngFor="let activity of activities">
+        <span>{{activity.label}} - {{activity.time}}</span>
+      </li>
+    </ul>
   </div>
 </div>

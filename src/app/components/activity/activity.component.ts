@@ -8,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class ActivityComponent implements OnInit {
 
   time = {hour: 12, minute: 30};
+  activity: string;
+  city: string;
+
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+  sendActivity() {
+    console.log(this.time, this.activity, this.city);
   }
 
 }

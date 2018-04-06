@@ -23,9 +23,10 @@ import { AuthGuard } from './shared/security/auth.guard';
 import { AuthLogin } from './shared/security/auth.login';
 import { AuthentificationService } from './shared/security/auth.service';
 import { LocalstorageService } from './shared/storage/localstorage.service';
+import { ActivityService } from './services/activity';
 
 // routing
-import { AppRoutingModule} from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import { ActivityComponent } from './components/activity/activity.component';
 
@@ -77,7 +78,8 @@ export function getAuthServiceConfigs() {
     LocalstorageService,
     AuthGuard,
     AuthLogin,
-    AuthentificationService
+    AuthentificationService,
+    ActivityService
   ],
   bootstrap: [AppComponent]
 })

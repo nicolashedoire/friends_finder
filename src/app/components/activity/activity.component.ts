@@ -17,7 +17,11 @@ export class ActivityComponent implements OnInit {
 
   constructor(private activityService: ActivityService, private localStorageService: LocalstorageService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.activityService.getAll().subscribe((activities) => {
+      this.activities = activities;
+    });
+  }
 
   activityOnChange(value: string) {
     this.activity = value;

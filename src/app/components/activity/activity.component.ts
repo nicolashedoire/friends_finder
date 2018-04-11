@@ -73,4 +73,11 @@ export class ActivityComponent implements OnInit {
         this.city = '';
       });
   }
+
+  deleteActivity(activity: any) {
+
+    this.ActivityService.delete(activity).subscribe(data =>{
+        console.log(data);
+    });
+  }
 }

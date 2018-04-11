@@ -46,7 +46,7 @@
       <li class="row activity" *ngFor="let activity of activities">
           <div class="col-lg-12">
             <span>{{activity.label}} - {{activity.time}}</span>
-            <span class="float-right btn btn-primary">delete</span>
+            <span (click)="deleteActivity(activity)" class="float-right btn btn-primary">delete</span>
           </div>
       </li>
     </ul>

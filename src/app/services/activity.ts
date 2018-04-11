@@ -26,4 +26,11 @@ export class ActivityService {
   post(activity: any): Observable<any> {
     return this.http.post(`http://localhost:4000/activity`, activity);
   }
+
+  /**
+   * @return {Observable<any>}
+   */
+  delete(activity: any): Observable<any> {
+    return this.http.delete(`http://localhost:4000/activity`, activity);
+  }
 }

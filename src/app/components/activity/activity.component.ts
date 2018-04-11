@@ -76,7 +76,7 @@ export class ActivityComponent implements OnInit {
 
   deleteActivity(activity: any) {
 
-    this.ActivityService.delete(activity).subscribe(data =>{
+    this.activityService.delete(activity).subscribe(data =>{
         console.log(data);
     });
   }

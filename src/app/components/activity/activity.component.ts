@@ -15,13 +15,16 @@ export class ActivityComponent implements OnInit {
 
   activities = [];
 
-  constructor(private activityService: ActivityService, private localStorageService: LocalstorageService) {}
-
-  ngOnInit() {
-    this.activityService.getAll().subscribe((activities) => {
-      this.activities = activities;
+  constructor(
+    private activityService: ActivityService,
+    private localStorageService: LocalstorageService
+  ) {
+    activityService.getAll().subscribe(response => {
+      this.activities = response.activities;
     });
   }
+
+  ngOnInit() {}
 
   activityOnChange(value: string) {
     this.activity = value;
@@ -55,17 +58,19 @@ export class ActivityComponent implements OnInit {
 
     const userData = JSON.parse(this.localStorageService.getItem('userData'));
 
-    this.activityService.post({
-      userId: userData.id,
-      label: this.activity,
-      city: this.city,
-      time: this.activityTime
-    }).subscribe(data => {
-      this.activities = data.activities;
-      this.time = { hour: 12, minute: 30 };
-      this.activityTime = '';
-      this.activity = '';
-      this.city = '';
-    });
+    this.activityService
+      .post({
+        userId: userData.id,
+        label: this.activity,
+        city: this.city,
+        time: this.activityTime
+      })
+      .subscribe(data => {
+        this.activities = data.activities;
+        this.time = { hour: 12, minute: 30 };
+        this.activityTime = '';
+        this.activity = '';
+        this.city = '';
+      });
   }
 }

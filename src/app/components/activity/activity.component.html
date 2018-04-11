@@ -42,9 +42,12 @@
       Vous n'avez pas encore prévu de faire des rencontres !
     </div>
 
-    <ul *ngIf="activities.length">
-      <li *ngFor="let activity of activities">
-        <span>{{activity.label}} - {{activity.time}}</span>
+    <ul class="list-unstyled" *ngIf="activities.length">
+      <li class="row activity" *ngFor="let activity of activities">
+          <div class="col-lg-12">
+            <span>{{activity.label}} - {{activity.time}}</span>
+            <span class="float-right btn btn-primary">delete</span>
+          </div>
       </li>
     </ul>
   </div>

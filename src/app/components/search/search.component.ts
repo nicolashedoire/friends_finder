@@ -32,8 +32,9 @@ export class SearchComponent implements OnInit {
     this.places = [];
   }
 
-  select(item) {
-    this.selected = item;
+  select(place: any) {
+    console.log(place.id);
+    this.selected = place;
   }
 
   isActive(item) {

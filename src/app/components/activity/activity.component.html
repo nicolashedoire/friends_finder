@@ -16,10 +16,9 @@
       </div>
       <div class="col-lg-4">
         <div class="form-group">
-          <label for="inputState">Ville</label>
-          <select id="inputState" class="form-control" [(ngModel)]="city" (change)="cityOnChange($event.target.value)">
-            <option value="Lille">Lille</option>
-            <option value="Douai">Douai</option>
+          <label for="inputState">Bars</label>
+          <select id="inputState" class="form-control" [(ngModel)]="bar" (change)="barOnChange($event.target.value)">
+            <option *ngFor="let place of places" [value]="place.id">{{place.name}}</option>
           </select>
         </div>
       </div>

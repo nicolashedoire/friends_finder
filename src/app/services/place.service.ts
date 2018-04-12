@@ -20,4 +20,11 @@ export class PlaceService {
     return this.http.get(`${this.BASE_URL}/search/${place}`);
   }
 
+  /**
+   * @return {Observable<any>}
+   */
+  getAll(): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/places`);
+  }
+
 }

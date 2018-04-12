@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivityService } from '../../services/activity.service';
+import { PlaceService } from '../../services/place.service';
 import { LocalstorageService } from '../../shared/storage/localstorage.service';
 
 @Component({
@@ -12,15 +13,23 @@ export class ActivityComponent implements OnInit {
   activityTime: string;
   activity: string;
   city: string;
+  bar: string;
 
   activities = [];
+  places = [];
 
   constructor(
     private activityService: ActivityService,
+    private placeService: PlaceService,
     private localStorageService: LocalstorageService
   ) {
     activityService.getAll().subscribe(response => {
       this.activities = response.activities;
+    });
+
+    placeService.getAll().subscribe(response => {
+      console.log(response.places);
+      this.places = response.places;
     });
   }
 
@@ -32,6 +41,10 @@ export class ActivityComponent implements OnInit {
 
   cityOnChange(value: string) {
     this.city = value;
+  }
+
+  barOnChange(value: string) {
+    this.bar = value;
   }
 
   minTwoDigits(n) {
@@ -62,7 +75,8 @@ export class ActivityComponent implements OnInit {
       .post({
         userId: userData.id,
         label: this.activity,
-        city: this.city,
+        city: 'Lille',
+        place: this.bar,
         time: this.activityTime
       })
       .subscribe(data => {
@@ -71,6 +85,7 @@ export class ActivityComponent implements OnInit {
         this.activityTime = '';
         this.activity = '';
         this.city = '';
+        this.bar = '';
       });
   }
 

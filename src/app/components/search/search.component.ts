@@ -10,6 +10,7 @@ import { ActivityService } from '../../services/activity.service';
 export class SearchComponent implements OnInit {
   selected: any;
   places = [];
+  activities = [];
 
   constructor(
     private placeService: PlaceService,
@@ -36,10 +37,9 @@ export class SearchComponent implements OnInit {
   }
 
   select(place: any) {
-    console.log(place.id);
     this.selected = place;
     this.activityService.getByPlaceId(place.id).subscribe(data => {
-      console.log(data);
+      this.activities = data.activities;
     });
   }
 

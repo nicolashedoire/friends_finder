@@ -16,12 +16,3 @@
   width: 200px;
   cursor: pointer;
 }
-
-.avatar{
-  margin-right: 10px;
-  background-size: cover;
-  background-position: center center;
-  height: 37px;
-  width: 37px;
-  border-radius: 50%;
-}

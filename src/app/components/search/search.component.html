@@ -5,9 +5,9 @@
       <div class="form-group mb-2">
         <input type="text" ngModel name="place" class="form-control" placeholder="Rechercher un bar" minlength="50">
       </div>
-      <button type="submit" class="btn btn-primary mb-2 ml-2">rechercher</button>
+      <button type="submit" class="btn btn-outline-primary mb-2 ml-2">rechercher</button>
 
-      <button type="button" class="btn btn-danger mb-2 ml-2" (click)="resetForm(searchForm)">Réinitialiser</button>
+      <button type="button" class="btn btn-outline-danger mb-2 ml-2" (click)="resetForm(searchForm)">Réinitialiser</button>
     </form>
 
     <div *ngIf="places.length" class="mt-3">
@@ -23,6 +23,16 @@
     </div>
   </div>
   <div class="col-lg-3 mt-3 form-border">
-      <h3>Liste des friends</h3>
+    <h3>Liste des friends</h3>
+    <ul *ngIf="activities.length" class="list-group">
+      <li *ngFor="let activity of activities" class="list-group-item">
+        <img [src]="activity.user.image" [title]="activity.user.name" class="avatar">
+        <button class="btn btn-outline-primary">Rejoindre</button>
+      </li>
+    </ul>
+
+    <div *ngIf="!activities.length" class="alert alert-primary" role="alert">
+      Vous n'avez pas encore rechercher un bar !
+    </div>
   </div>
 </div>

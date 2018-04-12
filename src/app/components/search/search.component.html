@@ -23,10 +23,10 @@
     </div>
   </div>
   <div class="col-lg-3 mt-3 form-border">
-    <h3>Liste des friends</h3>
+    <h3>Liste des personnes qui vont dans ce bar</h3>
     <ul *ngIf="activities.length" class="list-group">
       <li *ngFor="let activity of activities" class="list-group-item">
-        <img [src]="activity.user.image" [title]="activity.user.name" class="avatar">
+        <img [src]="activity.user.image" [title]="activity.user.name" class="avatar-big">
         <button class="btn btn-outline-primary float-right">Rejoindre</button>
       </li>
     </ul>

@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
   searchPlace(place: string)  {
     this.placeService.search(place).subscribe(response => {
       console.log(response);
-      this.places = response;
+      this.places = response.places;
     }, error => {
       console.error(error);
     });

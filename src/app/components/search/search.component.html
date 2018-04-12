@@ -1,9 +1,19 @@
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-6 mt-3">
     <h3>Recherche un lieu</h3>
-    <form #searchForm="ngForm" (ngSubmit)="searchPlace(searchForm.value)">
-      <input type="text" ngModel class="form-control" placeholder="Rechercher un lieu">
-      <button type="submit" class="btn btn-success">rechercher</button>
+    <form #searchForm="ngForm" (ngSubmit)="searchPlace(searchForm.value.place)" class="form-inline">
+      <div class="form-group mb-2">
+          <input type="text" ngModel name="place" class="form-control" placeholder="Rechercher un lieu">
+      </div>
+      <button type="submit" class="btn btn-primary mb-2 ml-2">rechercher</button>
     </form>
+
+
+    <ul *ngIf="places.length">
+      <li *ngFor="let place of places">
+        <span>Lieu: </span><span>{{place.city}}</span>
+        <span>Nom: </span><span>{{place.name}}</span>
+      </li>
+    </ul>
   </div>
 </div>

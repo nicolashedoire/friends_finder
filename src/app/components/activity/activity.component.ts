@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivityService } from '../../services/activity';
+import { ActivityService } from '../../services/activity.service';
 import { LocalstorageService } from '../../shared/storage/localstorage.service';
 
 @Component({

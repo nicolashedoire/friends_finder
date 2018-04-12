@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h3>Recherche un lieu</h3>
+    <form #searchForm="ngForm" (ngSubmit)="searchPlace(searchForm.value)">
+      <input type="text" ngModel class="form-control" placeholder="Rechercher un lieu">
+      <button type="submit" class="btn btn-success">rechercher</button>
+    </form>
+  </div>
+</div>

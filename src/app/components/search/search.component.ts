@@ -27,6 +27,11 @@ export class SearchComponent implements OnInit {
     );
   }
 
+  resetForm(form) {
+    form.resetForm();
+    this.places = [];
+  }
+
   select(item) {
     this.selected = item;
   }

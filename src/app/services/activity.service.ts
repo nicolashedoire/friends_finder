@@ -25,6 +25,13 @@ export class ActivityService {
   /**
    * @return {Observable<any>}
    */
+  getByPlaceId(id: string): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/activities/place/${id}`);
+  }
+
+  /**
+   * @return {Observable<any>}
+   */
   post(activity: any): Observable<any> {
     return this.http.post(`${this.BASE_URL}/activity`, activity);
   }

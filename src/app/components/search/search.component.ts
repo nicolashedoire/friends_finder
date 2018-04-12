@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaceService } from '../../services/place.service';
+import { ActivityService } from '../../services/activity.service';
 
 @Component({
   selector: 'app-search',
@@ -7,11 +8,13 @@ import { PlaceService } from '../../services/place.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
   selected: any;
   places = [];
 
-  constructor(private placeService: PlaceService) {}
+  constructor(
+    private placeService: PlaceService,
+    private activityService: ActivityService
+  ) {}
 
   ngOnInit() {}
 
@@ -35,6 +38,9 @@ export class SearchComponent implements OnInit {
   select(place: any) {
     console.log(place.id);
     this.selected = place;
+    this.activityService.getByPlaceId(place.id).subscribe(data => {
+      console.log(data);
+    });
   }
 
   isActive(item) {

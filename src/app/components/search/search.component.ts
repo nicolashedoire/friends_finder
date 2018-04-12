@@ -20,6 +20,10 @@ export class SearchComponent implements OnInit {
   ngOnInit() {}
 
   searchPlace(place: string) {
+
+    // Reset list of users
+    this.activities = [];
+
     this.placeService.search(place).subscribe(
       response => {
         console.log(response);

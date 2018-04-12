@@ -6,13 +6,17 @@
           <input type="text" ngModel name="place" class="form-control" placeholder="Rechercher un lieu">
       </div>
       <button type="submit" class="btn btn-primary mb-2 ml-2">rechercher</button>
+
+      <button type="button" class="btn btn-danger mb-2 ml-2">Réinitialiser</button>
     </form>
 
 
-    <ul *ngIf="places.length">
-      <li *ngFor="let place of places">
-        <span>Lieu: </span><span>{{place.city}}</span>
-        <span>Nom: </span><span>{{place.name}}</span>
+    <ul *ngIf="places.length" class="list-group">
+      <li *ngFor="let place of places" class="list-group-item place" (click)="select(place)" [ngClass]="{active: isActive(place)}">
+        <span class="float-right">{{place.city}}</span>
+        <p>
+            <span>Nom: </span>{{place.name}}
+        </p>
       </li>
     </ul>
   </div>

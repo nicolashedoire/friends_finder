@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaceService } from '../../services/place.service';
 
-
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -9,20 +8,30 @@ import { PlaceService } from '../../services/place.service';
 })
 export class SearchComponent implements OnInit {
 
+  selected: any;
   places = [];
 
-  constructor(private placeService: PlaceService) { }
+  constructor(private placeService: PlaceService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  searchPlace(place: string) {
+    this.placeService.search(place).subscribe(
+      response => {
+        console.log(response);
+        this.places = response.places;
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
-  searchPlace(place: string)  {
-    this.placeService.search(place).subscribe(response => {
-      console.log(response);
-      this.places = response.places;
-    }, error => {
-      console.error(error);
-    });
+  select(item) {
+    this.selected = item;
   }
 
+  isActive(item) {
+    return this.selected === item;
+  }
 }

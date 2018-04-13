@@ -89,10 +89,13 @@ export class ActivityComponent implements OnInit {
       });
   }
 
-  deleteActivity(activity: any) {
+  deleteActivity(id: string) {
+    console.log(id);
 
-    this.activityService.delete(activity).subscribe(data =>{
-        console.log(data);
+    this.activityService.delete(id).subscribe(data => {
+      this.activityService.getAll().subscribe(response => {
+        this.activities = response.activities;
+      });
     });
   }
 }

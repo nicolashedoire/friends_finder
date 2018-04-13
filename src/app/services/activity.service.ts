@@ -39,7 +39,7 @@ export class ActivityService {
   /**
    * @return {Observable<any>}
    */
-  delete(activity: any): Observable<any> {
-    return this.http.delete(`${this.BASE_URL}/activity`, activity);
+  delete(id: string): Observable<any> {
+    return this.http.delete(`${this.BASE_URL}/activity/${id}`);
   }
 }

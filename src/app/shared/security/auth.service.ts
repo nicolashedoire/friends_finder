@@ -12,6 +12,8 @@ import {
   GoogleLoginProvider
 } from 'angular5-social-login';
 
+import * as jwtDecode from 'jwt-decode';
+
 @Injectable()
 export class AuthentificationService {
 

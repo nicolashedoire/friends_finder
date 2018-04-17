@@ -31,12 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.authService.getLoggedState.subscribe(state => {
-    //   this.isLogged = state;
-    // });
-    // this.authService.getUserData.subscribe(userData => {
-    //   this.userData = userData;
-    // });
   }
 
   open(content: any, options: any) {

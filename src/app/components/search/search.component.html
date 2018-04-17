@@ -5,7 +5,7 @@
       <div class="form-group mb-2">
         <input type="text" ngModel name="place" class="form-control" placeholder="Rechercher un bar" minlength="50">
       </div>
-      <button type="submit" class="btn btn-outline-primary mb-2 ml-2">rechercher</button>
+      <button type="submit" [disabled]="searchForm.valid" class="btn btn-outline-primary mb-2 ml-2">rechercher</button>
 
       <button type="button" class="btn btn-outline-danger mb-2 ml-2" (click)="resetForm(searchForm)">Réinitialiser</button>
     </form>

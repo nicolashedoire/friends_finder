@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.getLoggedState.subscribe(state => {
-      this.isLogged = state;
-    });
-    this.authService.getUserData.subscribe(userData => {
-      this.userData = userData;
-    });
+    // this.authService.getLoggedState.subscribe(state => {
+    //   this.isLogged = state;
+    // });
+    // this.authService.getUserData.subscribe(userData => {
+    //   this.userData = userData;
+    // });
   }
 
   open(content: any, options: any) {
@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
   login(provider: string) {
     this.authService.socialSignIn(provider).then(res => {
       res.subscribe(data => {
-        console.log(data);
         this.modalReference.close();
         this.authService.changeLoggedState(true);
         this.router.navigate(['/dashboard']);

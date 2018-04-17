@@ -28,7 +28,6 @@ export class ActivityComponent implements OnInit {
     });
 
     placeService.getAll().subscribe(response => {
-      console.log(response.places);
       this.places = response.places;
     });
   }
@@ -90,8 +89,6 @@ export class ActivityComponent implements OnInit {
   }
 
   deleteActivity(id: string) {
-    console.log(id);
-
     this.activityService.delete(id).subscribe(data => {
       this.activityService.getAll().subscribe(response => {
         this.activities = response.activities;

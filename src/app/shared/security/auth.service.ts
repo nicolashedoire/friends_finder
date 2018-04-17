@@ -15,9 +15,6 @@ import {
 @Injectable()
 export class AuthentificationService {
 
-  @Output() getLoggedState: EventEmitter<any> = new EventEmitter();
-  @Output() getUserData: EventEmitter<any> = new EventEmitter();
-
   constructor(
     private router: Router,
     private socialAuthService: AuthService,
@@ -42,12 +39,9 @@ export class AuthentificationService {
 
   isAuthenticated() {
     const isLogged = this.localstorageService.getItem('logged');
-    const userData = this.localstorageService.getItem('userData');
     if (isLogged === null) {
       return false;
     } else {
-      this.getLoggedState.emit(true);
-      this.getUserData.emit(JSON.parse(userData));
       return true;
     }
   }
@@ -57,8 +51,6 @@ export class AuthentificationService {
   }
 
   disconnect(): void {
-    this.getLoggedState.emit(undefined);
-    this.getUserData.emit(undefined);
     this.localstorageService.clear();
     this.router.navigate(['/']);
   }

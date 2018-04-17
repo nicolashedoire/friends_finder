@@ -22,7 +22,7 @@
 </ng-template>
 
 
-<img *ngIf="userData !== undefined" [src]="userData.image" [alt]="userData.name" class="avatar" [title]="userData.name">
+<!-- <img *ngIf="authService.isAuthenticated()" [src]="userData.image" [alt]="userData.name" class="avatar" [title]="userData.name"> -->
 
-<button *ngIf="isLogged === undefined" class="btn btn-outline-primary" (click)="open(content, null)">Connexion</button>
-<button *ngIf="isLogged" class="btn btn-outline-primary" (click)="logout()">Deconnexion</button>
+<button *ngIf="!authService.isAuthenticated()" class="btn btn-outline-primary" (click)="open(content, null)">Connexion</button>
+<button *ngIf="authService.isAuthenticated()" class="btn btn-outline-primary" (click)="logout()">Deconnexion</button>

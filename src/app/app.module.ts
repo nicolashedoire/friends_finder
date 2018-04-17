@@ -25,6 +25,7 @@ import { AuthentificationService } from './shared/security/auth.service';
 import { LocalstorageService } from './shared/storage/localstorage.service';
 import { ActivityService } from './services/activity.service';
 import { PlaceService } from './services/place.service';
+import { CountriesService } from './shared/countries/countries.service';
 
 // routing
 import { AppRoutingModule } from './app-routing.module';
@@ -85,7 +86,8 @@ export function getAuthServiceConfigs() {
     AuthLogin,
     AuthentificationService,
     ActivityService,
-    PlaceService
+    PlaceService,
+    CountriesService
   ],
   bootstrap: [AppComponent]
 })

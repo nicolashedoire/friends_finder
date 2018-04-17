@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthentificationService } from '../../shared/security/auth.service';
-import { LocalstorageService } from '../../shared/storage/localstorage.service';
+import { CountriesService } from '../../shared/countries/countries.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,15 +8,22 @@ import { LocalstorageService } from '../../shared/storage/localstorage.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-
   userProfile = null;
+  countries = [];
 
   constructor(
     private authService: AuthentificationService,
-    private localStorageService: LocalstorageService
-  ) {}
+    private countriesService: CountriesService
+  ) {
+    this.countries = countriesService.get();
+  }
 
   ngOnInit() {
     this.userProfile = this.authService.decodeToken();
+  }
+
+  saveProfile() {
+
+    console.log(this.userProfile);
   }
 }

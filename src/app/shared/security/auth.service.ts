@@ -51,4 +51,8 @@ export class AuthentificationService {
     this.localstorageService.clear();
     this.router.navigate(['/']);
   }
+
+  decodeToken(token: string) {
+    return jwtDecode(token);
+  }
 }

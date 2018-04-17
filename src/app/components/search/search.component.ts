@@ -26,7 +26,6 @@ export class SearchComponent implements OnInit {
 
     this.placeService.search(place).subscribe(
       response => {
-        console.log(response);
         this.places = response.places;
       },
       error => {

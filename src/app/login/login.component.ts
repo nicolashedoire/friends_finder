@@ -14,8 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  isLogged: boolean;
-  userData: any;
+  userData = null;
   modalReference: NgbModalRef;
   closeResult: string;
 
@@ -30,8 +29,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   open(content: any, options: any) {
     this.modalReference = this.modalService.open(content);

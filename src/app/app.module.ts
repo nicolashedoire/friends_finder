@@ -31,6 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { SearchComponent } from './components/search/search.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -58,7 +59,8 @@ export function getAuthServiceConfigs() {
     DashboardComponent,
     MainComponent,
     ActivityComponent,
-    SearchComponent
+    SearchComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

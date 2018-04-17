@@ -3,6 +3,7 @@ import { LocalstorageService } from '../storage/localstorage.service';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+// tslint:disable-next-line:import-blacklist
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
@@ -12,7 +13,7 @@ import {
   GoogleLoginProvider
 } from 'angular5-social-login';
 
-import * as jwtDecode from 'jwt-decode';
+import * as JWT from 'jwt-decode';
 
 @Injectable()
 export class AuthentificationService {
@@ -34,7 +35,6 @@ export class AuthentificationService {
     return this.socialAuthService
       .signIn(socialPlatformProvider)
       .then(userData => {
-        this.localstorageService.setItem('userData', JSON.stringify(userData));
         return this.http.post('http://localhost:4000/login', userData);
       });
   }
@@ -52,7 +52,8 @@ export class AuthentificationService {
     this.router.navigate(['/']);
   }
 
-  decodeToken(token: string) {
-    return jwtDecode(token);
+  decodeToken() {
+    const token = this.localstorageService.getItem('jwt');
+    return JWT(token);
   }
 }

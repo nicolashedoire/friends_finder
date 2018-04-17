@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivityService } from '../../services/activity.service';
 import { PlaceService } from '../../services/place.service';
 import { LocalstorageService } from '../../shared/storage/localstorage.service';
+import { AuthentificationService } from '../../shared/security/auth.service';
 
 @Component({
   selector: 'app-activity',
@@ -21,7 +22,8 @@ export class ActivityComponent implements OnInit {
   constructor(
     private activityService: ActivityService,
     private placeService: PlaceService,
-    private localStorageService: LocalstorageService
+    private localStorageService: LocalstorageService,
+    public authService: AuthentificationService
   ) {
     activityService.getAll().subscribe(response => {
       this.activities = response.activities;
@@ -68,11 +70,11 @@ export class ActivityComponent implements OnInit {
       this.activityTime = this.formatTime(this.time);
     }
 
-    const userData = JSON.parse(this.localStorageService.getItem('userData'));
+    const userData = this.authService.decodeToken();
 
     this.activityService
       .post({
-        userId: userData.id,
+        userId: userData['id'],
         label: this.activity,
         city: 'Lille',
         place: this.bar,

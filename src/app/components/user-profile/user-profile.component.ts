@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthentificationService } from '../../shared/security/auth.service';
+import { LocalstorageService } from '../../shared/storage/localstorage.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  userProfile = null;
+
+  constructor(
+    private authService: AuthentificationService,
+    private localStorageService: LocalstorageService
+  ) {}
 
   ngOnInit() {
+    this.userProfile = this.authService.decodeToken();
   }
-
 }

@@ -19,6 +19,10 @@ h3{
   padding: 15px;
 }
 
+.pointer{
+  cursor: pointer;
+}
+
 .avatar{
   margin-right: 10px;
   background-size: cover;

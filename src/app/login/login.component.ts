@@ -21,12 +21,12 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private authService: AuthentificationService,
+    public authService: AuthentificationService,
     private localStorageService: LocalstorageService,
     private router: Router
   ) {
-    if (authService.isAuthenticated()) {
-      this.userData = JSON.parse(localStorageService.getItem('userData'));
+    if (this.authService.isAuthenticated()) {
+      this.userData = this.authService.decodeToken();
     }
   }
 
@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
   login(provider: string) {
     this.authService.socialSignIn(provider).then(res => {
       res.subscribe(data => {
+        this.localStorageService.setItem('jwt', data['token']);
         this.modalReference.close();
         this.authService.changeLoggedState(true);
         this.router.navigate(['/dashboard']);

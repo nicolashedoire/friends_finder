@@ -5,6 +5,7 @@ import {
   NgbModalRef
 } from '@ng-bootstrap/ng-bootstrap';
 import { AuthentificationService } from '../shared/security/auth.service';
+import { LocalstorageService } from '../shared/storage/localstorage.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,8 +22,13 @@ export class LoginComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private authService: AuthentificationService,
+    private localStorageService: LocalstorageService,
     private router: Router
-  ) {}
+  ) {
+    if (authService.isAuthenticated()) {
+      this.userData = JSON.parse(localStorageService.getItem('userData'));
+    }
+  }
 
   ngOnInit() {
     // this.authService.getLoggedState.subscribe(state => {

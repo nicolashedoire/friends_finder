@@ -38,12 +38,7 @@ export class AuthentificationService {
   }
 
   isAuthenticated() {
-    const isLogged = this.localstorageService.getItem('logged');
-    if (isLogged === null) {
-      return false;
-    } else {
-      return true;
-    }
+    return this.localstorageService.getItem('logged');
   }
 
   changeLoggedState(value: boolean) {

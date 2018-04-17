@@ -22,7 +22,7 @@
 </ng-template>
 
 
-<img *ngIf="authService.isAuthenticated()" [src]="userData.image" [alt]="userData.name" class="avatar" [title]="userData.name">
+<img *ngIf="authService.isAuthenticated()" [src]="userData?.image" [alt]="userData?.name" class="avatar" [title]="userData?.name">
 
 <button *ngIf="authService.isAuthenticated()" class="btn btn-outline-primary" routerLink="/profile">Profil</button>
 <button *ngIf="!authService.isAuthenticated()" class="btn btn-outline-primary" (click)="open(content, null)">Connexion</button>

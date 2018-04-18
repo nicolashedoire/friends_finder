@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   NgbModal,
   ModalDismissReasons,
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   userData = null;
   modalReference: NgbModalRef;
   closeResult: string;
@@ -24,12 +24,22 @@ export class LoginComponent implements OnInit {
     private localStorageService: LocalstorageService,
     private router: Router
   ) {
+
+  }
+
+  ngOnInit() {
+    this.refreshAvatar();
+  }
+
+  ngOnDestroy(): void {
+    this.userData = null;
+  }
+
+  refreshAvatar() {
     if (this.authService.isAuthenticated()) {
       this.userData = this.authService.decodeToken();
     }
   }
-
-  ngOnInit() {}
 
   open(content: any, options: any) {
     this.modalReference = this.modalService.open(content);
@@ -59,6 +69,7 @@ export class LoginComponent implements OnInit {
         this.localStorageService.setItem('jwt', data['token']);
         this.modalReference.close();
         this.authService.changeLoggedState(true);
+        this.refreshAvatar();
         this.router.navigate(['/dashboard']);
       });
     });

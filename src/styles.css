@@ -64,3 +64,29 @@ h3 {
   width: 100px;
   border-radius: 50%;
 }
+
+
+.circular--landscape {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 25px;
+}
+
+.circular--landscape img, .circular--small img {
+  width: auto;
+  height: 100%;
+}
+
+.circular--small {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0px;
+}

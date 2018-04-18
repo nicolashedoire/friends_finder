@@ -1,13 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url('https://unpkg.com/bootstrap@4.0.0/dist/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
-h2{
-    font-size: 1.6rem;
-    margin-top: 25px;
+.main {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #52418f;
 }
 
-h3{
+h1 {
+  color: rgb(250,250,250);
+  font-family: 'Roboto', sans-serif;
+  width: 350px;
+  margin-top: 200px;
+  margin-left: 100px;
+  position: relative;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-top: 25px;
+}
+
+h3 {
   font-size: 20px;
 }
 
@@ -19,11 +38,11 @@ h3{
   padding: 15px;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
-.avatar{
+.avatar {
   margin-right: 10px;
   background-size: cover;
   background-position: center center;
@@ -32,7 +51,7 @@ h3{
   border-radius: 50%;
 }
 
-.avatar-big{
+.avatar-big {
   margin-right: 10px;
   background-size: cover;
   background-position: center center;
@@ -41,7 +60,7 @@ h3{
   border-radius: 50%;
 }
 
-.avatar-bigger{
+.avatar-bigger {
   margin-right: 10px;
   background-size: cover;
   background-position: center center;

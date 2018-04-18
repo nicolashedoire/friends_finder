@@ -76,7 +76,7 @@ export function getAuthServiceConfigs() {
       apiKey: 'AIzaSyBh3vbT19X2EIzKfYlOYnfBET22Usjro_c',
       libraries: ['places']
     }),
-    ParticlesModule
+    // ParticlesModule
   ],
   providers: [
     {

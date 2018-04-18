@@ -1,3 +1,7 @@
 .place{
   cursor: pointer;
 }
+
+agm-map {
+  height: 300px;
+}

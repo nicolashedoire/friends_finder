@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ParticlesModule } from 'angular-particle';
 
 import {
   SocialLoginModule,
@@ -74,7 +75,8 @@ export function getAuthServiceConfigs() {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBh3vbT19X2EIzKfYlOYnfBET22Usjro_c',
       libraries: ['places']
-    })
+    }),
+    ParticlesModule
   ],
   providers: [
     {

@@ -6,6 +6,7 @@
 
 .main-img img {
   position: relative;
+  z-index: 3;
 }
 
 .circular--landscape {

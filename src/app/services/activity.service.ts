@@ -20,27 +20,27 @@ export class ActivityService {
   getAll(): Observable<any> {
     const userData = this.authService.decodeToken();
     return this.http
-      .get(`${this.BASE_URL}/activities`, {params : { userId : userData['id']}});
+      .get(`${this.BASE_URL}/activities`, {params : { userId : userData['id']}, headers: this.authService.addAuthorizationHeader()});
   }
 
   /**
    * @return {Observable<any>}
    */
   getByPlaceId(id: string): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/activities/place/${id}`);
+    return this.http.get(`${this.BASE_URL}/activities/place/${id}`, { headers: this.authService.addAuthorizationHeader()});
   }
 
   /**
    * @return {Observable<any>}
    */
   post(activity: any): Observable<any> {
-    return this.http.post(`${this.BASE_URL}/activity`, activity);
+    return this.http.post(`${this.BASE_URL}/activity`, activity, { headers: this.authService.addAuthorizationHeader()});
   }
 
   /**
    * @return {Observable<any>}
    */
   delete(id: string): Observable<any> {
-    return this.http.delete(`${this.BASE_URL}/activity/${id}`);
+    return this.http.delete(`${this.BASE_URL}/activity/${id}`, { headers: this.authService.addAuthorizationHeader()});
   }
 }

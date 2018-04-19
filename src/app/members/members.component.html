@@ -1,24 +1,24 @@
 <h3>Membres actifs</h3>
 <div class="row">
   <div class="col-lg-2">
-    <button class="btn btn-outline-primary">
+    <button class="btn btn-outline-primary" (click)="previousMember()">
         <i class="fas fa-arrow-left"></i>
     </button>
   </div>
   <div class="col-lg-8">
     <div class="card">
       <div class="circular--small">
-        <img class="" src="https://randomuser.me/api/portraits/women/79.jpg" alt="Card image cap">
+        <img class="" [src]="member.image" alt="Card image cap">
       </div>
       <div class="card-body text-center">
-        <h5 class="card-title">Julie</h5>
+        <h5 class="card-title">{{member.name}}</h5>
         <!-- <p class="card-text">3 brasseurs vers 21h00</p> -->
         <a href="#" class="btn btn-primary">Rejoindre</a>
       </div>
     </div>
   </div>
   <div class="col-lg-2">
-    <button class="btn btn-outline-primary">
+    <button class="btn btn-outline-primary" (click)="nextMember()">
         <i class="fas fa-arrow-right"></i>
     </button>
   </div>

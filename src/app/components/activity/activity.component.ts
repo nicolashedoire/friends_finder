@@ -13,7 +13,7 @@ export class ActivityComponent implements OnInit {
 
   d = new Date();
 
-  time = { hour: ('00' + this.d.getHours()).slice(-2), minute: ('00' + this.d.getMinutes()).slice(-2) };
+  time = { hour: ('00' + this.d.getHours()).slice(-2).toString(), minute: ('00' + this.d.getMinutes()).slice(-2).toString()};
   activityTime: string;
   activity: string;
   city: string;
@@ -36,6 +36,11 @@ export class ActivityComponent implements OnInit {
     placeService.getAll().subscribe(response => {
       this.places = response.places;
     });
+
+    setInterval(() => {
+      this.d = new Date();
+      this.time = { hour: ('00' + this.d.getHours()).slice(-2).toString(), minute: ('00' + this.d.getMinutes()).slice(-2).toString() };
+     }, 1000 * 60);
   }
 
   ngOnInit() {}
@@ -92,7 +97,7 @@ export class ActivityComponent implements OnInit {
       })
       .subscribe(data => {
         this.activities = data.activities;
-        this.time = { hour: 12, minute: 30 };
+        this.time = { hour: '12', minute: '30' };
         this.activityTime = '';
         this.activity = '';
         this.city = '';

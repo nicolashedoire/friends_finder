@@ -12,10 +12,13 @@ export class PreferencesComponent {
     {image: '/assets/img/whisky.png', name: 'Whisky', class: 'inactive'},
     {image: '/assets/img/rhum.png', name: 'Rhum', class: 'inactive'},
     {image: '/assets/img/beer.png', name: 'Bière', class: 'inactive'},
+    {image: '/assets/img/champagn.png', name: 'Champagne', class: 'inactive'},
     {image: '/assets/img/soda.png', name: 'Soda', class: 'inactive'},
     {image: '/assets/img/cafe.png', name: 'Café', class: 'inactive'},
     {image: '/assets/img/cocktail.png', name: 'Cocktail', class: 'inactive'},
-    {image: '/assets/img/martini.png', name: 'Martini', class: 'inactive'}
+    {image: '/assets/img/martini.png', name: 'Martini', class: 'inactive'},
+    {image: '/assets/img/water.jpg', name: 'Eau', class: 'inactive'},
+    {image: '/assets/img/tea.png', name: 'Thé', class: 'inactive'}
   ];
 
   foodsImg = [
@@ -26,7 +29,8 @@ export class PreferencesComponent {
     {image: '/assets/img/salad.png', name: 'Salade', class: 'inactive'},
     {image: '/assets/img/sandwich.png', name: 'Sandwich', class: 'inactive'},
     {image: '/assets/img/tacos.png', name: 'Tacos', class: 'inactive'},
-    {image: '/assets/img/spaghetti.png', name: 'Pâtes', class: 'inactive'}
+    {image: '/assets/img/spaghetti.png', name: 'Pâtes', class: 'inactive'},
+    {image: '/assets/img/cut-of-meat.png', name: 'Viande', class: 'inactive'}
   ];
 
 

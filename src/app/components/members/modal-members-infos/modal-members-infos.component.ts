@@ -11,8 +11,9 @@ import {
   styleUrls: ['./modal-members-infos.component.css']
 })
 export class ModalMembersInfosComponent implements OnInit {
-
   @Input() member: any;
+
+  heartActive = '';
 
   modalReference: NgbModalRef;
   closeResult: string;
@@ -22,7 +23,6 @@ export class ModalMembersInfosComponent implements OnInit {
   ngOnInit() {}
 
   open(content: any, options: any) {
-
     console.log(this.member);
 
     this.modalReference = this.modalService.open(content);
@@ -44,5 +44,13 @@ export class ModalMembersInfosComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  likeMember() {
+    this.heartActive = 'active';
+
+    setTimeout(() => {
+      this.heartActive = '';
+    }, 500);
   }
 }

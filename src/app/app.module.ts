@@ -14,7 +14,7 @@ import {
 
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
-import { MembersComponent } from './members/members.component';
+import { MembersComponent } from './components/members/members.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';

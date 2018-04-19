@@ -12,8 +12,8 @@
       </div>
       <div class="card-body text-center">
         <h5 class="card-title">{{member.name}}</h5>
-        <!-- <p class="card-text">3 brasseurs vers 21h00</p> -->
-        <button class="btn btn-primary" (click)="joinMember(member.id)">Rejoindre</button>
+
+        <app-modal-members-infos [member]="member"></app-modal-members-infos>
       </div>
     </div>
   </div>

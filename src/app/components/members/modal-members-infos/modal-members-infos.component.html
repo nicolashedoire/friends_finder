@@ -1,0 +1,29 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Plus d'infos sur {{member.name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <img src="/assets/img/icons/close-black.png" alt="Close">
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row text-center">
+      <div class="col-lg-12">
+        <div class="circular--small">
+          <img class="" [src]="member.image" alt="{{member.name}}">
+        </div>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-lg-12">
+        <p class="age">Age:{{member.age}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <ul>
+        <li *ngFor="let hobby of member.hobbies">{{hobby}}</li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
+
+<button class="btn btn-primary" (click)="open(content, null)">Rejoindre</button>

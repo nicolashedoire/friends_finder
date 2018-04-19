@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./preferences.component.css']
 })
 export class PreferencesComponent {
-  alcool = '';
+
   alcoolsImg = [
     {image: '/assets/img/wine.png', name: 'Vin'},
     {image: '/assets/img/whisky.png', name: 'Whisky'},
@@ -18,8 +18,15 @@ export class PreferencesComponent {
     {image: '/assets/img/martini.png', name: 'Martini'}
   ];
 
-  alcoolOnChange(value: string) {
-    this.alcool = this.alcoolsImg[value];
-    console.log(value);
-  }
+  foodsImg = [
+    {image: '/assets/img/hamburger.png', name: 'Hamburger'},
+    {image: '/assets/img/fries.png', name: 'Frites'},
+    {image: '/assets/img/hot-dog.png', name: 'Hot dog'},
+    {image: '/assets/img/pizza.png', name: 'Pizza'},
+    {image: '/assets/img/salad.png', name: 'Salade'},
+    {image: '/assets/img/sandwich.png', name: 'Sandwich'},
+    {image: '/assets/img/tacos.png', name: 'Tacos'},
+    {image: '/assets/img/spaghetti.png', name: 'Pâtes'}
+  ];
+
 }

@@ -17,7 +17,6 @@ import * as JWT from 'jwt-decode';
 
 @Injectable()
 export class AuthentificationService {
-
   constructor(
     private router: Router,
     private socialAuthService: AuthService,
@@ -57,9 +56,15 @@ export class AuthentificationService {
     return JWT(token);
   }
 
-  addAuthorizationHeader() {
+  addAuthorizationHeader() {
     const token = this.localstorageService.getItem('jwt');
-    const headers = new HttpHeaders({'Authorization' : 'Bearer ' + token});
+    const headers = new HttpHeaders({ Authorization: 'Bearer ' + token });
     return headers;
+  }
+
+  refreshData() {
+    if (this.isAuthenticated()) {
+      return this.decodeToken();
+    }
   }
 }

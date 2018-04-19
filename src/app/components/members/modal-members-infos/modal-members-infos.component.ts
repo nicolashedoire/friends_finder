@@ -15,6 +15,7 @@ export class ModalMembersInfosComponent implements OnInit {
 
   heartActive = '';
   joinActivity = false;
+  like = false;
 
   modalReference: NgbModalRef;
   closeResult: string;
@@ -34,6 +35,7 @@ export class ModalMembersInfosComponent implements OnInit {
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         this.joinActivity = false;
+        this.like = false;
       }
     );
   }
@@ -58,6 +60,7 @@ export class ModalMembersInfosComponent implements OnInit {
 
     setTimeout(() => {
       this.heartActive = '';
+      this.like = true;
     }, 500);
   }
 

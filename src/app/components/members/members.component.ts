@@ -12,6 +12,7 @@ export class MembersComponent implements OnInit {
       name: 'Julie',
       image: 'https://randomuser.me/api/portraits/women/79.jpg',
       age: 31,
+      rate: 4,
       hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
       activity: {
         name: 'Séance de running',
@@ -23,6 +24,7 @@ export class MembersComponent implements OnInit {
     {
       id: 2,
       name: 'Caro',
+      rate: 3,
       image: 'https://randomuser.me/api/portraits/women/80.jpg',
       age: 32,
       hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
@@ -38,6 +40,7 @@ export class MembersComponent implements OnInit {
       name: 'Claire',
       image: 'https://randomuser.me/api/portraits/women/81.jpg',
       age: 28,
+      rate: 2,
       activity: {
         name: 'Séance de running',
         date: Date.now(),
@@ -50,6 +53,7 @@ export class MembersComponent implements OnInit {
       name: 'Belinda',
       image: 'https://randomuser.me/api/portraits/women/82.jpg',
       age: 27,
+      rate: 1,
       hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
       activity: {
         name: 'Séance de running',
@@ -63,6 +67,7 @@ export class MembersComponent implements OnInit {
       name: 'Alice',
       image: 'https://randomuser.me/api/portraits/women/83.jpg',
       age: 31,
+      rate: 0,
       hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
       activity: {
         name: 'Séance de running',
@@ -76,6 +81,7 @@ export class MembersComponent implements OnInit {
       name: 'Charlotte',
       image: 'https://randomuser.me/api/portraits/women/84.jpg',
       age: 35,
+      rate: 1,
       hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
       activity: {
         name: 'Séance de running',
@@ -89,6 +95,7 @@ export class MembersComponent implements OnInit {
       name: 'Zoé',
       image: 'https://randomuser.me/api/portraits/women/85.jpg',
       age: 40,
+      rate: 2,
       hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
       activity: {
         name: 'Séance de running',

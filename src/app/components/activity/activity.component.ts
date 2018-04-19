@@ -10,7 +10,10 @@ import { AuthentificationService } from '../../shared/security/auth.service';
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent implements OnInit {
-  time = { hour: 12, minute: 30 };
+
+  d = new Date();
+
+  time = { hour: ('00' + this.d.getHours()).slice(-2), minute: ('00' + this.d.getMinutes()).slice(-2) };
   activityTime: string;
   activity: string;
   city: string;

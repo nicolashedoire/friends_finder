@@ -15,6 +15,7 @@ export class ActivityComponent implements OnInit {
   activity: string;
   city: string;
   bar: string;
+  isBar = false;
 
   activities = [];
   places = [];
@@ -37,6 +38,12 @@ export class ActivityComponent implements OnInit {
   ngOnInit() {}
 
   activityOnChange(value: string) {
+    if (value === '1') {
+      this.isBar = true;
+    } else {
+      this.isBar = false;
+    }
+
     this.activity = value;
   }
 

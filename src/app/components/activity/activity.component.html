@@ -7,13 +7,13 @@
         <div class="form-group">
           <label for="inputState">Activité</label>
           <select id="inputState" class="form-control" [(ngModel)]="activity" (change)="activityOnChange($event.target.value)">
-            <option value="Aller boire un verre">Aller boire un verre</option>
-            <option value="Faire un footing">Faire un footing</option>
-            <option value="Aller au cinéma">Aller au cinéma</option>
+            <option value="1">Aller boire un verre</option>
+            <option value="2">Faire un footing</option>
+            <option value="3">Aller au cinéma</option>
           </select>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-4" *ngIf="isBar">
         <div class="form-group">
           <label for="inputState">Bars</label>
           <select id="inputState" class="form-control" [(ngModel)]="bar" (change)="barOnChange($event.target.value)">

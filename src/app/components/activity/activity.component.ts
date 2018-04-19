@@ -11,9 +11,7 @@ import { AuthentificationService } from '../../shared/security/auth.service';
 })
 export class ActivityComponent implements OnInit {
 
-  d = new Date();
-
-  time = { hour: ('00' + this.d.getHours()).slice(-2).toString(), minute: ('00' + this.d.getMinutes()).slice(-2).toString()};
+  time = this.updateTime();
   activityTime: string;
   activity: string;
   city: string;
@@ -38,12 +36,17 @@ export class ActivityComponent implements OnInit {
     });
 
     setInterval(() => {
-      this.d = new Date();
-      this.time = { hour: ('00' + this.d.getHours()).slice(-2).toString(), minute: ('00' + this.d.getMinutes()).slice(-2).toString() };
+      this.time = this.updateTime();
      }, 1000 * 60);
   }
 
   ngOnInit() {}
+
+  updateTime(){
+    const d = new Date();
+    const time = { hour: ('00' + this.d.getHours()).slice(-2).toString(), minute: ('00' + this.d.getMinutes()).slice(-2).toString() };
+    return time;
+  }
 
   activityOnChange(value: string) {
     if (value === '1') {
@@ -97,7 +100,7 @@ export class ActivityComponent implements OnInit {
       })
       .subscribe(data => {
         this.activities = data.activities;
-        this.time = { hour: '12', minute: '30' };
+        this.time = this.updateTime();
         this.activityTime = '';
         this.activity = '';
         this.city = '';

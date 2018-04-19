@@ -14,6 +14,7 @@ export class ModalMembersInfosComponent implements OnInit {
   @Input() member: any;
 
   heartActive = '';
+  joinActivity = false;
 
   modalReference: NgbModalRef;
   closeResult: string;
@@ -32,11 +33,13 @@ export class ModalMembersInfosComponent implements OnInit {
       },
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        this.joinActivity = false;
       }
     );
   }
 
   private getDismissReason(reason: any): string {
+
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -46,6 +49,10 @@ export class ModalMembersInfosComponent implements OnInit {
     }
   }
 
+  joinMember() {
+   this.joinActivity = true;
+  }
+
   likeMember() {
     this.heartActive = 'active';
 
@@ -53,4 +60,5 @@ export class ModalMembersInfosComponent implements OnInit {
       this.heartActive = '';
     }, 500);
   }
+
 }

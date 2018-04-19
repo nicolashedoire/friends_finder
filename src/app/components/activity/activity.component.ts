@@ -44,7 +44,7 @@ export class ActivityComponent implements OnInit {
 
   updateTime(){
     const d = new Date();
-    const time = { hour: ('00' + this.d.getHours()).slice(-2).toString(), minute: ('00' + this.d.getMinutes()).slice(-2).toString() };
+    const time = { hour: ('00' + d.getHours()).slice(-2).toString(), minute: ('00' + d.getMinutes()).slice(-2).toString() };
     return time;
   }
 

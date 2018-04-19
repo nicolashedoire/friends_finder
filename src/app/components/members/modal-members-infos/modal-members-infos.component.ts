@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import {
   NgbModal,
   ModalDismissReasons,
@@ -8,7 +9,8 @@ import {
 @Component({
   selector: 'app-modal-members-infos',
   templateUrl: './modal-members-infos.component.html',
-  styleUrls: ['./modal-members-infos.component.css']
+  styleUrls: ['./modal-members-infos.component.css'],
+  providers: [NgbRatingConfig] // add NgbRatingConfig to the component providers
 })
 export class ModalMembersInfosComponent implements OnInit {
   @Input() member: any;
@@ -20,7 +22,11 @@ export class ModalMembersInfosComponent implements OnInit {
   modalReference: NgbModalRef;
   closeResult: string;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, config: NgbRatingConfig) {
+    // customize default values of ratings used by this component tree
+    config.max = 5;
+    config.readonly = true;
+  }
 
   ngOnInit() {}
 
@@ -41,7 +47,6 @@ export class ModalMembersInfosComponent implements OnInit {
   }
 
   private getDismissReason(reason: any): string {
-
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -52,7 +57,7 @@ export class ModalMembersInfosComponent implements OnInit {
   }
 
   joinMember() {
-   this.joinActivity = true;
+    this.joinActivity = true;
   }
 
   likeMember() {
@@ -60,8 +65,6 @@ export class ModalMembersInfosComponent implements OnInit {
 
     setTimeout(() => {
       this.heartActive = '';
-      this.like = true;
     }, 500);
   }
-
 }

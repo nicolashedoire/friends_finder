@@ -16,12 +16,23 @@
     <div class="row text-center">
       <div class="col-lg-12">
         <p class="age">Age:{{member.age}}</p>
+        <ngb-rating [rate]="4"></ngb-rating>
       </div>
     </div>
-    <div class="row mb-3">
+    <div class="row">
       <ul>
         <li *ngFor="let hobby of member.hobbies">{{hobby}}</li>
       </ul>
+    </div>
+    <hr>
+    <div class="row mb-3">
+      <div class="col-lg-12">
+        <h4>Activité</h4>
+      </div>
+      <div class="col-lg-12">
+        <p>{{member.activity.name}} - {{member.activity.date | date: 'dd/MM/yyyy'}} - {{member.activity.time}}</p>
+        <p>{{member.activity.place}}</p>
+      </div>
     </div>
     <div class="row">
       <div class="col-lg-12">

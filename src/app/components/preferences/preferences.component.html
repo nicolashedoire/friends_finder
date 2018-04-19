@@ -2,5 +2,21 @@
   <div class="form-border col-lg-12">
     <h3>Vos préférences</h3>
     <hr>
+    <div class="form-row">
+      <!-- <div class="col-lg-4">
+        <div class="form-group">
+          <label >Vos alcools</label>
+          <select  class="form-control" [(ngModel)]="alcool" (change)="alcoolOnChange($event.target.value)">
+            <option value="0">Vin</option>
+            <option value="1">Whisky</option>
+            <option value="2">Rhum</option>
+            <option value="3">Bière</option>
+          </select>
+        </div>
+      </div> -->
+      <div class="col-lg-4">
+        <img class="alcool" *ngFor="let alcool of alcoolsImg" [src]="alcool.image" [alt]="alcool.name" [title]="alcool.name"  width="60">
+      </div>
+    </div>
   </div>
 </div>

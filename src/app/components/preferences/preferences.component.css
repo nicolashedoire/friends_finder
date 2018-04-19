@@ -1,6 +1,15 @@
 .item{
     margin: 15px;
     border: 1px solid grey;
+    border-radius: 50%;
     padding: 8px;
     cursor: pointer;
+}
+
+.item:hover{
+  border: 3px solid #007bff;
+}
+
+.active{
+  border: 3px solid #007bff;
 }

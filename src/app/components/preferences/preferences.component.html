@@ -5,11 +5,11 @@
     <div class="form-row">
       <div class="col-lg-4">
         <h4>Les boissons</h4>
-        <img class="item" *ngFor="let alcool of alcoolsImg" [src]="alcool.image" [alt]="alcool.name" [title]="alcool.name"  width="60">
+        <img *ngFor="let alcool of alcoolsImg" (click)="toggleActive(alcool)" [ngClass]="alcool.class" class="item" [src]="alcool.image" [alt]="alcool.name" [title]="alcool.name"  width="60">
       </div>
       <div class="col-lg-4">
           <h4>Alimentation</h4>
-          <img class="item" *ngFor="let food of foodsImg" [src]="food.image" [alt]="food.name" [title]="food.name"  width="60">
+          <img *ngFor="let food of foodsImg" (click)="toggleActive(food)" [ngClass]="food.class" class="item" [src]="food.image" [alt]="food.name" [title]="food.name"  width="60">
         </div>
     </div>
   </div>

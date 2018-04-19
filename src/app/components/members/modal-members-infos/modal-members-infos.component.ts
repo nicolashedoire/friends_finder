@@ -33,7 +33,7 @@ export class ModalMembersInfosComponent implements OnInit {
   open(content: any, options: any) {
     console.log(this.member);
 
-    this.modalReference = this.modalService.open(content);
+    this.modalReference = this.modalService.open(content, { size: 'lg' });
     this.modalReference.result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;

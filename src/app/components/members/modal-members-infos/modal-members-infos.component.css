@@ -8,13 +8,17 @@
   top: -10px;
 }
 
+.join-activity-message{
+  padding: 0;
+}
+
 #heart-beat {
   position: absolute;
   z-index: 100;
   overflow: hidden;
   height: 6em;
   width: 6em;
-  right: calc(50% - 15em);
+  right: 100px;
   top: calc(50% - 4em);
   display: block;
   text-align: center;

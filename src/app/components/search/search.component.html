@@ -10,9 +10,9 @@
       <button type="button" class="btn btn-outline-danger mb-2 ml-2" (click)="resetForm(searchForm)">Réinitialiser</button>
     </form>
 
-    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+    <!-- <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
         <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-      </agm-map>
+      </agm-map> -->
 
     <div *ngIf="places.length" class="mt-3">
       <h3>Résulats</h3>

@@ -43,5 +43,8 @@
       <input type="text" [ngModel]="userProfile.phone" class="form-control">
   </div>
 
-  <button class="btn btn-outline-success float-right" (click)="saveProfile()">Enregistrer le profil</button>
+
+  <app-preferences></app-preferences>
+
+  <button class="btn btn-outline-success float-right mt-5 mb-4" (click)="saveProfile()">Enregistrer le profil</button>
 </div>

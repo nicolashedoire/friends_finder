@@ -3,6 +3,7 @@ import { ActivityService } from '../../services/activity.service';
 import { PlaceService } from '../../services/place.service';
 import { LocalstorageService } from '../../shared/storage/localstorage.service';
 import { AuthentificationService } from '../../shared/security/auth.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-activity',
@@ -10,7 +11,6 @@ import { AuthentificationService } from '../../shared/security/auth.service';
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent implements OnInit {
-
   time = this.updateTime();
   activityTime: string;
   activity: string;
@@ -21,13 +21,14 @@ export class ActivityComponent implements OnInit {
   activities = [];
   places = [];
 
+  activityControl = new FormControl('', Validators.required);
+
   constructor(
     private activityService: ActivityService,
     private placeService: PlaceService,
     private localStorageService: LocalstorageService,
     public authService: AuthentificationService
   ) {
-
     activityService.getAll().subscribe(response => {
       this.activities = response.activities;
     });
@@ -38,14 +39,17 @@ export class ActivityComponent implements OnInit {
 
     setInterval(() => {
       this.time = this.updateTime();
-     }, 1000 * 60);
+    }, 1000 * 60);
   }
 
   ngOnInit() {}
 
-  updateTime(){
+  updateTime() {
     const d = new Date();
-    const time = { hour: ('00' + d.getHours()).slice(-2).toString(), minute: ('00' + d.getMinutes()).slice(-2).toString() };
+    const time = {
+      hour: ('00' + d.getHours()).slice(-2).toString(),
+      minute: ('00' + d.getMinutes()).slice(-2).toString()
+    };
     return time;
   }
 
@@ -85,8 +89,12 @@ export class ActivityComponent implements OnInit {
   }
 
   sendActivity() {
+    if (!this.activityControl.valid) {
+      return;
+    }
     if (this.activityTime === undefined) {
-      this.activityTime = this.formatTime(this.time);
+      // this.activityTime = this.formatTime(this.time);
+      alert('vous devez saisir une heure');
     }
 
     const userData = this.authService.decodeToken();

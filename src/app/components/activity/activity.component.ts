@@ -22,9 +22,9 @@ export class ActivityComponent implements OnInit {
   isBar = false;
 
   activityList = [
-    {id: 1 , label: 'Aller boire un verre' },
-    {id: 2 , label: 'Faire un footing' },
-    {id: 3 , label: 'Aller au restaurant' },
+    {id: '1' , label: 'Aller boire un verre' },
+    {id: '2' , label: 'Faire un footing' },
+    {id: '3' , label: 'Aller au restaurant' },
   ]
   activities = [];
   places = [];
@@ -97,6 +97,12 @@ export class ActivityComponent implements OnInit {
   }
 
   sendActivity() {
+
+    // GET activity object
+    const activity = this.activityList.filter((item) => {
+      return this.activity === item.id;
+    });
+
     if (!this.activityControl.valid) {
       return;
     }
@@ -110,7 +116,7 @@ export class ActivityComponent implements OnInit {
     this.activityService
       .post({
         userId: userData['id'],
-        label: this.activity,
+        label: activity[0].label,
         city: 'Lille',
         place: this.bar,
         time: this.activityTime

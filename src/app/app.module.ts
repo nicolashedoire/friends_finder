@@ -79,10 +79,10 @@ export function getAuthServiceConfigs() {
     AppRoutingModule,
     NgbModule.forRoot(),
     SocialLoginModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBh3vbT19X2EIzKfYlOYnfBET22Usjro_c',
-      libraries: ['places']
-    }),
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyBh3vbT19X2EIzKfYlOYnfBET22Usjro_c',
+    //   libraries: ['places']
+    // }),
     // ParticlesModule
   ],
   providers: [

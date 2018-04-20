@@ -9,7 +9,10 @@ import { FormControl } from '@angular/forms';
 import { PlaceService } from '../../services/place.service';
 import { ActivityService } from '../../services/activity.service';
 import { } from 'googlemaps';
-import { MapsAPILoader } from '@agm/core';
+// import { MapsAPILoader } from '@agm/core';
+
+// import maps in index.html and declare google var | open lib access
+declare var google: any;
 
 @Component({
   selector: 'app-search',
@@ -18,10 +21,10 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class SearchComponent implements OnInit {
 
-  // public latitude: number;
-  // public longitude: number;
-  // public searchControl: FormControl;
-  // public zoom: number;
+  public latitude: number;
+  public longitude: number;
+  public searchControl: FormControl;
+  public zoom: number;
 
   @ViewChild('search') public searchElementRef: ElementRef;
 
@@ -33,18 +36,34 @@ export class SearchComponent implements OnInit {
     private placeService: PlaceService,
     private activityService: ActivityService,
     // private mapsAPILoader: MapsAPILoader,
-    // private ngZone: NgZone
+    private ngZone: NgZone
   ) { }
 
   ngOnInit() {
 
-    // // set google maps defaults
-    // this.zoom = 4;
-    // this.latitude = 39.8282;
-    // this.longitude = -98.5795;
+    // set google maps defaults
+    this.zoom = 4;
+    this.latitude = 39.8282;
+    this.longitude = -98.5795;
 
-    // // create search FormControl
-    // this.searchControl = new FormControl();
+    // create search FormControl
+    this.searchControl = new FormControl();
+
+
+    const lille = new google.maps.LatLng(50.633333, 3.066667);
+
+    const map = new google.maps.Map(document.getElementById('map'), {
+      center: lille,
+      zoom: 15,
+      scrollwheel: false
+    });
+
+
+    const request = {
+      location: lille,
+      radius: '500',
+      types: ['store']
+    };
 
     // // load Places Autocomplete
     // this.mapsAPILoader.load().then(() => {
@@ -54,9 +73,9 @@ export class SearchComponent implements OnInit {
     //   const autocomplete = new google.maps.places.Autocomplete(
     //     this.searchElementRef.nativeElement,
     //     // Ajouter d'autres types si vous voulez autre chose que les adresses
-    //     // {
-    //     //   types: ['address']
-    //     // }
+    //     {
+    //       types: ['bar']
+    //     }
     //   );
     //   autocomplete.addListener('place_changed', () => {
     //     this.ngZone.run(() => {
@@ -110,13 +129,13 @@ export class SearchComponent implements OnInit {
     return this.selected === item;
   }
 
-  // private setCurrentPosition() {
-  //   if ('geolocation' in navigator) {
-  //     navigator.geolocation.getCurrentPosition(position => {
-  //       this.latitude = position.coords.latitude;
-  //       this.longitude = position.coords.longitude;
-  //       this.zoom = 12;
-  //     });
-  //   }
-  // }
+  private setCurrentPosition() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.zoom = 12;
+      });
+    }
+  }
 }

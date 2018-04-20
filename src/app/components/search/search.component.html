@@ -6,14 +6,8 @@
         <input type="text" ngModel name="place" class="form-control" placeholder="Rechercher un bar" minlength="50">
       </div>
       <button type="submit" [disabled]="searchForm.valid" class="btn btn-outline-primary mb-2 ml-2">rechercher</button>
-
       <button type="button" class="btn btn-outline-danger mb-2 ml-2" (click)="resetForm(searchForm)">Réinitialiser</button>
     </form>
-
-    <!-- <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-      </agm-map> -->
-
     <div *ngIf="places.length" class="mt-3">
       <h3>Résulats</h3>
       <ul class="list-group">
@@ -34,9 +28,11 @@
         <button class="btn btn-outline-primary float-right">Rejoindre</button>
       </li>
     </ul>
-
     <div *ngIf="!activities.length" class="alert alert-custom" role="alert">
       Il n'y a personne dans ce bar pour le moment!
     </div>
   </div>
 </div>
+
+
+<div id="map"></div>

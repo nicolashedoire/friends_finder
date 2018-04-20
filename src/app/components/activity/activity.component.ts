@@ -94,7 +94,7 @@ export class ActivityComponent implements OnInit {
     }
     if (this.activityTime === undefined) {
       // this.activityTime = this.formatTime(this.time);
-      alert('vous devez saisir une heure');
+      return;
     }
 
     const userData = this.authService.decodeToken();

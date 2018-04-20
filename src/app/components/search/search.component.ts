@@ -62,8 +62,29 @@ export class SearchComponent implements OnInit {
     const request = {
       location: lille,
       radius: '500',
-      types: ['store']
+      types: ['bar', 'cafe']
     };
+
+  // Create the PlaceService and send the request.
+  // Handle the callback with an anonymous function.
+  const service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, function(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      for (let i = 0; i < results.length; i++) {
+        const place = results[i];
+        console.log(place);
+        // If the request succeeds, draw the place location on
+        // the map as a marker, and register an event to handle a
+        // click on the marker.
+        const marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+      }
+    }
+  });
+
+
 
     // // load Places Autocomplete
     // this.mapsAPILoader.load().then(() => {

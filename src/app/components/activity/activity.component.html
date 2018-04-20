@@ -7,9 +7,7 @@
         <div class="form-group">
           <label for="inputState">Activité</label>
           <select id="inputState" class="form-control" [(ngModel)]="activity" (change)="activityOnChange($event.target.value)" [formControl]="activityControl">
-            <option value="1">Aller boire un verre</option>
-            <option value="2">Faire un footing</option>
-            <option value="3">Aller au restaurant</option>
+            <option *ngFor="let activity of activityList" [value]="activity.id">{{activity.label}}</option>
           </select>
         </div>
       </div>

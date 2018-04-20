@@ -11,5 +11,12 @@
 }
 
 .active{
-  border: 3px solid #27ae60;
+  border: 3px solid #007bff;
+  background: #007bff;
+}
+
+.list-items{
+  height: 150px;
+  overflow-y: scroll;
+  border: 1px solid silver;
 }

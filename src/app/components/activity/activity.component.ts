@@ -27,6 +27,7 @@ export class ActivityComponent implements OnInit {
     private localStorageService: LocalstorageService,
     public authService: AuthentificationService
   ) {
+
     activityService.getAll().subscribe(response => {
       this.activities = response.activities;
     });

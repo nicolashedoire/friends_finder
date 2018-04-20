@@ -34,7 +34,16 @@
     </div>
   </div>
   <div class="form-border col-lg-3">
+      <app-members></app-members>
+  </div>
+  <div class="form-border col-lg-3">
     <h3>Historique</h3>
+    <select class="form-control activity-filter">
+      <option value="0">Toutes les activités</option>
+      <option value="1">Il y a 1 semaine</option>
+      <option value="2">Il y a 15 jours</option>
+      <option value="3">Il y a 1 mois</option>
+    </select>
     <hr>
     <div *ngIf="!activities.length" class="alert alert-primary" role="alert">
       Vous n'avez pas encore prévu d'activité !
@@ -48,8 +57,5 @@
           </div>
       </li>
     </ul>
-  </div>
-  <div class="form-border col-lg-3">
-      <app-members></app-members>
   </div>
 </div>

@@ -4,13 +4,24 @@
     <hr>
     <div class="form-row">
       <div class="col-lg-4">
-        <h4>Les boissons</h4>
-        <img *ngFor="let alcool of alcoolsImg" (click)="toggleActive(alcool)" [ngClass]="alcool.class" class="item" [src]="alcool.image" [alt]="alcool.name" [title]="alcool.name"  width="60">
+        <h4 class="text-center">Les boissons</h4>
+        <img *ngFor="let alcool of alcoolsImg" (click)="toggleActive(alcool)" [ngClass]="alcool.class" class="item" [src]="alcool.image"
+          [alt]="alcool.name" [title]="alcool.name" width="60">
       </div>
       <div class="col-lg-4">
-          <h4>Alimentation</h4>
-          <img *ngFor="let food of foodsImg" (click)="toggleActive(food)" [ngClass]="food.class" class="item" [src]="food.image" [alt]="food.name" [title]="food.name"  width="60">
-        </div>
+        <h4 class="text-center">Alimentation</h4>
+        <img *ngFor="let food of foodsImg" (click)="toggleActive(food)" [ngClass]="food.class" class="item" [src]="food.image" [alt]="food.name"
+          [title]="food.name" width="60">
+      </div>
+      <div class="col-lg-4">
+        <h4 class="text-center">Liste de selection</h4>
+
+        <ul class="list-items mt-4 list-group">
+          <li *ngFor="let item of selectedItems" class="list-group-item">
+            {{item.name}}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

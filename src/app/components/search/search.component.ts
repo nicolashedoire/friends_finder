@@ -8,7 +8,7 @@ import {
 import { FormControl } from '@angular/forms';
 import { PlaceService } from '../../services/place.service';
 import { ActivityService } from '../../services/activity.service';
-import { } from 'googlemaps';
+import {} from 'googlemaps';
 // import { MapsAPILoader } from '@agm/core';
 
 // import maps in index.html and declare google var | open lib access
@@ -20,7 +20,6 @@ declare var google: any;
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
@@ -37,10 +36,9 @@ export class SearchComponent implements OnInit {
     private activityService: ActivityService,
     // private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
-  ) { }
+  ) {}
 
   ngOnInit() {
-
     // set google maps defaults
     this.zoom = 4;
     this.latitude = 39.8282;
@@ -49,8 +47,21 @@ export class SearchComponent implements OnInit {
     // create search FormControl
     this.searchControl = new FormControl();
 
-
     const lille = new google.maps.LatLng(50.633333, 3.066667);
+
+    const autocomplete = new google.maps.places.Autocomplete(
+      this.searchElementRef.nativeElement,
+      // Ajouter d'autres types si vous voulez autre chose que les adresses
+      // {
+      //   types: []
+      // }
+    );
+
+    google.maps.event.addListener(autocomplete, 'place_changed', () => {
+      const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+      console.log(place);
+    });
 
     const map = new google.maps.Map(document.getElementById('map'), {
       center: lille,
@@ -58,33 +69,49 @@ export class SearchComponent implements OnInit {
       scrollwheel: false
     });
 
-
     const request = {
       location: lille,
-      radius: '500',
-      types: ['bar', 'cafe']
+      radius: '900',
+      types: []
     };
 
-  // Create the PlaceService and send the request.
-  // Handle the callback with an anonymous function.
-  const service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, function(results, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      for (let i = 0; i < results.length; i++) {
-        const place = results[i];
-        console.log(place);
-        // If the request succeeds, draw the place location on
-        // the map as a marker, and register an event to handle a
-        // click on the marker.
-        const marker = new google.maps.Marker({
-          map: map,
-          position: place.geometry.location
-        });
+    const infowindow = new google.maps.InfoWindow();
+
+    // Create the PlaceService and send the request.
+    // Handle the callback with an anonymous function.
+    const service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, function(results, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (let i = 0; i < results.length; i++) {
+          const place = results[i];
+          // If the request succeeds, draw the place location on
+          // the map as a marker, and register an event to handle a
+          // click on the marker.
+          const marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location
+          });
+
+          google.maps.event.addListener(marker, 'click', function() {
+            const photo = place.photos[0].getUrl({
+              maxWidth: 300,
+              maxHeight: 300
+            });
+
+            infowindow.setContent(
+              '<div><strong>' +
+                place.name +
+                '</strong><br>' +
+                '<br>' +
+                '<img src="' +
+                photo +
+                '"/></div>'
+            );
+            infowindow.open(map, this);
+          });
+        }
       }
-    }
-  });
-
-
+    });
 
     // // load Places Autocomplete
     // this.mapsAPILoader.load().then(() => {
@@ -115,11 +142,9 @@ export class SearchComponent implements OnInit {
     //     });
     //   });
     // });
-
   }
 
   searchPlace(place: string) {
-
     // Reset list of users
     this.activities = [];
 

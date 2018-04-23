@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-lg-6 mt-3 form-border">
     <h3>Recherche un lieu</h3>
+    <input type="text" #search name="place" class="form-control" placeholder="Rechercher un bar" minlength="50" autocorrect="off" autocapitalize="off" spellcheck="off">
     <form #searchForm="ngForm" (ngSubmit)="searchPlace(searchForm.value.place)" class="form-inline">
       <div class="form-group mb-2">
         <input type="text" ngModel name="place" class="form-control" placeholder="Rechercher un bar" minlength="50">
@@ -33,6 +34,5 @@
     </div>
   </div>
 </div>
-
 
 <div id="map"></div>

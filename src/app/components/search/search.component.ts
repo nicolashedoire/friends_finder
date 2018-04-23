@@ -59,8 +59,10 @@ export class SearchComponent implements OnInit {
 
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
       console.log(place);
+      this.placeService.add(place).subscribe(data => {
+        console.log(data);
+      });
     });
 
     const map = new google.maps.Map(document.getElementById('map'), {

@@ -11,7 +11,6 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent implements OnInit {
-
   // Set the current time
   time = this.updateTime();
 
@@ -22,10 +21,10 @@ export class ActivityComponent implements OnInit {
   isBar = false;
 
   activityList = [
-    {id: '1' , label: 'Aller boire un verre' },
-    {id: '2' , label: 'Faire un footing' },
-    {id: '3' , label: 'Aller au restaurant' },
-  ]
+    { id: '1', label: 'Aller boire un verre' },
+    { id: '2', label: 'Faire un footing' },
+    { id: '3', label: 'Aller au restaurant' }
+  ];
   activities = [];
   places = [];
 
@@ -39,10 +38,10 @@ export class ActivityComponent implements OnInit {
   ) {
     activityService.getAll().subscribe(response => {
       this.activities = response.activities;
-      });
+    });
 
-      placeService.getAll().subscribe(response => {
-      this.places = response.places;
+    placeService.getAll().subscribe(response => {
+      this.places = response;
     });
 
     setInterval(() => {
@@ -97,9 +96,8 @@ export class ActivityComponent implements OnInit {
   }
 
   sendActivity() {
-
     // GET activity object
-    const activity = this.activityList.filter((item) => {
+    const activity = this.activityList.filter(item => {
       return this.activity === item.id;
     });
 

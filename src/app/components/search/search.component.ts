@@ -50,7 +50,7 @@ export class SearchComponent implements OnInit {
     const lille = new google.maps.LatLng(50.633333, 3.066667);
 
     const autocomplete = new google.maps.places.Autocomplete(
-      this.searchElementRef.nativeElement,
+      this.searchElementRef.nativeElement
       // Ajouter d'autres types si vous voulez autre chose que les adresses
       // {
       //   types: []
@@ -71,8 +71,8 @@ export class SearchComponent implements OnInit {
 
     const request = {
       location: lille,
-      radius: '900',
-      types: []
+      radius: '3000',
+      types: ['cafe', 'bar', 'food', 'point_of_interest', 'establishment']
     };
 
     const infowindow = new google.maps.InfoWindow();
@@ -112,36 +112,6 @@ export class SearchComponent implements OnInit {
         }
       }
     });
-
-    // // load Places Autocomplete
-    // this.mapsAPILoader.load().then(() => {
-    //   // set current position
-    //   this.setCurrentPosition();
-
-    //   const autocomplete = new google.maps.places.Autocomplete(
-    //     this.searchElementRef.nativeElement,
-    //     // Ajouter d'autres types si vous voulez autre chose que les adresses
-    //     {
-    //       types: ['bar']
-    //     }
-    //   );
-    //   autocomplete.addListener('place_changed', () => {
-    //     this.ngZone.run(() => {
-    //       // get the place result
-    //       const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-    //       // verify result
-    //       if (place.geometry === undefined || place.geometry === null) {
-    //         return;
-    //       }
-
-    //       // set latitude, longitude and zoom
-    //       this.latitude = place.geometry.location.lat();
-    //       this.longitude = place.geometry.location.lng();
-    //       this.zoom = 12;
-    //     });
-    //   });
-    // });
   }
 
   searchPlace(place: string) {

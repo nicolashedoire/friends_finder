@@ -28,4 +28,9 @@ export class PlaceService {
     return this.http.get(`${this.BASE_URL}/places`, { headers: this.authService.addAuthorizationHeader()});
   }
 
+
+  add(place: any): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/places`, { headers: this.authService.addAuthorizationHeader()}, place);
+  }
+
 }

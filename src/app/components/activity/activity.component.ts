@@ -18,7 +18,6 @@ export class ActivityComponent implements OnInit {
   activity: string;
   city: string;
   barValue: string;
-  barText: string;
   isBar = false;
 
   activityList = [
@@ -75,10 +74,8 @@ export class ActivityComponent implements OnInit {
     this.city = value;
   }
 
-  barOnChange(value: string, text: string) {
+  barOnChange(value: string) {
     this.barValue = value;
-    this.barText = text;
-    console.log(this.barValue, this.barText);
   }
 
   minTwoDigits(n) {
@@ -118,9 +115,7 @@ export class ActivityComponent implements OnInit {
       .post({
         userId: userData['id'],
         label: activity[0].label,
-        city: 'Lille',
         placeId: this.barValue,
-        place: this.barText,
         time: this.activityTime
       })
       .subscribe(data => {
@@ -128,9 +123,7 @@ export class ActivityComponent implements OnInit {
         this.time = this.updateTime();
         this.activityTime = '';
         this.activity = '';
-        this.city = '';
         this.barValue = '';
-        this.barText = '';
       });
   }
 

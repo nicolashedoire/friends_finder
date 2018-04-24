@@ -14,7 +14,7 @@
       <div class="col-lg-4" *ngIf="isBar">
         <div class="form-group">
           <label for="inputState">Bars</label>
-          <select id="inputState" class="form-control" [(ngModel)]="barValue" (change)="barOnChange($event.target.value, $event.target.textContent)">
+          <select id="inputState" class="form-control" [(ngModel)]="barValue" (change)="barOnChange($event.target.value)">
             <option *ngFor="let place of places" [value]="place.id">{{place.name}}</option>
           </select>
         </div>
@@ -50,7 +50,7 @@
     <ul class="list-unstyled" *ngIf="activities.length">
       <li class="row activity" *ngFor="let activity of activities">
           <div class="col-lg-12">
-            <span>{{activity.label}} - {{activity.time}}</span>
+            <span>{{activity.label}} - {{activity.placeName}} - {{activity.time}}</span>
             <span (click)="deleteActivity(activity._id)" class="float-right btn btn-outline-primary">delete</span>
           </div>
       </li>

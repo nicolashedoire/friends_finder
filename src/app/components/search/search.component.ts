@@ -46,11 +46,9 @@ export class SearchComponent implements OnInit {
   }
 
   select(place: any) {
-    console.log(place);
     this.selected = place;
     this.activityService.getByPlaceId(place.id).subscribe(data => {
-      console.dir(this.activities);
-      return this.activities = data.activities;
+      this.activities = data.activities;
     });
   }
 
@@ -95,9 +93,8 @@ export class SearchComponent implements OnInit {
     const infowindow = new google.maps.InfoWindow();
 
     this.placeService.getAll().subscribe(response => {
-      console.log(response);
-      this.places = response;
 
+      this.places = response;
       const that  = this;
 
       this.places.forEach(item => {

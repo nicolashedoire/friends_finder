@@ -6,15 +6,13 @@
     </button>
   </div>
   <div class="modal-body">
-    <div class="row text-center">
-      <div class="col-lg-12 text-center">
+    <div class="row">
+      <div class="col-lg-6">
         <div class="circular--small">
           <img class="" [src]="member.image" alt="{{member.name}}">
         </div>
       </div>
-    </div>
-    <div class="row text-center">
-      <div class="col-lg-12">
+      <div class="col-lg-6">
         <p class="age">Age: {{member.age}}</p>
         <span *ngIf="!like" id="heart-beat" class="float-right" [class]="heartActive" (click)="likeMember()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -22,6 +20,7 @@
             />
           </svg>
         </span>
+        <span>Note globale: </span>
         <ngb-rating [rate]="member.rate"></ngb-rating>
       </div>
     </div>

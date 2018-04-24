@@ -9,3 +9,9 @@ agm-map {
 #map{
   height: 450px;
 }
+
+
+.bar-list{
+  height: 100px;
+  overflow-y: scroll;
+}

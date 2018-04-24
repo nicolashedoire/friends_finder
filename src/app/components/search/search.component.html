@@ -2,20 +2,20 @@
   <div class="col-lg-6 mt-3 form-border">
     <h3>Recherche un lieu</h3>
     <input type="text" #search name="place" class="form-control" placeholder="Rechercher un bar" minlength="50" autocorrect="off" autocapitalize="off" spellcheck="off">
-    <form #searchForm="ngForm" (ngSubmit)="searchPlace(searchForm.value.place)" class="form-inline">
+    <!-- <form #searchForm="ngForm" (ngSubmit)="searchPlace(searchForm.value.place)" class="form-inline">
       <div class="form-group mb-2">
         <input type="text" ngModel name="place" class="form-control" placeholder="Rechercher un bar" minlength="50">
       </div>
       <button type="submit" [disabled]="searchForm.valid" class="btn btn-outline-primary mb-2 ml-2">rechercher</button>
       <button type="button" class="btn btn-outline-danger mb-2 ml-2" (click)="resetForm(searchForm)">Réinitialiser</button>
-    </form>
+    </form> -->
     <div *ngIf="places.length" class="mt-3">
-      <h3>Résulats</h3>
-      <ul class="list-group">
+      <h3>Bars disponibles</h3>
+      <ul class="list-group bar-list">
         <li *ngFor="let place of places" class="list-group-item place" (click)="select(place)" [ngClass]="{active: isActive(place)}">
           <span class="float-right">{{place.city}}</span>
           <p>
-            <span>Nom: </span>{{place.name}}
+            {{place.name}}
           </p>
         </li>
       </ul>

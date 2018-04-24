@@ -38,6 +38,22 @@ export class SearchComponent implements OnInit {
     private ngZone: NgZone
   ) {}
 
+
+  resetForm(form) {
+    form.resetForm();
+    this.places = [];
+    this.activities = [];
+  }
+
+  select(place: any) {
+    console.log(place);
+    this.selected = place;
+    this.activityService.getByPlaceId(place.id).subscribe(data => {
+      console.dir(this.activities);
+      return this.activities = data.activities;
+    });
+  }
+
   ngOnInit() {
     // set google maps defaults
     this.zoom = 4;
@@ -82,7 +98,10 @@ export class SearchComponent implements OnInit {
       console.log(response);
       this.places = response;
 
+      const that  = this;
+
       this.places.forEach(item => {
+
         const marker = new google.maps.Marker({
           position: item.location,
           map: map,
@@ -90,6 +109,11 @@ export class SearchComponent implements OnInit {
         });
 
         google.maps.event.addListener(marker, 'click', function() {
+
+          that.ngZone.run(() => {
+            that.select(item);
+          });
+
           const photo = item.photo;
 
           infowindow.setContent(
@@ -138,19 +162,6 @@ export class SearchComponent implements OnInit {
         console.error(error);
       }
     );
-  }
-
-  resetForm(form) {
-    form.resetForm();
-    this.places = [];
-    this.activities = [];
-  }
-
-  select(place: any) {
-    this.selected = place;
-    this.activityService.getByPlaceId(place.id).subscribe(data => {
-      this.activities = data.activities;
-    });
   }
 
   isActive(item) {

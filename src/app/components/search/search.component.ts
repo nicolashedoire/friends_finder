@@ -59,7 +59,12 @@ export class SearchComponent implements OnInit {
 
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-      console.log(place);
+
+      const photo = place.photos[0].getUrl({
+        maxWidth: 300,
+        maxHeight: 300
+      });
+      place['photo'] = photo;
       this.placeService.add(place).subscribe(data => {
         console.log(data);
       });
@@ -67,53 +72,58 @@ export class SearchComponent implements OnInit {
 
     const map = new google.maps.Map(document.getElementById('map'), {
       center: lille,
-      zoom: 15,
+      zoom: 14,
       scrollwheel: false
     });
 
-    const request = {
-      location: lille,
-      radius: '3000',
-      types: ['cafe', 'bar', 'food', 'point_of_interest', 'establishment']
-    };
-
     const infowindow = new google.maps.InfoWindow();
+
+    this.placeService.getAll().subscribe(response => {
+      console.log(response);
+      this.places = response;
+
+      this.places.forEach(item => {
+        const marker = new google.maps.Marker({
+          position: item.location,
+          map: map,
+          title: item.name
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          const photo = item.photo;
+
+          infowindow.setContent(
+            '<div><strong>' +
+              item.name +
+              '</strong><br>' +
+              '<br>' +
+              '<img src="' +
+              photo +
+              '"/></div>'
+          );
+          infowindow.open(map, this);
+        });
+      });
+    });
+
 
     // Create the PlaceService and send the request.
     // Handle the callback with an anonymous function.
-    const service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, function(results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (let i = 0; i < results.length; i++) {
-          const place = results[i];
-          // If the request succeeds, draw the place location on
-          // the map as a marker, and register an event to handle a
-          // click on the marker.
-          const marker = new google.maps.Marker({
-            map: map,
-            position: place.geometry.location
-          });
-
-          google.maps.event.addListener(marker, 'click', function() {
-            const photo = place.photos[0].getUrl({
-              maxWidth: 300,
-              maxHeight: 300
-            });
-
-            infowindow.setContent(
-              '<div><strong>' +
-                place.name +
-                '</strong><br>' +
-                '<br>' +
-                '<img src="' +
-                photo +
-                '"/></div>'
-            );
-            infowindow.open(map, this);
-          });
-        }
-      }
-    });
+    // const service = new google.maps.places.PlacesService(map);
+    // service.nearbySearch(request, function(results, status) {
+    //   if (status === google.maps.places.PlacesServiceStatus.OK) {
+    //     for (let i = 0; i < results.length; i++) {
+    //       const place = results[i];
+    //       // If the request succeeds, draw the place location on
+    //       // the map as a marker, and register an event to handle a
+    //       // click on the marker.
+    //       const marker = new google.maps.Marker({
+    //         map: map,
+    //         position: place.geometry.location
+    //       });
+    //     }
+    //   }
+    // });
   }
 
   searchPlace(place: string) {

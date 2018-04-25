@@ -40,7 +40,7 @@ export class ActivityService {
   /**
    * @return {Observable<any>}
    */
-  delete(id: string): Observable<any> {
-    return this.http.delete(`${this.BASE_URL}/activity/${id}`, { headers: this.authService.addAuthorizationHeader()});
+  delete(activity: any): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/activity/${activity._id}`, activity , { headers: this.authService.addAuthorizationHeader()});
   }
 }

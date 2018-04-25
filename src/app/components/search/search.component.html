@@ -1,7 +1,18 @@
 <div class="row">
   <div class="col-lg-6 mt-3 form-border">
-    <h3>Recherche un lieu</h3>
-    <input type="text" #search name="place" class="form-control" placeholder="Rechercher un bar" minlength="50" autocorrect="off" autocapitalize="off" spellcheck="off">
+    <h3>Ajouter un lieu</h3>
+    <div class="row">
+      <div class="col-lg-6">
+        <input type="text" #search name="place" class="form-control" placeholder="Rechercher un lieu" minlength="50" autocorrect="off" autocapitalize="off" spellcheck="off">
+      </div>
+      <div class="col-lg-6">
+        <select class="form-control">
+          <option value="1">Bar</option>
+          <option value="2">Restaurant</option>
+        </select>
+      </div>
+    </div>
+
     <!-- <form #searchForm="ngForm" (ngSubmit)="searchPlace(searchForm.value.place)" class="form-inline">
       <div class="form-group mb-2">
         <input type="text" ngModel name="place" class="form-control" placeholder="Rechercher un bar" minlength="50">

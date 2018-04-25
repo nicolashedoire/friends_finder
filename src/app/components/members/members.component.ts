@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivityService } from '../../services/activity.service';
 
 @Component({
   selector: 'app-members',
@@ -109,8 +110,11 @@ export class MembersComponent implements OnInit {
   member: any;
   count = 0;
 
-  constructor() {
+  constructor(private activityService: ActivityService) {
     this.member = this.members[0];
+    this.activityService.getAllToday().subscribe(data => {
+      console.log(data);
+    });
   }
 
   ngOnInit() {}

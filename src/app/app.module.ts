@@ -38,6 +38,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { ModalMembersInfosComponent } from './components/members/modal-members-infos/modal-members-infos.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
+import { QueriesComponent } from './queries/queries.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -69,7 +70,8 @@ export function getAuthServiceConfigs() {
     UserProfileComponent,
     ModalMembersInfosComponent,
     HeaderComponent,
-    PreferencesComponent
+    PreferencesComponent,
+    QueriesComponent
   ],
   imports: [
     BrowserModule,

@@ -50,7 +50,7 @@
     <ul class="list-unstyled" *ngIf="activities.length">
       <li class="row activity" *ngFor="let activity of activities">
           <div class="col-lg-12">
-            <span>{{activity.label}} - {{activity.placeName}} - {{activity.time}} - {{activity.date | date}}</span>
+            <span>{{activity.placeName}} - {{activity.time}} - {{activity.date | date}}</span>
             <span (click)="deleteActivity(activity)" class="float-right btn btn-outline-primary">delete</span>
           </div>
       </li>

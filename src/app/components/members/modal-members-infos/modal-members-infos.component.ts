@@ -19,6 +19,8 @@ export class ModalMembersInfosComponent implements OnInit {
 
   heartActive = '';
   joinActivity = false;
+  joinActivityError = false;
+  postActivity = false;
   like = false;
 
   modalReference: NgbModalRef;
@@ -46,6 +48,8 @@ export class ModalMembersInfosComponent implements OnInit {
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         this.joinActivity = false;
+        this.joinActivityError = false;
+        this.postActivity = false;
         this.like = false;
       }
     );
@@ -62,11 +66,14 @@ export class ModalMembersInfosComponent implements OnInit {
   }
 
   joinMember() {
-    this.joinActivity = true;
     const me = this.authService.decodeToken();
-    console.log(me);
     this.activityService.join(this.member, me).subscribe(data => {
-      console.log(data);
+      this.postActivity = true;
+      if (data.status === 'ALREADY_EXISTS') {
+        this.joinActivityError = true;
+      } else {
+        this.joinActivity = true;
+      }
     });
   }
 

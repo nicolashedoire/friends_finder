@@ -66,13 +66,18 @@
     </div>
     <div class="row mt-4">
       <div class="col-lg-12 mt-4">
-        <button class="btn btn-outline-primary join-activity-button" (click)="joinMember()" [disabled]="joinActivity">Rejoindre son activité</button>
+        <button class="btn btn-outline-primary join-activity-button" (click)="joinMember()" [disabled]="postActivity">Rejoindre son activité</button>
       </div>
       <div class="col-lg-12 mt-3" *ngIf="joinActivity">
         <div class="alert alert-success" role="alert">
           Votre demande à bien été envoyée !
         </div>
       </div>
+      <div class="col-lg-12 mt-3" *ngIf="joinActivityError">
+          <div class="alert alert-danger" role="alert">
+            Vous participez déjà à cette activité !
+          </div>
+        </div>
     </div>
   </div>
 </ng-template>

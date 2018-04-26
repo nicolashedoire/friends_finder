@@ -52,4 +52,12 @@ export class ActivityService {
   delete(activity: any): Observable<any> {
     return this.http.post(`${this.BASE_URL}/activity/${activity._id}`, activity , { headers: this.authService.addAuthorizationHeader()});
   }
+
+  /**
+   * @return {Observable<any>}
+   */
+  join(activity: any, user: any): Observable<any> {
+    // tslint:disable-next-line:max-line-length
+    return this.http.post(`${this.BASE_URL}/activity/join/${activity._id}`, user , { headers: this.authService.addAuthorizationHeader()});
+  }
 }

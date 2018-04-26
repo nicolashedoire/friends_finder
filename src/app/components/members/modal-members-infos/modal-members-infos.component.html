@@ -49,6 +49,21 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <h4>Participants: {{member?.users?.length}}</h4>
+        <div class="alert alert-custom" role="alert" *ngIf="!member?.users?.length">
+          Il n'y a pas encore de participants pour cette activité
+        </div>
+        <ul class="list-group" *ngIf="member?.users?.length">
+          <li *ngFor="let user of member?.users" class="list-group-item">
+            <div class="circular--xsmall">
+              <img class="" [src]="user?.image || ''" [alt]="user?.name" [title]="user?.name" width="35" height="35">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="row mt-4">
       <div class="col-lg-12 mt-4">
         <button class="btn btn-outline-primary join-activity-button" (click)="joinMember()" [disabled]="joinActivity">Rejoindre son activité</button>

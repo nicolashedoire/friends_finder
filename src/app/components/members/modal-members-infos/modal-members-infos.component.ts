@@ -5,6 +5,8 @@ import {
   ModalDismissReasons,
   NgbModalRef
 } from '@ng-bootstrap/ng-bootstrap';
+import { ActivityService } from '../../../services/activity.service';
+import { AuthentificationService } from '../../../shared/security/auth.service';
 
 @Component({
   selector: 'app-modal-members-infos',
@@ -22,7 +24,12 @@ export class ModalMembersInfosComponent implements OnInit {
   modalReference: NgbModalRef;
   closeResult: string;
 
-  constructor(private modalService: NgbModal, config: NgbRatingConfig) {
+  constructor(
+    private modalService: NgbModal,
+    config: NgbRatingConfig,
+    private activityService: ActivityService,
+    private authService: AuthentificationService
+  ) {
     // customize default values of ratings used by this component tree
     config.max = 5;
     config.readonly = true;
@@ -31,8 +38,6 @@ export class ModalMembersInfosComponent implements OnInit {
   ngOnInit() {}
 
   open(content: any, options: any) {
-    console.log(this.member);
-
     this.modalReference = this.modalService.open(content, { size: 'lg' });
     this.modalReference.result.then(
       result => {
@@ -58,6 +63,11 @@ export class ModalMembersInfosComponent implements OnInit {
 
   joinMember() {
     this.joinActivity = true;
+    const me = this.authService.decodeToken();
+    console.log(me);
+    this.activityService.join(this.member, me).subscribe(data => {
+      console.log(data);
+    });
   }
 
   likeMember() {

@@ -7,12 +7,11 @@
   </div>
   <div class="col-lg-8">
     <div class="card">
-      <div class="circular--small mt-2">
-        <img class="" [src]="member.image" alt="Card image cap">
+      <div class="circular--small mt-2" *ngIf="member?.user?.image !== null">
+        <img [src]="member?.user?.image || ''" alt="Card image cap">
       </div>
       <div class="card-body text-center">
-        <h5 class="card-title">{{member.name}}</h5>
-
+        <h5 class="card-title">{{member?.user?.name}}</h5>
         <app-modal-members-infos [member]="member"></app-modal-members-infos>
       </div>
     </div>

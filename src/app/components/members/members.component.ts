@@ -111,9 +111,10 @@ export class MembersComponent implements OnInit {
   count = 0;
 
   constructor(private activityService: ActivityService) {
-    this.member = this.members[0];
     this.activityService.getAllToday().subscribe(data => {
       console.log(data);
+      this.members = data;
+      this.member = data[0];
     });
   }
 

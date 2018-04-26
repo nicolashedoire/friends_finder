@@ -20,6 +20,7 @@ export class ModalMembersInfosComponent implements OnInit {
   heartActive = '';
   joinActivity = false;
   joinActivityError = false;
+  joinNotAllowed = false;
   postActivity = false;
   like = false;
 
@@ -50,6 +51,7 @@ export class ModalMembersInfosComponent implements OnInit {
         this.joinActivity = false;
         this.joinActivityError = false;
         this.postActivity = false;
+        this.joinNotAllowed = false;
         this.like = false;
       }
     );
@@ -71,8 +73,10 @@ export class ModalMembersInfosComponent implements OnInit {
       this.postActivity = true;
       if (data.status === 'ALREADY_EXISTS') {
         this.joinActivityError = true;
-      } else {
+      } else if (data.status === 200) {
         this.joinActivity = true;
+      } else {
+        this.joinNotAllowed = true;
       }
     });
   }

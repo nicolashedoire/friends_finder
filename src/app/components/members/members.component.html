@@ -1,5 +1,5 @@
 <h3>Membres actifs</h3>
-<div class="row">
+<div class="row" *ngIf="members.length">
   <div class="col-lg-2 mt-4">
     <button class="btn btn-outline-primary" (click)="previousMember()">
         <i class="fas fa-arrow-left"></i>
@@ -20,5 +20,13 @@
     <button class="btn btn-outline-primary" (click)="nextMember()">
         <i class="fas fa-arrow-right"></i>
     </button>
+  </div>
+</div>
+
+<div class="row" *ngIf="!members.length">
+  <div class="col-lg-12">
+    <div class="alert alert-danger" role="alert">
+      Aucun membre actif aujourd'hui...
+    </div>
   </div>
 </div>

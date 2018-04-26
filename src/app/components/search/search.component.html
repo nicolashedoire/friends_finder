@@ -37,6 +37,7 @@
     <ul *ngIf="activities.length" class="list-group">
       <li *ngFor="let activity of activities" class="list-group-item">
         <img [src]="activity.user.image" [title]="activity.user.name" class="avatar-big">
+        {{activity.users.length}} participants
         <button class="btn btn-outline-primary float-right">Rejoindre</button>
       </li>
     </ul>

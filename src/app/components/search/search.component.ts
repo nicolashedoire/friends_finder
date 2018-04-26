@@ -49,6 +49,7 @@ export class SearchComponent implements OnInit {
     this.selected = place;
     this.activityService.getByPlaceId(place.id).subscribe(data => {
       this.activities = data.activities;
+      console.log(this.activities);
     });
   }
 
@@ -80,7 +81,6 @@ export class SearchComponent implements OnInit {
       });
       place['photo'] = photo;
       this.placeService.add(place).subscribe(data => {
-        console.log(data);
       });
     });
 

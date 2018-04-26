@@ -22,6 +22,12 @@
 </ng-template>
 
 <img *ngIf="authService.isAuthenticated()" [src]="userData?.image" [alt]="userData?.name" class="avatar" [title]="userData?.name">
+<div ngbDropdown class="d-inline-block" *ngIf="authService.isAuthenticated()">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Actions</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button class="dropdown-item">Voir mes demandes</button>
+    </div>
+  </div>
 <button *ngIf="authService.isAuthenticated()" class="btn btn-outline-primary" routerLink="/profile">Profil</button>
 <button *ngIf="!authService.isAuthenticated()" class="btn btn-outline-primary" (click)="open(content, null)">Connexion</button>
 <button *ngIf="authService.isAuthenticated()" class="btn btn-outline-primary" (click)="logout()">Deconnexion</button>

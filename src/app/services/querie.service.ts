@@ -24,6 +24,15 @@ export class QueryService {
   }
 
   /**
+  * @return {Observable<any>}
+  */
+  getFriendRequests(): Observable<any> {
+    const userData = this.authService.decodeToken();
+    // tslint:disable-next-line:max-line-length
+    return this.http.get(`${this.BASE_URL}/requests`, {params : { userId : userData['id']}, headers: this.authService.addAuthorizationHeader()});
+  }
+
+  /**
    * @return {Observable<any>}
    */
   delete(id: any): Observable<any> {

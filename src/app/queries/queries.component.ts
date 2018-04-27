@@ -9,8 +9,14 @@ import { QueryService } from '../services/querie.service';
 export class QueriesComponent implements OnInit {
 
   queries = [];
+  requests = [];
 
   constructor(private querieService: QueryService) {
+
+    querieService.getFriendRequests().subscribe(requests => {
+      this.requests = requests;
+      console.log(requests);
+    });
 
     querieService.getAll().subscribe(queries => {
       this.queries = queries;
@@ -21,13 +27,14 @@ export class QueriesComponent implements OnInit {
   }
 
   deleteQuery(id: string) {
-    console.log(id);
     this.querieService.delete(id).subscribe(response => {
-      console.log(response);
-
       this.querieService.getAll().subscribe(queries => {
         this.queries = queries;
       });
     });
+  }
+
+  AcceptQuery(id: string){
+    console.log(id);
   }
 }

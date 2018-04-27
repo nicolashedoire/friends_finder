@@ -49,7 +49,6 @@ export class SearchComponent implements OnInit {
     this.selected = place;
     this.activityService.getByPlaceId(place.id).subscribe(data => {
       this.activities = data.activities;
-      console.log(this.activities);
     });
   }
 

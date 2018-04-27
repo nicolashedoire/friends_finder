@@ -3,9 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { LocalstorageService } from '../shared/storage/localstorage.service';
 import { AuthentificationService } from '../shared/security/auth.service';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class ActivityService {
+
+  private subject = new Subject<any>();
 
   BASE_URL = 'http://localhost:4000';
 
@@ -13,6 +16,14 @@ export class ActivityService {
    * @param {HttpClient} http
    */
   constructor(private http: HttpClient, private localStorageService: LocalstorageService, private authService: AuthentificationService) {}
+
+  sendSignal() {
+    this.subject.next();
+  }
+
+  getChange() {
+    return this.subject.asObservable();
+  }
 
   /**
    * @return {Observable<any>}

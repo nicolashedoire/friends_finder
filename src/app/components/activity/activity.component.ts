@@ -124,6 +124,7 @@ export class ActivityComponent implements OnInit {
         this.activityTime = '';
         this.activity = '';
         this.barValue = '';
+        this.activityService.sendSignal();
       });
   }
 
@@ -131,6 +132,7 @@ export class ActivityComponent implements OnInit {
     this.activityService.delete(activity).subscribe(data => {
       this.activityService.getAll().subscribe(response => {
         this.activities = response.activities;
+        this.activityService.sendSignal();
       });
     });
   }

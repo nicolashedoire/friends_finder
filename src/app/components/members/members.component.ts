@@ -21,89 +21,6 @@ export class MembersComponent implements OnInit {
         time: '20:30',
         place: '54 rue nationale Lille'
       }
-    },
-    {
-      id: 2,
-      name: 'Caro',
-      rate: 3,
-      image: 'https://randomuser.me/api/portraits/women/80.jpg',
-      age: 32,
-      hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
-      activity: {
-        name: 'Séance de running',
-        date: Date.now(),
-        time: '20:30',
-        place: '54 rue nationale Lille'
-      }
-    },
-    {
-      id: 3,
-      name: 'Claire',
-      image: 'https://randomuser.me/api/portraits/women/81.jpg',
-      age: 28,
-      rate: 2,
-      activity: {
-        name: 'Séance de running',
-        date: Date.now(),
-        time: '20:30',
-        place: '54 rue nationale Lille'
-      }
-    },
-    {
-      id: 4,
-      name: 'Belinda',
-      image: 'https://randomuser.me/api/portraits/women/82.jpg',
-      age: 27,
-      rate: 1,
-      hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
-      activity: {
-        name: 'Séance de running',
-        date: Date.now(),
-        time: '20:30',
-        place: '54 rue nationale Lille'
-      }
-    },
-    {
-      id: 5,
-      name: 'Alice',
-      image: 'https://randomuser.me/api/portraits/women/83.jpg',
-      age: 31,
-      rate: 0,
-      hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
-      activity: {
-        name: 'Séance de running',
-        date: Date.now(),
-        time: '20:30',
-        place: '54 rue nationale Lille'
-      }
-    },
-    {
-      id: 6,
-      name: 'Charlotte',
-      image: 'https://randomuser.me/api/portraits/women/84.jpg',
-      age: 35,
-      rate: 1,
-      hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
-      activity: {
-        name: 'Séance de running',
-        date: Date.now(),
-        time: '20:30',
-        place: '54 rue nationale Lille'
-      }
-    },
-    {
-      id: 7,
-      name: 'Zoé',
-      image: 'https://randomuser.me/api/portraits/women/85.jpg',
-      age: 40,
-      rate: 2,
-      hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
-      activity: {
-        name: 'Séance de running',
-        date: Date.now(),
-        time: '20:30',
-        place: '54 rue nationale Lille'
-      }
     }
   ];
 
@@ -111,13 +28,23 @@ export class MembersComponent implements OnInit {
   count = 0;
 
   constructor(private activityService: ActivityService) {
+
+    // Observe change in activity service
+    this.activityService.getChange().subscribe(() => {
+      this.getDayActivities();
+    });
+
+    this.getDayActivities();
+  }
+
+  ngOnInit() {}
+
+  getDayActivities() {
     this.activityService.getAllToday().subscribe(data => {
       this.members = data;
       this.member = data[0];
     });
   }
-
-  ngOnInit() {}
 
   previousMember(): void {
     if (this.count === 0) {
@@ -136,5 +63,4 @@ export class MembersComponent implements OnInit {
     this.count++;
     this.member = this.members[this.count];
   }
-
 }

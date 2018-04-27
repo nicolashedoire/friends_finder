@@ -32,17 +32,23 @@ export class MembersComponent implements OnInit {
     // Observe changes when click join event in modal
     this.activityService.getUpdateJoinUsers().subscribe(() => {
       this.getDayActivities();
+      this.resetCount();
     });
 
     // Observe change when delete an activity
     this.activityService.getChange().subscribe(() => {
       this.getDayActivities();
+      this.resetCount();
     });
 
     this.getDayActivities();
   }
 
   ngOnInit() {}
+
+  resetCount() {
+    this.count = 0;
+  }
 
   getDayActivities() {
     this.activityService.getAllToday().subscribe(data => {

@@ -75,6 +75,7 @@ export class ModalMembersInfosComponent implements OnInit {
         this.joinActivityError = true;
       } else if (data.status === 200) {
         this.joinActivity = true;
+        this.activityService.sendUpdateJoinUsers();
       } else {
         this.joinNotAllowed = true;
       }

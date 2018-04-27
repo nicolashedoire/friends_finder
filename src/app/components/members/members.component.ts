@@ -29,7 +29,12 @@ export class MembersComponent implements OnInit {
 
   constructor(private activityService: ActivityService) {
 
-    // Observe change in activity service
+    // Observe changes when click join event in modal
+    this.activityService.getUpdateJoinUsers().subscribe(() => {
+      this.getDayActivities();
+    });
+
+    // Observe change when delete an activity
     this.activityService.getChange().subscribe(() => {
       this.getDayActivities();
     });

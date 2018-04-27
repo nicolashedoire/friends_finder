@@ -19,11 +19,14 @@ export class QueryService {
    */
   getAll(): Observable<any> {
     const userData = this.authService.decodeToken();
+    console.log(userData);
     // tslint:disable-next-line:max-line-length
     return this.http.get(`${this.BASE_URL}/queries`, {params : { userId : userData['id']}, headers: this.authService.addAuthorizationHeader()});
   }
 
-
+  /**
+   * @return {Observable<any>}
+   */
   delete(id: any): Observable<any> {
     return this.http.delete(`${this.BASE_URL}/querie/${id}`, { headers: this.authService.addAuthorizationHeader()});
   }

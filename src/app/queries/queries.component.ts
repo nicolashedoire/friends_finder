@@ -8,7 +8,7 @@ import { QueryService } from '../services/querie.service';
 })
 export class QueriesComponent implements OnInit {
 
-  queries: any;
+  queries = [];
 
   constructor(private querieService: QueryService) {
 
@@ -20,4 +20,14 @@ export class QueriesComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteQuery(id: string) {
+    console.log(id);
+    this.querieService.delete(id).subscribe(response => {
+      console.log(response);
+
+      this.querieService.getAll().subscribe(queries => {
+        this.queries = queries;
+      });
+    });
+  }
 }

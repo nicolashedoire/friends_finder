@@ -34,7 +34,11 @@ export class QueriesComponent implements OnInit {
     });
   }
 
-  AcceptQuery(id: string){
+  declineRequest(id: string){
+    console.log(id);
+  }
+
+  acceptRequest(id: string){
     console.log(id);
   }
 }

@@ -57,7 +57,8 @@
               <div class="col-lg-6">
                 <div class="row">
                   <div class="col-lg-12">
-                    <button class="btn btn-outline-success float-right" (click)="AcceptQuery(request._id)">Accepter l'invitation</button>
+                      <button class="btn btn-outline-danger float-right" (click)="declineRequest(request._id)">Refuser l'invitation</button>
+                    <button class="btn btn-outline-success float-right" (click)="acceptRequest(request._id)">Accepter l'invitation</button>
                   </div>
                 </div>
                 <div class="row">

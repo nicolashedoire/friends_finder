@@ -13,7 +13,6 @@ import { FormControl, Validators } from '@angular/forms';
 export class ActivityComponent implements OnInit {
   // Set the current time
   time = this.updateTime();
-
   activityTime: string;
   activity: string;
   city: string;

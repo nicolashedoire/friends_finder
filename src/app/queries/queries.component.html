@@ -9,14 +9,31 @@
         <li class="list-group-item" *ngFor="let querie of queries">
           <div class="row">
             <div class="col-lg-6">
-              <ul>
-                <li>{{querie.activity.placeName}}</li>
-                <li>{{querie.activity.time}}</li>
-                <li>{{querie.activity.date | date}}</li>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{querie.activity.placeName}}</li>
+                <li class="list-group-item">{{querie.activity.time}}</li>
+                <li class="list-group-item">{{querie.activity.date | date}}</li>
               </ul>
             </div>
             <div class="col-lg-6">
-              <button class="btn btn-outline-danger float-right" (click)="deleteQuery(querie._id)">Supprimer la demande</button>
+              <div class="row">
+                <div class="col-lg-12">
+                  <button class="btn btn-outline-danger float-right" (click)="deleteQuery(querie._id)">Supprimer la demande</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 mt-3">
+                  <p class="float-right state">
+                    <span>Status : </span>
+                    <span class="float-right" *ngIf="querie.status === 0">En attente</span>
+                    <span class="float-right" *ngIf="querie.status === 1">Validé</span>
+                    <span class="float-right" *ngIf="querie.status === 2">Refusé</span>
+                  </p>
+                  <!-- <img src="assets/img/icons/wait.png" alt="En attente" title="en attente" *ngIf="querie.status === 0">
+                      <img src="assets/img/icons/ok.png" alt="validé" title="validé" *ngIf="querie.status === 1">
+                      <img src="assets/img/icons/ko.png" alt="vallidé" title="refusé" *ngIf="querie.status === 2"> -->
+                </div>
+              </div>
             </div>
           </div>
         </li>

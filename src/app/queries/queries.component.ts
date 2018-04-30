@@ -34,11 +34,13 @@ export class QueriesComponent implements OnInit {
     });
   }
 
-  declineRequest(id: string){
+  updateQuery(id: string, state: string){
     console.log(id);
-  }
-
-  acceptRequest(id: string){
-    console.log(id);
+    this.querieService.update(id, state).subscribe(response => {
+      this.querieService.getFriendRequests().subscribe(requests => {
+        this.requests = requests;
+        console.log(requests);
+      });
+    });
   }
 }

@@ -9,10 +9,12 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class QueryService {
-
   BASE_URL = 'http://localhost:4000';
 
-  constructor(private http: HttpClient, private authService: AuthentificationService) { }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthentificationService
+  ) {}
 
   /**
    * @return {Observable<any>}
@@ -20,23 +22,39 @@ export class QueryService {
   getAll(): Observable<any> {
     const userData = this.authService.decodeToken();
     // tslint:disable-next-line:max-line-length
-    return this.http.get(`${this.BASE_URL}/queries`, {params : { userId : userData['id']}, headers: this.authService.addAuthorizationHeader()});
+    return this.http.get(`${this.BASE_URL}/queries`, {
+      params: { userId: userData['id'] },
+      headers: this.authService.addAuthorizationHeader()
+    });
   }
 
   /**
-  * @return {Observable<any>}
-  */
+   * @return {Observable<any>}
+   */
   getFriendRequests(): Observable<any> {
     const userData = this.authService.decodeToken();
     // tslint:disable-next-line:max-line-length
-    return this.http.get(`${this.BASE_URL}/requests`, {params : { userId : userData['id']}, headers: this.authService.addAuthorizationHeader()});
+    return this.http.get(`${this.BASE_URL}/requests`, {
+      params: { userId: userData['id'] },
+      headers: this.authService.addAuthorizationHeader()
+    });
   }
 
   /**
    * @return {Observable<any>}
    */
   delete(id: any): Observable<any> {
-    return this.http.delete(`${this.BASE_URL}/querie/${id}`, { headers: this.authService.addAuthorizationHeader()});
+    return this.http.delete(`${this.BASE_URL}/querie/${id}`, {
+      headers: this.authService.addAuthorizationHeader()
+    });
   }
 
+  /**
+   * @return {Observable<any>}
+   */
+  update(id: string, state: string): Observable<any> {
+    return this.http.put(`${this.BASE_URL}/querie/update/${id}`, { status: state }, {
+      headers: this.authService.addAuthorizationHeader()
+    });
+  }
 }

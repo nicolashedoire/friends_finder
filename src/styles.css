@@ -17,7 +17,7 @@
   color: rgb(30,30,30);
   font-family: 'Roboto', sans-serif;
   width: 420px;
-  margin-top: 200px;
+  margin-top: 160px;
   position: relative;
   font-weight: 600;
   text-transform: uppercase;
@@ -86,11 +86,10 @@ h3 {
 .circular--landscape {
   display: inline-block;
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 260px;
+  height: 260px;
   overflow: hidden;
   border-radius: 50%;
-  margin: 25px;
 }
 
 .circular--landscape img, .circular--small img {

@@ -37,3 +37,7 @@
   cursor: pointer;
   -webkit-appearance: none;
 }
+
+.social-button span{
+  margin-left: 5px;
+}

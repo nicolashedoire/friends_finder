@@ -1,7 +1,12 @@
 .main-img{
-  position: absolute;
-  right: 280px;
+  position: relative;
   top: 150px;
+  background-image: url('/assets/img/map.jpg');
+  height:30em; background-size:cover;
+  width:auto;
+  background-position:50% 50%;
+  -webkit-box-shadow: 0 9px 14px 0 rgba(62,108,200,.49);
+  box-shadow: 0 9px 14px 0 rgba(62,108,200,.49);
 }
 
 .main-img img {

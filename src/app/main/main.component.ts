@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
   sentences = [
-    'Une nouvelle manière de faire des rencontres sur Lille !',
+    'Faites de nouvelles connaissances',
     'Créez une activité pour votre soirée ou rejoignez du monde'
   ];
   intro = this.sentences[0];
@@ -21,13 +21,13 @@ export class MainComponent implements OnInit {
   height = 100;
 
   constructor() {
-    setInterval(() => {
-      if (this.count === this.sentences.length) {
-        this.count = 0;
-      }
-      this.intro = this.sentences[this.count];
-      this.count++;
-    }, 3000);
+    // setInterval(() => {
+    //   if (this.count === this.sentences.length) {
+    //     this.count = 0;
+    //   }
+    //   this.intro = this.sentences[this.count];
+    //   this.count++;
+    // }, 3000);
   }
 
   ngOnInit() {

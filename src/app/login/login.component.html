@@ -29,5 +29,5 @@
     </div>
   </div>
 <button *ngIf="authService.isAuthenticated()" class="btn btn-outline-primary" routerLink="/profile">Profil</button>
-<button *ngIf="!authService.isAuthenticated()" class="btn btn-outline-primary" (click)="open(content, null)">Connexion</button>
+<button *ngIf="!authService.isAuthenticated()" class="button-blue" (click)="open(content, null)">Connexion</button>
 <button *ngIf="authService.isAuthenticated()" class="btn btn-outline-primary" (click)="logout()">Deconnexion</button>

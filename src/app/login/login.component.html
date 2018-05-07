@@ -9,13 +9,13 @@
     <div class="row">
       <button (click)="login('facebook')" class="facebook-button social-button">
         <i class="fab fa-facebook-f"></i>
-        <span>Sign in with Facebook</span>
+        <span>continuer avec Facebook</span>
       </button>
     </div>
     <div class="row mb-4">
       <button (click)="login('google')" class="google-button social-button">
         <i class="fab fa-google-plus-g"></i>
-        <span>Sign in with Google</span>
+        <span>continuer avec Google</span>
       </button>
     </div>
   </div>
@@ -30,4 +30,4 @@
       <button class="dropdown-item" (click)="logout()" >Déconnexion</button>
     </div>
   </div>
-<button *ngIf="!authService.isAuthenticated()" class="button-blue" (click)="open(content, null)">Connexion</button>
+<button *ngIf="!authService.isAuthenticated()" class="button-blue" (click)="open(content, null)">Se connecter</button>

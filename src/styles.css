@@ -121,7 +121,8 @@ h3 {
 
 .alert-custom{
   color: white;
-  background: #6000b4;
+  background: linear-gradient(120deg,#5263a3 9%,#2677f8 75%,#fe007a 120%);
+  border-radius: 0px;
 }
 
 .button-blue{

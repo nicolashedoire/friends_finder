@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     // customize default values of dropdowns used by this component tree
     config.placement = 'bottom-right';
-    config.autoClose = false;
+    config.autoClose = true;
   }
 
   ngOnInit() {

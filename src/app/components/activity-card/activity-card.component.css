@@ -59,7 +59,7 @@ h1 {
   -moz-animation: scale-blue 0.7s forwards; /* Firefox */
   -webkit-animation: scale-blue 0.7s forwards; /* Safari and Chrome */
   -o-animation: scale-blue 0.7s forwards; /* Opera */
-  animation-delay: 0.9s;
+  animation-delay: 0.7s;
   z-index: 2;
 }
 
@@ -73,7 +73,7 @@ h1 {
   -moz-animation: scale-green 0.7s forwards; /* Firefox */
   -webkit-animation: scale-green 0.7s forwards; /* Safari and Chrome */
   -o-animation: scale-green 0.7s forwards; /* Opera */
-  animation-delay: 1.5s;
+  animation-delay: 1.1s;
   z-index: 1;
 }
 
@@ -88,8 +88,9 @@ h1 {
   -moz-animation: pin 0.7s forwards; /* Firefox */
   -webkit-animation: pin 0.7s forwards; /* Safari and Chrome */
   -o-animation: pin 0.7s forwards; /* Opera */
-  animation-delay: 3s;
+  animation-delay: 1.4s;
 }
+
 
 .pin-inner {
   position: absolute;
@@ -125,7 +126,7 @@ h1 {
     transform: rotate(90deg) translateY(200px)scale(0);
   }
   to {
-    transform: rotate(90deg) translateY(150px) scale(1);
+    transform: rotate(150deg) translateY(150px) scale(1);
   }
 }
 

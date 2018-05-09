@@ -4,6 +4,7 @@ import {
   ModalDismissReasons,
   NgbModalRef
 } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AuthentificationService } from '../shared/security/auth.service';
 import { LocalstorageService } from '../shared/storage/localstorage.service';
 import { Router } from '@angular/router';
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [NgbDropdownConfig] // add NgbDropdownConfig to the component providers
 })
 export class LoginComponent implements OnInit, OnDestroy {
   userData = null;
@@ -20,11 +22,15 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private modalService: NgbModal,
+    config: NgbDropdownConfig,
     public authService: AuthentificationService,
     private localStorageService: LocalstorageService,
     private router: Router
   ) {
 
+    // customize default values of dropdowns used by this component tree
+    config.placement = 'bottom-right';
+    config.autoClose = false;
   }
 
   ngOnInit() {

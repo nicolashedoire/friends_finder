@@ -40,6 +40,7 @@ import { ModalMembersInfosComponent } from './components/members/modal-members-i
 import { HeaderComponent } from './components/header/header.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { QueriesComponent } from './queries/queries.component';
+import { ActivityCardComponent } from './components/activity-card/activity-card.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -72,7 +73,8 @@ export function getAuthServiceConfigs() {
     ModalMembersInfosComponent,
     HeaderComponent,
     PreferencesComponent,
-    QueriesComponent
+    QueriesComponent,
+    ActivityCardComponent
   ],
   imports: [
     BrowserModule,

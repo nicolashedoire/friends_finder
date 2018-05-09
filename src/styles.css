@@ -183,14 +183,12 @@ h3 {
   outline: 0;
   position: relative;
   display: inline-block;
-  padding: 1.4em 3em;
+  padding: 1em 1.4em;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 100%;
   border: 0;
   border-radius: 0px;
-  -webkit-box-shadow: 0 9px 14px 0 rgba(62,108,200,.49);
-  box-shadow: 0 9px 14px 0 rgba(62,108,200,.49);
   color: rgb(30,30,30);
   font-family: brandon-grotesque,sans-serif;
   font-weight: 600;
@@ -201,4 +199,10 @@ h3 {
   text-transform: uppercase;
   cursor: pointer;
   -webkit-appearance: none;
+  border: 1px solid rgba(30,30,30,0.1);
+  border-radius: 40px;
+}
+
+.button-white:active, .button-white:visited, .button-white:focus{
+  outline: 0;
 }

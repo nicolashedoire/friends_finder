@@ -13,6 +13,20 @@ h1 {
   animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; */
 }
 
+.choice{
+  font-size: 1.6em;
+  border: 1px dashed silver;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.choice:hover{
+  color: white;
+  background: linear-gradient(-132deg,#FD605D 21%,#FD3769 55%,#FE007A 100%);
+  -webkit-box-shadow: 0 8px 24px #feaaa9;
+  box-shadow: 0 8px 24px #feaaa9;
+}
+
 .center-content {
   display: flex;
   align-items: center;
@@ -43,6 +57,9 @@ h1 {
   height: 200px;
   overflow: hidden;
   box-shadow: 0 4px 15px 0px rgba(0, 0, 0, 0.3);
+  background-image: url('/assets/img/map.jpg');
+  background-size:cover;
+  background-position:50% 50%;
   animation: perspective forwards;
   -moz-animation: perspective forwards; /* Firefox */
   -webkit-animation: perspective forwards; /* Safari and Chrome */
@@ -88,7 +105,7 @@ h1 {
   -moz-animation: pin 0.7s forwards; /* Firefox */
   -webkit-animation: pin 0.7s forwards; /* Safari and Chrome */
   -o-animation: pin 0.7s forwards; /* Opera */
-  animation-delay: 1.4s;
+  animation-delay: 0.9s;
 }
 
 

@@ -1,4 +1,4 @@
-<div class="row justify-content-lg-center">
+<div class="row justify-content-lg-center" *ngIf="showBackButton">
     <div class="col-lg-6">
         <button class="button-blue" (click)="returnMenu()">Retour</button>
     </div>
@@ -46,5 +46,11 @@
           <div class="sa-placeholder"></div>
           <div class="sa-fix"></div>
         </div>
+      </div>
+
+      <div class="row justify-content-lg-center">
+          <div class="col-lg-6 text-center">
+              <button class="button-blue" routerLink="/dashboard">Voir mon dashboard</button>
+          </div>
       </div>
 </div>

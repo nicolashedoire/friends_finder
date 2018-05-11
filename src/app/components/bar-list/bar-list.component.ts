@@ -38,6 +38,8 @@ export class BarListComponent implements OnInit {
 
   @Output() setOriginView = new EventEmitter();
 
+  showBackButton = true;
+
   state = 'inactive';
   stateMenu = 'active';
   stateComplete = 'inactive';
@@ -102,6 +104,8 @@ export class BarListComponent implements OnInit {
   validateTime() {
     this.state = this.state === 'inactive' ? 'active' : 'inactive';
     this.stateComplete = (this.stateComplete === 'active' ? 'inactive' : 'active');
+
+    this.showBackButton = false;
     console.log(this.time);
   }
 

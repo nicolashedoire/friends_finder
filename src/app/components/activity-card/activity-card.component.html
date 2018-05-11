@@ -1,44 +1,52 @@
-<section class="mx-auto container mt-5">
+<section class="mx-auto container mt-5 intro-view">
+
     <h1 class="text-center pt-3">Bonjour
         {{userData?.name}}</h1>
     <hr>
 
-    <div class="wrapper center-content">
-        <div>
-            <div class="map">
-                <!--<div class="zone-blue"></div> <div class="zone-green"></div> -->
-            </div>
-            <div class="center-content">
-                <div class="pin">
-                    <div class="pin-inner"></div>
+    <div [@showView]="stateMenu">
+        <div class="wrapper center-content">
+            <div>
+                <div class="map">
+                    <!--<div class="zone-blue"></div> <div class="zone-green"></div> -->
+                </div>
+                <div class="center-content">
+                    <div class="pin">
+                        <div class="pin-inner"></div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <header>
+            <h2 class="animated bounceInDown text-center">Votre activité du jour</h2>
+            <h3 class="animated bounceInDown text-center">Vous devez choisir une activité parmis les choix proposés !</h3>
+        </header>
+
+        <div class="row mt-5 justify-content-lg-center">
+            <div class="col-lg-6 text-center mt-5 choice" (click)="showView(0)">
+                Aller boire un verre
+            </div>
+        </div>
+        <div class="row justify-content-lg-center">
+            <div class="col-lg-6 text-center choice" (click)="showView(1)">
+                Se faire un restaurant
+            </div>
+        </div>
+        <div class="row justify-content-lg-center">
+            <div class="col-lg-6 text-center choice" (click)="showView(2)">
+                Faire du sport
+            </div>
+        </div>
+        <div class="row justify-content-lg-center">
+            <div class="col-lg-6 text-center choice" (click)="showView(3)">
+                Je ne propose rien aujourd'hui
+            </div>
+        </div>
     </div>
 
-    <header>
-        <h2 class="animated bounceInDown text-center">Votre activité du jour</h2>
-        <h3 class="animated bounceInDown text-center">Vous devez choisir une activité parmis les choix proposés !</h3>
-    </header>
-
-    <div class="row mt-5 justify-content-lg-center">
-        <div class="col-lg-6 text-center mt-5 choice">
-            Aller boire un verre
-        </div>
+    <div [@showView]="state">
+        <p class="text-center">Vous avez choisi d'aller boire un verre</p>
+        <app-bar-list (setOriginView)="handleOriginView($event)"></app-bar-list>
     </div>
-    <div class="row justify-content-lg-center">
-        <div class="col-lg-6 text-center choice">
-            Se faire un restaurant
-        </div>
-    </div>
-    <div class="row justify-content-lg-center">
-        <div class="col-lg-6 text-center choice">
-            Faire du sport
-        </div>
-    </div>
-    <div class="row justify-content-lg-center">
-      <div class="col-lg-6 text-center choice">
-          Je ne propose rien aujourd'hui
-      </div>
-  </div>
 </section>

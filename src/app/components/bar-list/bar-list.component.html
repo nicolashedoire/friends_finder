@@ -1,0 +1,39 @@
+<div class="row justify-content-lg-center">
+    <div class="col-lg-6">
+        <button class="button-blue" (click)="returnMenu()">Retour</button>
+    </div>
+  </div>
+
+
+<ul class="list-group mt-5" [@showView]="stateMenu">
+    <li class="list-group-item" *ngFor="let place of places" (click)="selectPlace(place.id)">{{place.name}}</li>
+</ul>
+
+<div [@showView]="state" class="mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="clock mt-3">
+                <div class="top"></div>
+                <div class="right"></div>
+                <div class="bottom"></div>
+                <div class="left"></div>
+                <div class="center"></div>
+                <div class="hour"></div>
+                <div class="minute"></div>
+                <div class="second"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 timepicker">
+            <ngb-timepicker [(ngModel)]="time" (ngmodelchange)="onTimeChange($event)"></ngb-timepicker>
+        </div>
+    </div>
+
+    <div class="row justify-content-lg-center mt-5">
+      <div class="col-lg-6">
+          <button class="button-blue">Valider l'horaire</button>
+      </div>
+    </div>
+</div>

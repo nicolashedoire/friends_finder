@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.modalReference.close();
         this.authService.changeLoggedState(true);
         this.refreshAvatar();
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/activity']);
       });
     });
   }

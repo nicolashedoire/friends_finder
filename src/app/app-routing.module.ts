@@ -4,6 +4,7 @@ import { AuthGuard } from './shared/security/auth.guard';
 import { AuthLogin } from './shared/security/auth.login';
 import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ActivityChoiceComponent } from './activity-choice/activity-choice.component';
 import { QueriesComponent } from './queries/queries.component';
 import { UserProfileComponent } from '../app/components/user-profile/user-profile.component';
 
@@ -16,6 +17,11 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'activity',
+    component: ActivityChoiceComponent,
     canActivate: [AuthGuard]
   },
   {

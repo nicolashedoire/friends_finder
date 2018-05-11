@@ -40,4 +40,5 @@ export class ActivityCardComponent implements OnInit {
     this.state = (this.state === 'inactive' ? 'active' : 'inactive');
     this.stateMenu = (this.stateMenu === 'active' ? 'inactive' : 'active');
   }
+
 }

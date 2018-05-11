@@ -33,7 +33,18 @@
 
     <div class="row justify-content-lg-center mt-5">
       <div class="col-lg-6">
-          <button class="button-blue">Valider l'horaire</button>
+          <button class="button-blue" (click)="validateTime()">Valider l'horaire</button>
       </div>
     </div>
+</div>
+
+<div [@showView]="stateComplete" class="mt-5">
+    <div class="check_mark">
+        <div class="sa-icon sa-success animate">
+          <span class="sa-line sa-tip animateSuccessTip"></span>
+          <span class="sa-line sa-long animateSuccessLong"></span>
+          <div class="sa-placeholder"></div>
+          <div class="sa-fix"></div>
+        </div>
+      </div>
 </div>

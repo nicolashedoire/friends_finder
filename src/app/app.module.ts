@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -41,6 +42,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { PreferencesComponent } from './components/preferences/preferences.component';
 import { QueriesComponent } from './queries/queries.component';
 import { ActivityCardComponent } from './components/activity-card/activity-card.component';
+import { BarListComponent } from './components/bar-list/bar-list.component';
+import { ActivityChoiceComponent } from './activity-choice/activity-choice.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -74,12 +77,15 @@ export function getAuthServiceConfigs() {
     HeaderComponent,
     PreferencesComponent,
     QueriesComponent,
-    ActivityCardComponent
+    ActivityCardComponent,
+    BarListComponent,
+    ActivityChoiceComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     NgbModule.forRoot(),

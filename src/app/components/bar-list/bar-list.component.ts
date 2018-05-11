@@ -40,6 +40,7 @@ export class BarListComponent implements OnInit {
 
   state = 'inactive';
   stateMenu = 'active';
+  stateComplete = 'inactive';
   places = [];
 
   time = this.updateTime();
@@ -95,6 +96,13 @@ export class BarListComponent implements OnInit {
     }
 
     this.setOriginView.emit();
+  }
+
+
+  validateTime() {
+    this.state = this.state === 'inactive' ? 'active' : 'inactive';
+    this.stateComplete = (this.stateComplete === 'active' ? 'inactive' : 'active');
+    console.log(this.time);
   }
 
 }

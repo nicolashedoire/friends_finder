@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthentificationService } from '../../shared/security/auth.service';
 
 @Component({
   selector: 'app-activity-card',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivityCardComponent implements OnInit {
 
-  constructor() { }
+  userData = null;
 
-  ngOnInit() {
+  constructor(public authService: AuthentificationService) {
+    if (this.authService.isAuthenticated()) {
+      this.userData = this.authService.decodeToken();
+
+      console.log(this.userData);
+    }
   }
 
+  ngOnInit() {}
 }

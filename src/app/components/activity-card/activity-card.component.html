@@ -1,12 +1,12 @@
 <section class="mx-auto container mt-5">
-    <h1 class="text-center pt-3">Bonjour username</h1>
+    <h1 class="text-center pt-3">Bonjour
+        {{userData?.name}}</h1>
     <hr>
 
     <div class="wrapper center-content">
         <div>
             <div class="map">
-                <!--<div class="zone-blue"></div>
-                <div class="zone-green"></div> -->
+                <!--<div class="zone-blue"></div> <div class="zone-green"></div> -->
             </div>
             <div class="center-content">
                 <div class="pin">
@@ -21,15 +21,24 @@
         <h3 class="animated bounceInDown text-center">Vous devez choisir une activité parmis les choix proposés !</h3>
     </header>
 
-    <div class="row mt-5">
-        <div class="col-lg-4 text-center mt-5 choice">
-          Aller boire un verre
-        </div>
-        <div class="col-lg-4 text-center mt-5 choice">
-          Se faire un restaurant
-        </div>
-        <div class="col-lg-4 text-center mt-5 choice">
-          Faire du sport
+    <div class="row mt-5 justify-content-lg-center">
+        <div class="col-lg-6 text-center mt-5 choice">
+            Aller boire un verre
         </div>
     </div>
+    <div class="row justify-content-lg-center">
+        <div class="col-lg-6 text-center choice">
+            Se faire un restaurant
+        </div>
+    </div>
+    <div class="row justify-content-lg-center">
+        <div class="col-lg-6 text-center choice">
+            Faire du sport
+        </div>
+    </div>
+    <div class="row justify-content-lg-center">
+      <div class="col-lg-6 text-center choice">
+          Je ne propose rien aujourd'hui
+      </div>
+  </div>
 </section>

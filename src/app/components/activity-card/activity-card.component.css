@@ -96,8 +96,8 @@ h1 {
 
 .pin {
   transform: rotate(-45deg) scale(0);
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   background: #d74d3c;
   border-radius: 50% 50% 50% 5px;
   z-index: 100;
@@ -111,10 +111,10 @@ h1 {
 
 .pin-inner {
   position: absolute;
-  width: 30px;
-  height: 30px;
-  top: 15px;
-  right: 15px;
+  width: 15px;
+  height: 15px;
+  top: 8px;
+  right: 8px;
   border-radius: 50%;
   background: #902a1d;
 }
@@ -125,7 +125,7 @@ h1 {
     transform: translateY(-150px) rotate(-45deg) scale(0) perspective(0px);
   }
   to {
-    transform: translateY(-50px) rotate(-45deg) scale(1) perspective(0px);
+    transform: translateY(-10px) rotate(-45deg) scale(1) perspective(0px);
   }
 }
 

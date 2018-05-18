@@ -1,56 +1,11 @@
-<div class="row justify-content-lg-center" *ngIf="showBackButton">
+<div class="row justify-content-lg-center">
     <div class="col-lg-6">
-        <button class="button-blue" (click)="returnMenu()">Retour</button>
+        <app-return-button [path]="'/activity'"></app-return-button>
+        <button class="button-blue" (click)="addBar()">Ajouter un bar</button>
     </div>
   </div>
 
 
-<ul class="list-group mt-5" [@showView]="stateMenu">
-    <li class="list-group-item" *ngFor="let place of places" (click)="selectPlace(place.id)">{{place.name}}</li>
+<ul class="list-group mt-5">
+    <li class="list-group-item" *ngFor="let place of places" routerLink="/activity/drink/{{place.id}}">{{place.name}}</li>
 </ul>
-
-<div [@showView]="state" class="mt-5">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="clock mt-3">
-                <div class="top"></div>
-                <div class="right"></div>
-                <div class="bottom"></div>
-                <div class="left"></div>
-                <div class="center"></div>
-                <div class="hour"></div>
-                <div class="minute"></div>
-                <div class="second"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12 timepicker">
-            <ngb-timepicker [(ngModel)]="time" (ngmodelchange)="onTimeChange($event)"></ngb-timepicker>
-        </div>
-    </div>
-
-    <div class="row justify-content-lg-center mt-5">
-      <div class="col-lg-6">
-          <button class="button-blue" (click)="validateTime()">Valider l'horaire</button>
-      </div>
-    </div>
-</div>
-
-<div [@showView]="stateComplete" class="mt-5">
-    <div class="check_mark">
-        <div class="sa-icon sa-success animate">
-          <span class="sa-line sa-tip animateSuccessTip"></span>
-          <span class="sa-line sa-long animateSuccessLong"></span>
-          <div class="sa-placeholder"></div>
-          <div class="sa-fix"></div>
-        </div>
-      </div>
-
-      <div class="row justify-content-lg-center">
-          <div class="col-lg-6 text-center">
-              <button class="button-blue" routerLink="/dashboard">Voir mon dashboard</button>
-          </div>
-      </div>
-</div>

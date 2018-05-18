@@ -44,6 +44,12 @@ import { QueriesComponent } from './queries/queries.component';
 import { ActivityCardComponent } from './components/activity-card/activity-card.component';
 import { BarListComponent } from './components/bar-list/bar-list.component';
 import { ActivityChoiceComponent } from './activity-choice/activity-choice.component';
+import { ActivityMenuComponent } from './activity-menu/activity-menu.component';
+import { FoodListComponent } from './components/food-list/food-list.component';
+import { SportListComponent } from './components/sport-list/sport-list.component';
+import { ReturnButtonComponent } from './components/return-button/return-button.component';
+import { ActivityItemComponent } from './activity-item/activity-item.component';
+import { ActivityCompleteComponent } from './activity-complete/activity-complete.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -79,7 +85,13 @@ export function getAuthServiceConfigs() {
     QueriesComponent,
     ActivityCardComponent,
     BarListComponent,
-    ActivityChoiceComponent
+    ActivityChoiceComponent,
+    ActivityMenuComponent,
+    FoodListComponent,
+    SportListComponent,
+    ReturnButtonComponent,
+    ActivityItemComponent,
+    ActivityCompleteComponent
   ],
   imports: [
     BrowserModule,

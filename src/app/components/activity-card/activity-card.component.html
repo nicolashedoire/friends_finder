@@ -4,16 +4,16 @@
         {{userData?.name}}</h1>
     <hr>
 
-    <div [@showView]="stateMenu">
+    <div>
         <div class="wrapper center-content">
             <div>
                 <div class="map">
                     <!--<div class="zone-blue"></div> <div class="zone-green"></div> -->
                 </div>
                 <div class="center-content">
-                    <div class="pin">
+                    <!--<div class="pin">
                         <div class="pin-inner"></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -24,29 +24,26 @@
         </header>
 
         <div class="row mt-5 justify-content-lg-center">
-            <div class="col-lg-6 text-center mt-5 choice" (click)="showView(0)">
+            <div class="col-lg-6 text-center mt-5 choice" routerLink="/activity/drink">
                 Aller boire un verre
             </div>
         </div>
         <div class="row justify-content-lg-center">
-            <div class="col-lg-6 text-center choice" (click)="showView(1)">
+            <div class="col-lg-6 text-center choice" routerLink="/activity/eat">
                 Se faire un restaurant
             </div>
         </div>
         <div class="row justify-content-lg-center">
-            <div class="col-lg-6 text-center choice" (click)="showView(2)">
+            <div class="col-lg-6 text-center choice" routerLink="/activity/sport">
                 Faire du sport
             </div>
         </div>
         <div class="row justify-content-lg-center">
-            <div class="col-lg-6 text-center choice" (click)="showView(3)">
+            <div class="col-lg-6 text-center choice" routerLink="/dashboard">
                 Je ne propose rien aujourd'hui
             </div>
         </div>
     </div>
 
-    <div [@showView]="state">
-        <p class="text-center">Vous avez choisi d'aller boire un verre</p>
-        <app-bar-list (setOriginView)="handleOriginView($event)"></app-bar-list>
-    </div>
+
 </section>

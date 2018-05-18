@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div class="row justify-content-lg-center mt-5">
+    <div class="col-lg-6">
+      <app-return-button [path]="'/activity/'+choice"></app-return-button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+
+
+      <h1 class="text-center mt-5 mb-5">Choisissez votre horaire !</h1>
+
+      <div class="clock mt-3">
+        <div class="top"></div>
+        <div class="right"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 timepicker">
+      <ngb-timepicker [(ngModel)]="time" (ngmodelchange)="onTimeChange($event)"></ngb-timepicker>
+    </div>
+  </div>
+
+  <div class="row justify-content-lg-center mt-5">
+    <div class="col-lg-6">
+      <button class="button-blue" (click)="validateTime()">Valider l'horaire</button>
+    </div>
+  </div>
+</div>

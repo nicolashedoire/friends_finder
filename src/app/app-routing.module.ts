@@ -8,6 +8,7 @@ import { ActivityMenuComponent } from './activity-menu/activity-menu.component';
 import { ActivityChoiceComponent } from './activity-choice/activity-choice.component';
 import { ActivityItemComponent } from './activity-item/activity-item.component';
 import { ActivityCompleteComponent } from './activity-complete/activity-complete.component';
+import { CreateBarComponent } from './components/create-bar/create-bar.component';
 import { QueriesComponent } from './queries/queries.component';
 import { UserProfileComponent } from '../app/components/user-profile/user-profile.component';
 
@@ -30,6 +31,11 @@ const appRoutes: Routes = [
   {
     path: 'activity/:choice',
     component: ActivityChoiceComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'activity/:choice/create-bar',
+    component: CreateBarComponent,
     canActivate: [AuthGuard]
   },
   {

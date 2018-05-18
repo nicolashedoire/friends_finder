@@ -50,6 +50,7 @@ import { SportListComponent } from './components/sport-list/sport-list.component
 import { ReturnButtonComponent } from './components/return-button/return-button.component';
 import { ActivityItemComponent } from './activity-item/activity-item.component';
 import { ActivityCompleteComponent } from './activity-complete/activity-complete.component';
+import { CreateBarComponent } from './components/create-bar/create-bar.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -91,7 +92,8 @@ export function getAuthServiceConfigs() {
     SportListComponent,
     ReturnButtonComponent,
     ActivityItemComponent,
-    ActivityCompleteComponent
+    ActivityCompleteComponent,
+    CreateBarComponent
   ],
   imports: [
     BrowserModule,

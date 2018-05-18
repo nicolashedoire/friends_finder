@@ -10,6 +10,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
+import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
 import { PlaceService } from '../../services/place.service';
 
 
@@ -37,9 +38,13 @@ import { PlaceService } from '../../services/place.service';
 export class BarListComponent implements OnInit {
 
   places = [];
+  choice: string;
 
 
-  constructor(private placeService: PlaceService) {
+  constructor(private placeService: PlaceService, private router: Router, private activatedRoute: ActivatedRoute) {
+
+    this.choice = this.activatedRoute.snapshot.paramMap.get('choice');
+
     placeService.getAll().subscribe(response => {
       this.places = response;
     });

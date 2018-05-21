@@ -1,0 +1,23 @@
+<div class="livetchat" (click)="openTchat()">
+	<div class="bg"></div>
+	<img class="chat-girl" src="/assets/img/avatars/chat-girl.png" alt="Chat-girl">
+	 <span class="tip-content">Besoin d'aide ?</span>
+	 <div class="triangle-right"></div>
+</div>
+<div class="tchatboard" [style.display]="displayTchat">
+	<!-- header tchatboard -->
+	<div class="tchatboard-header">
+		<img class="tchatboard-header-icon" src="/assets/img/icons/speak-32x32.png" alt="speak-icon">
+		<p>Conversation</p>
+		<div class="container-close-tchatboard">
+			<button class="circle-tchatboard boxShadow close-tchatboard" (click)="closeTchat()"></button>
+		</div>
+	</div>
+	<!-- header tchatboard end -->
+	<div class="tchatboard-body">
+		<!-- <div class="face face-happy"></div> -->
+	</div>
+	<div class="tchatboard-response">
+		<input type="text" class="form-control tchat-message" placeholder="Votre message...">
+	</div>
+</div>

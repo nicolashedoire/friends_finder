@@ -52,6 +52,7 @@ import { ReturnButtonComponent } from './components/return-button/return-button.
 import { ActivityItemComponent } from './activity-item/activity-item.component';
 import { ActivityCompleteComponent } from './activity-complete/activity-complete.component';
 import { CreateBarComponent } from './components/create-bar/create-bar.component';
+import { TchatComponent } from './components/tchat/tchat.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -94,7 +95,8 @@ export function getAuthServiceConfigs() {
     ReturnButtonComponent,
     ActivityItemComponent,
     ActivityCompleteComponent,
-    CreateBarComponent
+    CreateBarComponent,
+    TchatComponent
   ],
   imports: [
     BrowserModule,

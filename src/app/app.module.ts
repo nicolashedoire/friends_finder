@@ -30,6 +30,7 @@ import { ActivityService } from './services/activity.service';
 import { PlaceService } from './services/place.service';
 import { QueryService } from './services/querie.service';
 import { CountriesService } from './shared/countries/countries.service';
+import { WebsocketService } from './shared/websocket/websocket.service';
 
 // routing
 import { AppRoutingModule } from './app-routing.module';
@@ -122,7 +123,8 @@ export function getAuthServiceConfigs() {
     ActivityService,
     PlaceService,
     QueryService,
-    CountriesService
+    CountriesService,
+    WebsocketService
   ],
   bootstrap: [AppComponent]
 })

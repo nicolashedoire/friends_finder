@@ -28,6 +28,8 @@ export class FoodListComponent implements OnInit {
     this.choice = this.activatedRoute.snapshot.paramMap.get('choice');
 
     placeService.getAllFood().subscribe(response => {
+
+      console.log(response);
       this.places = response;
     });
 

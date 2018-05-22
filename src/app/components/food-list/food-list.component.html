@@ -4,3 +4,7 @@
     <button class="button-blue" routerLink='/activity/{{choice}}/create-food'>Ajouter un restaurant</button>
   </div>
 </div>
+
+<ul class="list-group mt-5">
+    <li class="list-group-item" *ngFor="let place of places" routerLink="/activity/eat/{{place.id}}">{{place.name}}</li>
+</ul>

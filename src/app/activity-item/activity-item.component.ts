@@ -53,6 +53,8 @@ export class ActivityItemComponent implements OnInit {
     const userData = this.authService.decodeToken();
     const time = this.formatTime(this.time);
 
+    console.log('send activity');
+
     this.activityService
       .post({
         userId: userData['id'],

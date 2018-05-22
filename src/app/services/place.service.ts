@@ -28,6 +28,13 @@ export class PlaceService {
     return this.http.get(`${this.BASE_URL}/places`, { headers: this.authService.addAuthorizationHeader()});
   }
 
+  /**
+   * @return {Observable<any>}
+   */
+  getAllFood(): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/places/food`, { headers: this.authService.addAuthorizationHeader()});
+  }
+
 
   add(place: any): Observable<any> {
     return this.http.post(`${this.BASE_URL}/place`, place , { headers: this.authService.addAuthorizationHeader()});

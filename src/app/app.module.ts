@@ -53,6 +53,7 @@ import { ActivityCompleteComponent } from './activity-complete/activity-complete
 import { CreateBarComponent } from './components/create-bar/create-bar.component';
 import { TchatComponent } from './components/tchat/tchat.component';
 import { HistoricalComponent } from './components/historical/historical.component';
+import { CreateFoodComponent } from './components/create-food/create-food.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -96,7 +97,8 @@ export function getAuthServiceConfigs() {
     ActivityCompleteComponent,
     CreateBarComponent,
     TchatComponent,
-    HistoricalComponent
+    HistoricalComponent,
+    CreateFoodComponent
   ],
   imports: [
     BrowserModule,

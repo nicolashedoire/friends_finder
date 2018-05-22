@@ -15,11 +15,11 @@ import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
 declare var google: any;
 
 @Component({
-  selector: 'app-create-bar',
-  templateUrl: './create-bar.component.html',
-  styleUrls: ['./create-bar.component.scss']
+  selector: 'app-create-food',
+  templateUrl: './create-food.component.html',
+  styleUrls: ['./create-food.component.scss']
 })
-export class CreateBarComponent implements OnInit {
+export class CreateFoodComponent implements OnInit {
   place: any;
   choice: string;
 
@@ -57,12 +57,10 @@ export class CreateBarComponent implements OnInit {
   }
 
   addPlace() {
-    if(typeof this.place === 'object'){
-
-      this.placeService.add(this.place).subscribe(data => {
-
+    if (typeof this.place === 'object') {
+      this.placeService.addFood(this.place).subscribe(data => {
         // TODO ADD SUCCESS MESSAGE
-        this.router.navigate(['/activity/'+this.choice]);
+        this.router.navigate(['/activity/' + this.choice]);
       });
     }
   }

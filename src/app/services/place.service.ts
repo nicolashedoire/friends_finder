@@ -33,4 +33,8 @@ export class PlaceService {
     return this.http.post(`${this.BASE_URL}/place`, place , { headers: this.authService.addAuthorizationHeader()});
   }
 
+  addFood(place: any): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/place/add-food`, place , { headers: this.authService.addAuthorizationHeader()});
+  }
+
 }

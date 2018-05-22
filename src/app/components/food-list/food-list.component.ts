@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
+import { PlaceService } from '../../services/place.service';
 
 @Component({
   selector: 'app-food-list',
@@ -7,12 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoodListComponent implements OnInit {
 
-  constructor() { }
+  choice: string;
 
-  ngOnInit() {
+  constructor(private placeService: PlaceService, private router: Router, private activatedRoute: ActivatedRoute) {
+
+    this.choice = this.activatedRoute.snapshot.paramMap.get('choice');
+
   }
 
-  addFood() {
-
+  ngOnInit() {
   }
 }

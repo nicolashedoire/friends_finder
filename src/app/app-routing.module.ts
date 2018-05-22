@@ -11,6 +11,7 @@ import { ActivityCompleteComponent } from './activity-complete/activity-complete
 import { CreateBarComponent } from './components/create-bar/create-bar.component';
 import { QueriesComponent } from './queries/queries.component';
 import { UserProfileComponent } from '../app/components/user-profile/user-profile.component';
+import { HistoricalComponent } from './components/historical/historical.component';
 
 const appRoutes: Routes = [
   {
@@ -56,6 +57,11 @@ const appRoutes: Routes = [
   {
     path: 'profile',
     component: UserProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'historical',
+    component: HistoricalComponent,
     canActivate: [AuthGuard]
   },
 ];

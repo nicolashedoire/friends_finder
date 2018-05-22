@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row mt-3">
+      <h3>Historique</h3>
+      <select class="form-control activity-filter mt-3">
+        <option value="0">Toutes mes activités</option>
+        <option value="1">Il y a 1 semaine</option>
+        <option value="2">Il y a 15 jours</option>
+        <option value="3">Il y a 1 mois</option>
+      </select>
+      <hr>
+      <div *ngIf="!activities.length" class="alert alert-custom" role="alert">
+        Vous n'avez pas encore prévu d'activité !
+      </div>
+
+      <ul class="list-unstyled mt-5" *ngIf="activities.length">
+        <li class="row activity" *ngFor="let activity of activities">
+            <div class="col-lg-12 p-3">
+              <span>{{activity.placeName}} - {{activity.time}} - {{activity.date | date}}</span>
+              <button (click)="deleteActivity(activity)" class="float-right btn btn-outline-primary">delete</button>
+            </div>
+        </li>
+      </ul>
+  </div>
+</div>

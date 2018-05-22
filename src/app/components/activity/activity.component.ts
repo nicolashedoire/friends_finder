@@ -12,29 +12,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class ActivityComponent implements OnInit {
 
-  activities = [];
-
-  activityControl = new FormControl('', Validators.required);
-
-  constructor(
-    private activityService: ActivityService,
-    private placeService: PlaceService,
-    private localStorageService: LocalstorageService,
-    public authService: AuthentificationService
-  ) {
-    activityService.getAll().subscribe(response => {
-      this.activities = response.activities;
-    });
-  }
+  constructor() {}
 
   ngOnInit() {}
-
-  deleteActivity(activity: any) {
-    this.activityService.delete(activity).subscribe(data => {
-      this.activityService.getAll().subscribe(response => {
-        this.activities = response.activities;
-        this.activityService.sendSignal();
-      });
-    });
-  }
 }

@@ -8,23 +8,8 @@ import { ActivityService } from '../../services/activity.service';
   encapsulation: ViewEncapsulation.None
 })
 export class MembersComponent implements OnInit {
-  members = [
-    {
-      id: 1,
-      name: 'Julie',
-      image: 'https://randomuser.me/api/portraits/women/79.jpg',
-      age: 31,
-      rate: 4,
-      hobbies: ['Running', 'Yoga', 'Restaurants', 'Cinéma'],
-      activity: {
-        name: 'Séance de running',
-        date: Date.now(),
-        time: '20:30',
-        place: '54 rue nationale Lille'
-      }
-    }
-  ];
 
+  members = [];
   member: any;
   count = 0;
 
@@ -32,7 +17,7 @@ export class MembersComponent implements OnInit {
 
     // Observe changes when click join event in modal
     this.activityService.getUpdateJoinUsers().subscribe(() => {
-      this.getDayActivities();
+      this.getAllActive();
       this.resetCount();
     });
 
@@ -55,8 +40,6 @@ export class MembersComponent implements OnInit {
     this.activityService.getAllActive().subscribe(data => {
       this.members = data.accounts;
       this.member = data.accounts[0];
-
-      console.log(this.member);
     });
   }
 

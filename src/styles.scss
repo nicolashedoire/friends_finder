@@ -233,6 +233,27 @@ h3 {
 }
 
 
+@-webkit-keyframes rotating {
+  from{
+      -webkit-transform: rotate(0deg);
+  }
+  to{
+      -webkit-transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  -webkit-animation: rotating 0.5s linear infinite;
+  width: 50px;
+  margin-left: calc(50% - 25px);
+  margin-top: 0;
+  position: relative;
+}
+
+
+
+
+
 
 /* Animate CSS */
 

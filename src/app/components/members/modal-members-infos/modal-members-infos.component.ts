@@ -15,7 +15,12 @@ import { AuthentificationService } from '../../../shared/security/auth.service';
   providers: [NgbRatingConfig] // add NgbRatingConfig to the component providers
 })
 export class ModalMembersInfosComponent implements OnInit {
+
   @Input() member: any;
+
+  showLoader = true;
+  activities = [];
+
 
   heartActive = '';
   joinActivity = false;
@@ -41,6 +46,14 @@ export class ModalMembersInfosComponent implements OnInit {
   ngOnInit() {}
 
   open(content: any, options: any) {
+
+    this.activityService.getActivitiesById(this.member._id).subscribe(data => {
+
+        this.activities = data;
+        console.log(data);
+        this.showLoader = false;
+    });
+
     this.modalReference = this.modalService.open(content, { size: 'lg' });
     this.modalReference.result.then(
       result => {

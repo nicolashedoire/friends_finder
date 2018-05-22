@@ -38,8 +38,7 @@ export class ActivityItemComponent implements OnInit {
   }
 
   formatTime(event) {
-    const time =
-      this.minTwoDigits(event.hour) + ':' + this.minTwoDigits(event.minute);
+    const time = this.minTwoDigits(event.hour) + ':' + this.minTwoDigits(event.minute);
 
     return time;
   }
@@ -48,22 +47,18 @@ export class ActivityItemComponent implements OnInit {
     return (n < 10 ? '0' : '') + n;
   }
 
-  onTimeChange(event) {
-    if (event !== null) {
-      this.activityTime = this.formatTime(event);
-    }
-  }
 
   sendActivity() {
 
     const userData = this.authService.decodeToken();
+    const time = this.formatTime(this.time);
 
     this.activityService
       .post({
         userId: userData['id'],
         label: this.choice,
         placeId: this.idItem,
-        time: this.activityTime
+        time: time
       })
       .subscribe(data => {
         console.log(data);

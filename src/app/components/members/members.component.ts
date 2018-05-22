@@ -38,11 +38,11 @@ export class MembersComponent implements OnInit {
 
     // Observe change when delete an activity
     this.activityService.getChange().subscribe(() => {
-      this.getDayActivities();
+      this.getAllActive();
       this.resetCount();
     });
 
-    this.getDayActivities();
+    this.getAllActive();
   }
 
   ngOnInit() {}
@@ -51,10 +51,12 @@ export class MembersComponent implements OnInit {
     this.count = 0;
   }
 
-  getDayActivities() {
-    this.activityService.getAllToday().subscribe(data => {
-      this.members = data;
-      this.member = data[0];
+  getAllActive() {
+    this.activityService.getAllActive().subscribe(data => {
+      this.members = data.accounts;
+      this.member = data.accounts[0];
+
+      console.log(this.member);
     });
   }
 

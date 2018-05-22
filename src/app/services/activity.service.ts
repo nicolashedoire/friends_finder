@@ -51,9 +51,9 @@ export class ActivityService {
   /**
    * @return {Observable<any>}
    */
-  getAllToday(): Observable<any> {
+  getAllActive(): Observable<any> {
     const userData = this.authService.decodeToken();
-    return this.http.get(`${this.BASE_URL}/activities/today`, {
+    return this.http.get(`${this.BASE_URL}/accounts/active`, {
       params: { userId: userData['id'] },
       headers: this.authService.addAuthorizationHeader()
     });

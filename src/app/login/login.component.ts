@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   providers: [NgbDropdownConfig] // add NgbDropdownConfig to the component providers
 })
 export class LoginComponent implements OnInit, OnDestroy {

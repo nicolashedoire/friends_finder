@@ -4,7 +4,7 @@ import { QueryService } from '../services/querie.service';
 @Component({
   selector: 'app-queries',
   templateUrl: './queries.component.html',
-  styleUrls: ['./queries.component.css']
+  styleUrls: ['./queries.component.scss']
 })
 export class QueriesComponent implements OnInit {
 

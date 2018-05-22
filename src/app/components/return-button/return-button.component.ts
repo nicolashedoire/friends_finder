@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-return-button',
   templateUrl: './return-button.component.html',
-  styleUrls: ['./return-button.component.css']
+  styleUrls: ['./return-button.component.scss']
 })
 export class ReturnButtonComponent implements OnInit {
 

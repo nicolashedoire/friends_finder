@@ -17,7 +17,7 @@ import { PlaceService } from '../../services/place.service';
 @Component({
   selector: 'app-bar-list',
   templateUrl: './bar-list.component.html',
-  styleUrls: ['./bar-list.component.css'],
+  styleUrls: ['./bar-list.component.scss'],
   animations: [
     trigger('showView', [
       state(

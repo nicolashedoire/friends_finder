@@ -12,7 +12,7 @@ import { MapsAPILoader } from '@agm/core';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css']
+  styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit {
   public latitude: number;

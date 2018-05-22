@@ -6,7 +6,7 @@ import { AuthentificationService } from '../shared/security/auth.service';
 @Component({
   selector: 'app-activity-item',
   templateUrl: './activity-item.component.html',
-  styleUrls: ['./activity-item.component.css']
+  styleUrls: ['./activity-item.component.scss']
 })
 export class ActivityItemComponent implements OnInit {
   choice: string;
@@ -57,6 +57,7 @@ export class ActivityItemComponent implements OnInit {
   sendActivity() {
 
     const userData = this.authService.decodeToken();
+
     this.activityService
       .post({
         userId: userData['id'],
@@ -65,6 +66,7 @@ export class ActivityItemComponent implements OnInit {
         time: this.activityTime
       })
       .subscribe(data => {
+        console.log(data);
         this.router.navigate([
           '/activity/' + this.choice + '/' + this.idItem + '/complete'
         ]);

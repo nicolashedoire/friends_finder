@@ -17,15 +17,13 @@ declare var google: any;
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
-
-  @ViewChild('search') public searchElementRef: ElementRef;
 
   selected: any;
   places = [];
@@ -62,26 +60,6 @@ export class SearchComponent implements OnInit {
     this.searchControl = new FormControl();
 
     const lille = new google.maps.LatLng(50.633333, 3.066667);
-
-    const autocomplete = new google.maps.places.Autocomplete(
-      this.searchElementRef.nativeElement
-      // Ajouter d'autres types si vous voulez autre chose que les adresses
-      // {
-      //   types: []
-      // }
-    );
-
-    google.maps.event.addListener(autocomplete, 'place_changed', () => {
-      const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-      const photo = place.photos[0].getUrl({
-        maxWidth: 300,
-        maxHeight: 300
-      });
-      place['photo'] = photo;
-      this.placeService.add(place).subscribe(data => {
-      });
-    });
 
     const map = new google.maps.Map(document.getElementById('map'), {
       center: lille,

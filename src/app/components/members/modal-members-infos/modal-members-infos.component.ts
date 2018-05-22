@@ -11,7 +11,7 @@ import { AuthentificationService } from '../../../shared/security/auth.service';
 @Component({
   selector: 'app-modal-members-infos',
   templateUrl: './modal-members-infos.component.html',
-  styleUrls: ['./modal-members-infos.component.css'],
+  styleUrls: ['./modal-members-infos.component.scss'],
   providers: [NgbRatingConfig] // add NgbRatingConfig to the component providers
 })
 export class ModalMembersInfosComponent implements OnInit {

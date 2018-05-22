@@ -4,7 +4,7 @@ import { AuthentificationService } from '../../shared/security/auth.service';
 @Component({
   selector: 'app-activity-card',
   templateUrl: './activity-card.component.html',
-  styleUrls: ['./activity-card.component.css'] ,
+  styleUrls: ['./activity-card.component.scss'] ,
   animations: [
     trigger('showView', [
       state('inactive', style({

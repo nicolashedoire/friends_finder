@@ -4,7 +4,7 @@ import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-activity-choice',
   templateUrl: './activity-choice.component.html',
-  styleUrls: ['./activity-choice.component.css']
+  styleUrls: ['./activity-choice.component.scss']
 })
 export class ActivityChoiceComponent implements OnInit {
 

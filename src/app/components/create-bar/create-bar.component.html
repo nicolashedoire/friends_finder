@@ -6,11 +6,15 @@
   </div>
   <div class="row">
     <div class="col-lg-12 mt-3">
-      <h1 class="text-center">Ajouter un lieu</h1>
+      <h1 class="text-center mt-5">Ajouter un lieu</h1>
       <div class="row">
-        <div class="col-lg-12">
-          <input type="text" #search name="place" class="form-control" placeholder="Rechercher un lieu" minlength="50" autocorrect="off"
+        <div class="col-lg-10 mt-5">
+          <input type="text" #search name="place" class="form-control add-place" placeholder="Rechercher un lieu" minlength="50" autocorrect="off"
             autocapitalize="off" spellcheck="off">
+        </div>
+
+        <div class="col-lg-2 mt-5">
+          <button class="" (click)="addPlace()">Ajouter</button>
         </div>
       </div>
     </div>

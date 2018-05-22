@@ -8,7 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
-  styleUrls: ['./activity.component.css']
+  styleUrls: ['./activity.component.scss']
 })
 export class ActivityComponent implements OnInit {
 

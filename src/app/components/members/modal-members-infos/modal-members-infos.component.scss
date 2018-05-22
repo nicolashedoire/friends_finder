@@ -103,4 +103,8 @@
 ul {
   list-style-type: none;
   padding: 0;
+
+  .activity-item{
+    border-bottom: 1px solid rgba(30,30,30,0.1);
+  }
 }

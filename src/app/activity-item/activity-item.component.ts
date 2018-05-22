@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
+import { ActivityService } from '../services/activity.service';
+import { AuthentificationService } from '../shared/security/auth.service';
 
 @Component({
   selector: 'app-activity-item',
@@ -7,21 +9,24 @@ import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./activity-item.component.css']
 })
 export class ActivityItemComponent implements OnInit {
-
   choice: string;
   idItem: string;
   time = this.updateTime();
   activityTime: string;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private activityService: ActivityService,
+    public authService: AuthentificationService
+  ) {
     this.choice = this.activatedRoute.snapshot.paramMap.get('choice');
     this.idItem = this.activatedRoute.snapshot.paramMap.get('id');
 
     console.log(this.choice, this.idItem);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   updateTime() {
     const d = new Date();
@@ -49,10 +54,20 @@ export class ActivityItemComponent implements OnInit {
     }
   }
 
-  validateTime() {
+  sendActivity() {
 
-    console.log(this.time);
-    this.router.navigate(['/activity/' + this.choice + '/' + this.idItem + '/complete']);
+    const userData = this.authService.decodeToken();
+    this.activityService
+      .post({
+        userId: userData['id'],
+        label: this.choice,
+        placeId: this.idItem,
+        time: this.activityTime
+      })
+      .subscribe(data => {
+        this.router.navigate([
+          '/activity/' + this.choice + '/' + this.idItem + '/complete'
+        ]);
+      });
   }
-
 }

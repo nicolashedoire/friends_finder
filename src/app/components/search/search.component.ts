@@ -47,9 +47,6 @@ export class SearchComponent implements OnInit {
 
   select(place: any) {
     this.selected = place;
-    // this.activityService.getByPlaceId(place.id).subscribe(data => {
-    //   this.activities = data.activities;
-    // });
   }
 
   ngOnInit() {
@@ -61,11 +58,11 @@ export class SearchComponent implements OnInit {
     // create search FormControl
     this.searchControl = new FormControl();
 
-    const lille = new google.maps.LatLng(50.633333, 3.066667);
+    const lille = new google.maps.LatLng(50.634333, 3.062667);
 
     const map = new google.maps.Map(document.getElementById('map'), {
       center: lille,
-      zoom: 14,
+      zoom: 13,
       scrollwheel: false
     });
 

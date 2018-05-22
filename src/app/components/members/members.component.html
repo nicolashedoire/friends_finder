@@ -1,7 +1,7 @@
 <h3 class="text-center">Membres actifs</h3>
 <hr>
 <div class="row" *ngIf="members.length">
-  <div class="col-lg-2 mt-4">
+  <div class="col-lg-2 mt-5">
     <button class="btn btn-outline-primary" (click)="previousMember()">
         <i class="fas fa-arrow-left"></i>
     </button>
@@ -12,12 +12,12 @@
         <img [src]="member?.user?.image || ''" alt="Card image cap">
       </div>
       <div class="card-body text-center">
-        <h5 class="card-title">{{member?.user?.name}}</h5>
-        <app-modal-members-infos [member]="member"></app-modal-members-infos>
+        <h5 class="card-title mt-3">{{member?.user?.name}}</h5>
+        <app-modal-members-infos class="mt-3" [member]="member"></app-modal-members-infos>
       </div>
     </div>
   </div>
-  <div class="col-lg-2 mt-4">
+  <div class="col-lg-2 mt-5">
     <button class="btn btn-outline-primary" (click)="nextMember()">
         <i class="fas fa-arrow-right"></i>
     </button>

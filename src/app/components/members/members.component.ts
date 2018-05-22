@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivityService } from '../../services/activity.service';
 
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',
-  styleUrls: ['./members.component.scss']
+  styleUrls: ['./members.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MembersComponent implements OnInit {
   members = [

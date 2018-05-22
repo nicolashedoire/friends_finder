@@ -3,7 +3,8 @@ import {
   NgZone,
   OnInit,
   ViewChild,
-  Component
+  Component,
+  ViewEncapsulation
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PlaceService } from '../../services/place.service';
@@ -17,7 +18,8 @@ declare var google: any;
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SearchComponent implements OnInit {
   public latitude: number;
@@ -45,9 +47,9 @@ export class SearchComponent implements OnInit {
 
   select(place: any) {
     this.selected = place;
-    this.activityService.getByPlaceId(place.id).subscribe(data => {
-      this.activities = data.activities;
-    });
+    // this.activityService.getByPlaceId(place.id).subscribe(data => {
+    //   this.activities = data.activities;
+    // });
   }
 
   ngOnInit() {

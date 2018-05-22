@@ -35,7 +35,6 @@ import { WebsocketService } from './shared/websocket/websocket.service';
 // routing
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
-import { ActivityComponent } from './components/activity/activity.component';
 import { SearchComponent } from './components/search/search.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ModalMembersInfosComponent } from './components/members/modal-members-infos/modal-members-infos.component';
@@ -80,7 +79,6 @@ export function getAuthServiceConfigs() {
     LoginComponent,
     DashboardComponent,
     MainComponent,
-    ActivityComponent,
     SearchComponent,
     UserProfileComponent,
     ModalMembersInfosComponent,

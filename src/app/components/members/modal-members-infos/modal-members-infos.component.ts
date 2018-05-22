@@ -80,9 +80,9 @@ export class ModalMembersInfosComponent implements OnInit {
     }
   }
 
-  joinMember() {
+  joinMember(activityId: string) {
     const me = this.authService.decodeToken();
-    this.activityService.join(this.member, me).subscribe(data => {
+    this.activityService.join(activityId, me).subscribe(data => {
       this.postActivity = true;
       if (data.status === 'ALREADY_EXISTS') {
         this.joinActivityError = true;

@@ -101,10 +101,13 @@ export class ActivityService {
   /**
    * @return {Observable<any>}
    */
-  join(activity: any, user: any): Observable<any> {
+  join(activityId: string, user: any): Observable<any> {
+
+    console.log(activityId);
+    console.log(user);
     // tslint:disable-next-line:max-line-length
     return this.http.post(
-      `${this.BASE_URL}/activity/join/${activity._id}`,
+      `${this.BASE_URL}/activity/join/${activityId}`,
       user,
       { headers: this.authService.addAuthorizationHeader() }
     );

@@ -123,10 +123,18 @@ h3 {
   color: rgb(250,250,250);
   background: -webkit-linear-gradient(222deg,#FD605D 21%,#FD3769 55%,#FE007A 100%);
   background: linear-gradient(-132deg,#FD605D 21%,#FD3769 55%,#FE007A 100%);
-  box-shadow: 0 8px 24px #feaaa9;
   border-radius: 0px;
   width: 100%;
 }
+
+.alert-green{
+  color: rgb(255,255,255);
+  background: -webkit-linear-gradient(225deg,#7EEE6E 0,#8CD2AA 33%,#55D174 100%);
+  background: linear-gradient(225deg,#7EEE6E 0,#8CD2AA 33%,#55D174 100%);
+  border-radius: 0px;
+  width: 100%;
+}
+
 
 .button-blue{
   background: linear-gradient(120deg,#5263a3 9%,#2677f8 75%,#fe007a 120%);

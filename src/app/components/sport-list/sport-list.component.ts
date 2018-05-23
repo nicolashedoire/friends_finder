@@ -10,7 +10,6 @@ import { SportService } from '../../services/sport.service';
 export class SportListComponent implements OnInit {
 
   sports = [];
-  sport: string;
   choice: string;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private sportService: SportService) {
@@ -23,12 +22,5 @@ export class SportListComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  addSport() {
-    this.sportService.add(this.sport).subscribe(Response => {
-        // TODO ADD SUCCESS MESSAGE
-        this.router.navigate(['/activity/' + this.choice]);
-    });
   }
 }

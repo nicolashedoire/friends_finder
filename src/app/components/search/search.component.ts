@@ -28,9 +28,14 @@ export class SearchComponent implements OnInit {
   public zoom: number;
 
   selected: any;
+  map: any;
   places = [];
   foodPlaces = [];
   activities = [];
+
+  markers = [];
+  foodMarkers = [];
+  barMarkers = [];
 
   constructor(
     private placeService: PlaceService,
@@ -61,7 +66,7 @@ export class SearchComponent implements OnInit {
 
     const lille = new google.maps.LatLng(this.latitude, this.longitude);
 
-    const map = new google.maps.Map(document.getElementById('map'), {
+    this.map = new google.maps.Map(document.getElementById('map'), {
       center: lille,
       zoom: 13,
       scrollwheel: false
@@ -76,12 +81,16 @@ export class SearchComponent implements OnInit {
 
       this.places.forEach(item => {
 
-        const marker = new google.maps.Marker({
-          icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-          position: item.location,
-          map: map,
-          title: item.name
-        });
+        const marker = this.addMarker(item, "http://maps.google.com/mapfiles/ms/icons/red-dot.png");
+
+        this.barMarkers.push(marker);
+
+        // const marker = new google.maps.Marker({
+        //   icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+        //   position: item.location,
+        //   map: this.map,
+        //   title: item.name
+        // });
 
         google.maps.event.addListener(marker, 'click', function() {
 
@@ -100,8 +109,9 @@ export class SearchComponent implements OnInit {
               photo +
               '"/></div>'
           );
-          infowindow.open(map, this);
+          infowindow.open(this.map, this);
         });
+
       });
     });
 
@@ -113,12 +123,16 @@ export class SearchComponent implements OnInit {
 
       this.foodPlaces.forEach(item => {
 
-        const marker = new google.maps.Marker({
-          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-          position: item.location,
-          map: map,
-          title: item.name
-        });
+        // const marker = new google.maps.Marker({
+        //   icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+        //   position: item.location,
+        //   map: this.map,
+        //   title: item.name
+        // });
+
+        const marker = this.addMarker(item, "http://maps.google.com/mapfiles/ms/icons/blue-dot.png");
+
+        this.foodMarkers.push(marker);
 
         google.maps.event.addListener(marker, 'click', function() {
 
@@ -137,7 +151,7 @@ export class SearchComponent implements OnInit {
               photo +
               '"/></div>'
           );
-          infowindow.open(map, this);
+          infowindow.open(this.map, this);
         });
       });
     });
@@ -174,6 +188,59 @@ export class SearchComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  addMarker(item, icon) {
+    const marker = new google.maps.Marker({
+      icon: icon,
+      position: item.location,
+      map: this.map,
+      title: item.name
+    });
+    this.markers.push(marker);
+
+    return marker;
+  }
+
+
+  clearMarkers() {
+    this.setMapOnAll(null);
+  }
+
+  setMapOnAll(map) {
+    for (let i = 0; i < this.markers.length; i++) {
+      this.markers[i].setMap(map);
+    }
+  }
+
+  seeFoodPlace() {
+
+    // TODO
+    this.clearMarkers();
+
+    for (let i = 0; i < this.foodMarkers.length; i++) {
+      this.foodMarkers[i].setMap(this.map);
+    }
+  }
+
+  seeBarPlace() {
+
+    // TODO
+    this.clearMarkers();
+
+    for (let i = 0; i < this.barMarkers.length; i++) {
+      this.barMarkers[i].setMap(this.map);
+    }
+  }
+
+  seeAllPlace() {
+
+    // TODO
+    this.clearMarkers();
+
+    for (let i = 0; i < this.markers.length; i++) {
+      this.markers[i].setMap(this.map);
+    }
   }
 
   isActive(item) {

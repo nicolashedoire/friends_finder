@@ -44,7 +44,6 @@ export class SearchComponent implements OnInit {
     private ngZone: NgZone
   ) {}
 
-
   resetForm(form) {
     form.resetForm();
     this.places = [];
@@ -75,13 +74,14 @@ export class SearchComponent implements OnInit {
     const infowindow = new google.maps.InfoWindow();
 
     this.placeService.getAll().subscribe(response => {
-
       this.places = response;
-      const that  = this;
+      const that = this;
 
       this.places.forEach(item => {
-
-        const marker = this.addMarker(item, "http://maps.google.com/mapfiles/ms/icons/red-dot.png");
+        const marker = this.addMarker(
+          item,
+          'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+        );
 
         this.barMarkers.push(marker);
 
@@ -93,7 +93,6 @@ export class SearchComponent implements OnInit {
         // });
 
         google.maps.event.addListener(marker, 'click', function() {
-
           that.ngZone.run(() => {
             that.select(item);
           });
@@ -111,18 +110,14 @@ export class SearchComponent implements OnInit {
           );
           infowindow.open(this.map, this);
         });
-
       });
     });
 
-
     this.placeService.getAllFood().subscribe(response => {
-
       this.foodPlaces = response;
-      const that  = this;
+      const that = this;
 
       this.foodPlaces.forEach(item => {
-
         // const marker = new google.maps.Marker({
         //   icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
         //   position: item.location,
@@ -130,12 +125,14 @@ export class SearchComponent implements OnInit {
         //   title: item.name
         // });
 
-        const marker = this.addMarker(item, "http://maps.google.com/mapfiles/ms/icons/blue-dot.png");
+        const marker = this.addMarker(
+          item,
+          'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        );
 
         this.foodMarkers.push(marker);
 
         google.maps.event.addListener(marker, 'click', function() {
-
           that.ngZone.run(() => {
             that.select(item);
           });
@@ -155,7 +152,6 @@ export class SearchComponent implements OnInit {
         });
       });
     });
-
 
     // Create the PlaceService and send the request.
     // Handle the callback with an anonymous function.
@@ -202,7 +198,6 @@ export class SearchComponent implements OnInit {
     return marker;
   }
 
-
   clearMarkers() {
     this.setMapOnAll(null);
   }
@@ -214,7 +209,6 @@ export class SearchComponent implements OnInit {
   }
 
   seeFoodPlace() {
-
     // TODO
     this.clearMarkers();
 
@@ -224,7 +218,6 @@ export class SearchComponent implements OnInit {
   }
 
   seeBarPlace() {
-
     // TODO
     this.clearMarkers();
 
@@ -234,7 +227,6 @@ export class SearchComponent implements OnInit {
   }
 
   seeAllPlace() {
-
     // TODO
     this.clearMarkers();
 
@@ -245,6 +237,22 @@ export class SearchComponent implements OnInit {
 
   isActive(item) {
     return this.selected === item;
+  }
+
+  selectOnChange(event) {
+    console.log(event);
+    switch (event) {
+      case '0':
+        this.seeAllPlace();
+        break;
+      case '1':
+        console.log('see bar');
+        this.seeBarPlace();
+        break;
+      case '2':
+        this.seeFoodPlace();
+        break;
+    }
   }
 
   private setCurrentPosition() {

@@ -29,7 +29,7 @@
 </div>-->
 
 <div class="row">
-  <div class="col-lg-4">
+  <!--<div class="col-lg-4">
       <button (click)="seeFoodPlace()" class="button-blue">Voir restaurants</button>
   </div>
   <div class="col-lg-4">
@@ -37,6 +37,13 @@
   </div>
   <div class="col-lg-4">
       <button (click)="seeAllPlace()" class="button-purple">Voir tout</button>
+  </div> -->
+  <div class="col-lg-4">
+    <select class="form-control mt-1 mb-3" (change)="selectOnChange($event.target.value)">
+      <option value="0">Tout voir</option>
+      <option value="1">Voir les bars</option>
+      <option value="2">Voir les restaurants</option>
+    </select>
   </div>
 </div>
 <div id="map"></div>

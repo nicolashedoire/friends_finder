@@ -1,0 +1,17 @@
+ul {
+  height: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+ul li {
+  cursor: pointer;
+  padding: 20px;
+  font-size: 1.4em;
+}
+
+ul li:hover{
+  background: linear-gradient(-132deg,#FD605D 21%,#FD3769 55%,#FE007A 100%);
+  color: white;
+}

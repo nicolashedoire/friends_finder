@@ -25,6 +25,8 @@ export class SportService {
    * @return {Observable<any>}
    */
   add(sport: any): Observable<any> {
-    return this.http.post(`${this.BASE_URL}/sport/add`, sport , { headers: this.authService.addAuthorizationHeader()});
+
+    console.log(sport);
+    return this.http.post(`${this.BASE_URL}/sport/add`, {sportName: sport} , { headers: this.authService.addAuthorizationHeader()});
   }
 }

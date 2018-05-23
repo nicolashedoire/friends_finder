@@ -38,7 +38,8 @@ export class ActivityItemComponent implements OnInit {
   }
 
   formatTime(event) {
-    const time = this.minTwoDigits(event.hour) + ':' + this.minTwoDigits(event.minute);
+    const time =
+      this.minTwoDigits(event.hour) + ':' + this.minTwoDigits(event.minute);
 
     return time;
   }
@@ -47,47 +48,54 @@ export class ActivityItemComponent implements OnInit {
     return (n < 10 ? '0' : '') + n;
   }
 
-
   sendActivity() {
-
     const userData = this.authService.decodeToken();
     const time = this.formatTime(this.time);
 
     console.log(this.choice);
 
-    if(this.choice === 'eat'){
-
+    if (this.choice === 'eat') {
       this.activityService
-      .postFood({
-        userId: userData['id'],
-        label: this.choice,
-        placeId: this.idItem,
-        time: time
-      })
-      .subscribe(data => {
-        console.log(data);
-        this.router.navigate([
-          '/activity/' + this.choice + '/' + this.idItem + '/complete'
-        ]);
-      });
-
-    }else{
-
+        .postFood({
+          userId: userData['id'],
+          label: this.choice,
+          placeId: this.idItem,
+          time: time
+        })
+        .subscribe(data => {
+          console.log(data);
+          this.router.navigate([
+            '/activity/' + this.choice + '/' + this.idItem + '/complete'
+          ]);
+        });
+    } else if (this.choice === 'drink') {
       this.activityService
-      .post({
-        userId: userData['id'],
-        label: this.choice,
-        placeId: this.idItem,
-        time: time
-      })
-      .subscribe(data => {
-        console.log(data);
-        this.router.navigate([
-          '/activity/' + this.choice + '/' + this.idItem + '/complete'
-        ]);
-      });
-
+        .post({
+          userId: userData['id'],
+          label: this.choice,
+          placeId: this.idItem,
+          time: time
+        })
+        .subscribe(data => {
+          console.log(data);
+          this.router.navigate([
+            '/activity/' + this.choice + '/' + this.idItem + '/complete'
+          ]);
+        });
+    } else if (this.choice === 'sport'){
+      this.activityService
+        .postSport({
+          userId: userData['id'],
+          label: this.choice,
+          placeId: this.idItem,
+          time: time
+        })
+        .subscribe(data => {
+          console.log(data);
+          this.router.navigate([
+            '/activity/' + this.choice + '/' + this.idItem + '/complete'
+          ]);
+        });
     }
-
   }
 }

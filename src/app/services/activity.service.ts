@@ -96,6 +96,16 @@ export class ActivityService {
     });
   }
 
+
+  /**
+   * @return {Observable<any>}
+   */
+  postSport(activity: any): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/activity/sport`, activity, {
+      headers: this.authService.addAuthorizationHeader()
+    });
+  }
+
   /**
    * @return {Observable<any>}
    */

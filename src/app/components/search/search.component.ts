@@ -29,6 +29,7 @@ export class SearchComponent implements OnInit {
 
   selected: any;
   places = [];
+  foodPlaces = [];
   activities = [];
 
   constructor(
@@ -52,13 +53,13 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     // set google maps defaults
     this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+    this.latitude = 50.634333;
+    this.longitude = 3.062667;
 
     // create search FormControl
     this.searchControl = new FormControl();
 
-    const lille = new google.maps.LatLng(50.634333, 3.062667);
+    const lille = new google.maps.LatLng(this.latitude, this.longitude);
 
     const map = new google.maps.Map(document.getElementById('map'), {
       center: lille,
@@ -76,6 +77,44 @@ export class SearchComponent implements OnInit {
       this.places.forEach(item => {
 
         const marker = new google.maps.Marker({
+          icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+          position: item.location,
+          map: map,
+          title: item.name
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+
+          that.ngZone.run(() => {
+            that.select(item);
+          });
+
+          const photo = item.photo;
+
+          infowindow.setContent(
+            '<div><strong>' +
+              item.name +
+              '</strong><br>' +
+              '<br>' +
+              '<img src="' +
+              photo +
+              '"/></div>'
+          );
+          infowindow.open(map, this);
+        });
+      });
+    });
+
+
+    this.placeService.getAllFood().subscribe(response => {
+
+      this.foodPlaces = response;
+      const that  = this;
+
+      this.foodPlaces.forEach(item => {
+
+        const marker = new google.maps.Marker({
+          icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
           position: item.location,
           map: map,
           title: item.name

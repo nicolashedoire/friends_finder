@@ -28,9 +28,15 @@
   </div>
 </div>-->
 
-<div>
-  <button (click)="seeFoodPlace()">Voir restaurants</button>
-  <button (click)="seeBarPlace()">Voir bars</button>
-  <button (click)="seeAllPlace()">Voir tout</button>
+<div class="row">
+  <div class="col-lg-4">
+      <button (click)="seeFoodPlace()" class="button-blue">Voir restaurants</button>
+  </div>
+  <div class="col-lg-4">
+      <button (click)="seeBarPlace()" class="button-green">Voir bars</button>
+  </div>
+  <div class="col-lg-4">
+      <button (click)="seeAllPlace()" class="button-purple">Voir tout</button>
+  </div>
 </div>
 <div id="map"></div>

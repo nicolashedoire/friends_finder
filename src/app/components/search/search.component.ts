@@ -56,7 +56,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     // set google maps defaults
-    this.zoom = 4;
     this.latitude = 50.634333;
     this.longitude = 3.062667;
 
@@ -67,7 +66,7 @@ export class SearchComponent implements OnInit {
 
     this.map = new google.maps.Map(document.getElementById('map'), {
       center: lille,
-      zoom: 13,
+      zoom: 15,
       scrollwheel: false
     });
 

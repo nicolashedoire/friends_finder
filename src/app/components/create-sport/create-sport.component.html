@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row justify-content-lg-center">
+    <div class="col-lg-6">
+      <app-return-button [path]="'/activity/'+choice"></app-return-button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 mt-3">
+      <h1 class="text-center mt-5">Ajouter sport</h1>
+      <div class="row">
+        <div class="col-lg-10 mt-5">
+          <input type="text" class="form-control add-sport" placeholder="Ajouter un sport" autocorrect="off"
+            autocapitalize="off" spellcheck="off">
+        </div>
+        <div class="col-lg-2 mt-5">
+          <button class="button-blue-sm" (click)="addSport()">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

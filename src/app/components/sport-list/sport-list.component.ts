@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sport-list',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SportListComponent implements OnInit {
 
-  constructor() { }
+  choice: string;
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { 
+
+    this.choice = this.activatedRoute.snapshot.paramMap.get('choice');
+  }
 
   ngOnInit() {
   }

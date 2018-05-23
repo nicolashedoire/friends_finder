@@ -54,6 +54,7 @@ import { CreateBarComponent } from './components/create-bar/create-bar.component
 import { TchatComponent } from './components/tchat/tchat.component';
 import { HistoricalComponent } from './components/historical/historical.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
+import { CreateSportComponent } from './components/create-sport/create-sport.component';
 
 // Configs Auth
 export function getAuthServiceConfigs() {
@@ -98,7 +99,8 @@ export function getAuthServiceConfigs() {
     CreateBarComponent,
     TchatComponent,
     HistoricalComponent,
-    CreateFoodComponent
+    CreateFoodComponent,
+    CreateSportComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { ActivityItemComponent } from './activity-item/activity-item.component';
 import { ActivityCompleteComponent } from './activity-complete/activity-complete.component';
 import { CreateBarComponent } from './components/create-bar/create-bar.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
+import { CreateSportComponent } from './components/create-sport/create-sport.component';
 import { QueriesComponent } from './queries/queries.component';
 import { UserProfileComponent } from '../app/components/user-profile/user-profile.component';
 import { HistoricalComponent } from './components/historical/historical.component';
@@ -43,6 +44,11 @@ const appRoutes: Routes = [
   {
     path: 'activity/:choice/create-food',
     component: CreateFoodComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'activity/:choice/create-sport',
+    component: CreateSportComponent,
     canActivate: [AuthGuard]
   },
   {

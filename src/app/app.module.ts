@@ -31,6 +31,7 @@ import { PlaceService } from './services/place.service';
 import { QueryService } from './services/querie.service';
 import { CountriesService } from './shared/countries/countries.service';
 import { WebsocketService } from './shared/websocket/websocket.service';
+import { SportService } from './services/sport.service';
 
 // routing
 import { AppRoutingModule } from './app-routing.module';
@@ -128,6 +129,7 @@ export function getAuthServiceConfigs() {
     AuthentificationService,
     ActivityService,
     PlaceService,
+    SportService,
     QueryService,
     CountriesService,
     WebsocketService

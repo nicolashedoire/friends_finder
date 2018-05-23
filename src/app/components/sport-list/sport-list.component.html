@@ -4,3 +4,7 @@
     <button class="button-blue" routerLink='/activity/{{choice}}/create-sport'>Ajouter un sport</button>
   </div>
 </div>
+
+<ul class="list-group mt-5">
+  <li class="list-group-item" *ngFor="let sport of sports" routerLink="/activity/sport/{{sport._id}}">{{sport.name}}</li>
+</ul>

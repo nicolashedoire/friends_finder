@@ -90,6 +90,15 @@ export class ActivityService {
   /**
    * @return {Observable<any>}
    */
+  postFood(activity: any): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/activity/food`, activity, {
+      headers: this.authService.addAuthorizationHeader()
+    });
+  }
+
+  /**
+   * @return {Observable<any>}
+   */
   delete(activity: any): Observable<any> {
     return this.http.post(
       `${this.BASE_URL}/activity/${activity._id}`,

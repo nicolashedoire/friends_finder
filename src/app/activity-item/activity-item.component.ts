@@ -53,9 +53,27 @@ export class ActivityItemComponent implements OnInit {
     const userData = this.authService.decodeToken();
     const time = this.formatTime(this.time);
 
-    console.log('send activity');
+    console.log(this.choice);
 
-    this.activityService
+    if(this.choice === 'eat'){
+
+      this.activityService
+      .postFood({
+        userId: userData['id'],
+        label: this.choice,
+        placeId: this.idItem,
+        time: time
+      })
+      .subscribe(data => {
+        console.log(data);
+        this.router.navigate([
+          '/activity/' + this.choice + '/' + this.idItem + '/complete'
+        ]);
+      });
+
+    }else{
+
+      this.activityService
       .post({
         userId: userData['id'],
         label: this.choice,
@@ -68,5 +86,8 @@ export class ActivityItemComponent implements OnInit {
           '/activity/' + this.choice + '/' + this.idItem + '/complete'
         ]);
       });
+
+    }
+
   }
 }

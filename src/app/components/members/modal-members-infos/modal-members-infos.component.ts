@@ -48,7 +48,6 @@ export class ModalMembersInfosComponent implements OnInit {
   open(content: any, options: any) {
 
     this.activityService.getActivitiesById(this.member._id).subscribe(data => {
-
         this.activities = data;
         console.log(data);
         this.showLoader = false;
